@@ -1,0 +1,15 @@
+{
+  "id": "shelter-status-ui",
+  "scriptName": "末日避难所-状态栏界面",
+  "findRegex": "```shelter-status[\\s\\S]*?```(?!(?:[\\s\\S]*```shelter-status))",
+  "replaceString": "```\n<body>\n<script>\n$('body').load('http://localhost:5500/dist/末日避难所/界面/状态栏/index.html')\n</script>\n</body>\n```",
+  "trimStrings": [],
+  "placement": [1, 2],
+  "disabled": false,
+  "markdownOnly": true,
+  "promptOnly": false,
+  "runOnEdit": true,
+  "substituteRegex": 0,
+  "minDepth": null,
+  "maxDepth": null
+}

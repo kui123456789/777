@@ -1,0 +1,11 @@
+<%_
+if (typeof brotherCon === 'undefined') var brotherCon = getvar('stat_data.林小雨状态.兄控度', { defaults: 0 });
+_%>
+
+<%_ if (brotherCon >= 80) { _%>
+<%- await getwi(null, '林小雨_阶段03_禁忌依恋期') %>
+<%_ } else if (brotherCon >= 40) { _%>
+<%- await getwi(null, '林小雨_阶段02_依赖萌芽期') %>
+<%_ } else { _%>
+<%- await getwi(null, '林小雨_阶段01_娇纵任性期') %>
+<%_ } _%>

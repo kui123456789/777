@@ -1,0 +1,409 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "世界": {
+      "type": "object",
+      "properties": {
+        "当前时间": {
+          "default": "2020年9月1日 18:30",
+          "type": "string"
+        },
+        "当前地点": {
+          "default": "巷口",
+          "type": "string"
+        }
+      }
+    },
+    "姜林": {
+      "type": "object",
+      "properties": {
+        "基础状态": {
+          "type": "object",
+          "properties": {
+            "好感度": {
+              "type": "number"
+            },
+            "心情": {
+              "default": "紧张",
+              "type": "string"
+            },
+            "体力": {
+              "default": 60,
+              "type": "number"
+            }
+          }
+        },
+        "财务": {
+          "type": "object",
+          "properties": {
+            "现金": {
+              "default": 128.5,
+              "type": "number"
+            },
+            "欠债": {
+              "type": "number"
+            },
+            "打工收入": {
+              "type": "number"
+            }
+          }
+        },
+        "身体": {
+          "type": "object",
+          "properties": {
+            "腿长": {
+              "default": "98cm",
+              "type": "string"
+            },
+            "大腿围": {
+              "default": "36cm",
+              "type": "string"
+            },
+            "私密部位": {
+              "type": "object",
+              "properties": {
+                "胸部": {
+                  "default": "隆起幅度小，乳晕淡粉",
+                  "type": "string"
+                },
+                "下体": {
+                  "default": "毛发稀疏，大阴唇闭合",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "required": [
+            "私密部位"
+          ]
+        },
+        "背包": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "物品名称"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "描述": {
+                "default": "无描述",
+                "type": "string"
+              },
+              "数量": {
+                "default": 1,
+                "type": "number"
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "基础状态",
+        "财务",
+        "身体",
+        "背包"
+      ]
+    },
+    "林雅状态": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "屈从度": {
+          "type": "number"
+        },
+        "好感度": {
+          "default": -50,
+          "type": "number"
+        },
+        "心情": {
+          "default": 60,
+          "type": "number"
+        },
+        "当前状态": {
+          "default": "傲慢",
+          "type": "string"
+        },
+        "是否处女": {
+          "default": true,
+          "type": "boolean"
+        },
+        "是否怀孕": {
+          "type": "boolean"
+        },
+        "存款": {
+          "default": 50000,
+          "type": "number"
+        }
+      }
+    },
+    "林雅身体": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "胸部": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "挺拔B罩杯",
+              "type": "string"
+            },
+            "状态": {
+              "default": "未开发",
+              "type": "string"
+            },
+            "特征": {
+              "default": "粉嫩/柔软",
+              "type": "string"
+            },
+            "敏感度": {
+              "type": "number"
+            }
+          }
+        },
+        "下体": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "白虎无毛",
+              "type": "string"
+            },
+            "状态": {
+              "default": "处女/紧致",
+              "type": "string"
+            },
+            "特征": {
+              "default": "粉嫩/一线天",
+              "type": "string"
+            },
+            "敏感度": {
+              "type": "number"
+            },
+            "内射量": {
+              "type": "number"
+            }
+          }
+        },
+        "臀部": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "圆润挺翘",
+              "type": "string"
+            },
+            "状态": {
+              "default": "未开发",
+              "type": "string"
+            },
+            "特征": {
+              "default": "无痕/白皙",
+              "type": "string"
+            },
+            "敏感度": {
+              "type": "number"
+            }
+          }
+        },
+        "口腔": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "湿润红唇",
+              "type": "string"
+            },
+            "状态": {
+              "default": "未开发",
+              "type": "string"
+            },
+            "敏感度": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "林雅背包": {
+      "default": {
+        "限量款iPhone": {
+          "描述": "最新款的粉色iPhone，贴着水钻",
+          "数量": 1
+        },
+        "香奈儿口红": {
+          "描述": "色号43，只用了一点点",
+          "数量": 1
+        },
+        "父亲的附属黑卡": {
+          "描述": "额度很高的信用卡",
+          "数量": 1
+        },
+        "补妆镜": {
+          "描述": "精致的小镜子",
+          "数量": 1
+        }
+      },
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "description": "物品名称"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "描述": {
+            "default": "无描述",
+            "type": "string"
+          },
+          "数量": {
+            "default": 1,
+            "type": "number"
+          }
+        }
+      }
+    },
+    "林小雨状态": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "兄控度": {
+          "default": 15,
+          "type": "number"
+        },
+        "心情": {
+          "default": 80,
+          "type": "number"
+        },
+        "当前状态": {
+          "default": "娇纵",
+          "type": "string"
+        },
+        "是否处女": {
+          "default": true,
+          "type": "boolean"
+        },
+        "零花钱": {
+          "default": 200,
+          "type": "number"
+        }
+      }
+    },
+    "林小雨身体": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "胸部": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "微微隆起A罩杯",
+              "type": "string"
+            },
+            "状态": {
+              "default": "发育初期",
+              "type": "string"
+            },
+            "特征": {
+              "default": "小巧/稚嫩",
+              "type": "string"
+            },
+            "敏感度": {
+              "default": 10,
+              "type": "number"
+            }
+          }
+        },
+        "下体": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "光洁无毛",
+              "type": "string"
+            },
+            "状态": {
+              "default": "处女/极紧",
+              "type": "string"
+            },
+            "特征": {
+              "default": "稚嫩/闭合",
+              "type": "string"
+            },
+            "敏感度": {
+              "default": 10,
+              "type": "number"
+            }
+          }
+        },
+        "臀部": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "描述": {
+              "default": "单薄紧实",
+              "type": "string"
+            },
+            "状态": {
+              "default": "未开发",
+              "type": "string"
+            },
+            "特征": {
+              "default": "骨感/缺乏弹性",
+              "type": "string"
+            },
+            "敏感度": {
+              "default": 5,
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "林小雨背包": {
+      "default": {
+        "贴满贴纸的手机": {
+          "描述": "屏幕有点裂痕的旧手机",
+          "数量": 1
+        },
+        "半包薯片": {
+          "描述": "番茄味的，吃了一半",
+          "数量": 1
+        },
+        "你的备用钥匙": {
+          "描述": "偷偷配的User家钥匙",
+          "数量": 1
+        },
+        "没写完的作业本": {
+          "描述": "上面画满了涂鸦",
+          "数量": 1
+        }
+      },
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "description": "物品名称"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "描述": {
+            "default": "无描述",
+            "type": "string"
+          },
+          "数量": {
+            "default": 1,
+            "type": "number"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "世界",
+    "姜林"
+  ]
+}

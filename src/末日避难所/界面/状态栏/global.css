@@ -1,0 +1,131 @@
+/* 末日避难所状态栏全局样式 */
+
+:root {
+  /* 主题色 - 废土风格 */
+  --c-vault-dark: #1a1a1a;
+  --c-vault-medium: #2d2d2d;
+  --c-vault-light: #e0e0e0;
+  --c-vault-accent: #d4a84b;
+  --c-vault-warning: #ff6b35;
+  --c-vault-danger: #f44336;
+  --c-vault-success: #4caf50;
+  --c-vault-info: #4fc3f7;
+
+  /* 字体 */
+  --font-display: 'Share Tech Mono', 'Consolas', 'Monaco', monospace;
+  --font-body: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* 基础重置 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: transparent;
+  color: var(--c-vault-light);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* FontAwesome 图标调整 */
+.fa-solid,
+.fa-regular {
+  display: inline-block;
+  text-align: center;
+}
+
+/* 通用动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 15px currentColor;
+  }
+}
+
+/* 工具类 */
+.text-warning {
+  color: var(--c-vault-warning);
+}
+
+.text-danger {
+  color: var(--c-vault-danger);
+}
+
+.text-success {
+  color: var(--c-vault-success);
+}
+
+.text-info {
+  color: var(--c-vault-info);
+}
+
+.text-accent {
+  color: var(--c-vault-accent);
+}
+
+/* 数值高亮 */
+.stat-high {
+  color: var(--c-vault-success);
+  font-weight: bold;
+}
+
+.stat-low {
+  color: var(--c-vault-danger);
+  font-weight: bold;
+}
+
+.stat-critical {
+  color: var(--c-vault-danger);
+  font-weight: bold;
+  animation: pulse 1s infinite;
+}

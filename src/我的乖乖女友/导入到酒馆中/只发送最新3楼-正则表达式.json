@@ -1,0 +1,19 @@
+[
+    {
+        "id": "de58173d-201c-4bec-b78a-055bb9c5efee",
+        "scriptName": "只发送最新3楼的变量更新",
+        "findRegex": "/<UpdateVariable>[\\s\\S]*?</UpdateVariable>/gm",
+        "replaceString": "",
+        "trimStrings": [],
+        "placement": [
+            2
+        ],
+        "disabled": false,
+        "markdownOnly": false,
+        "promptOnly": true,
+        "runOnEdit": true,
+        "substituteRegex": 0,
+        "minDepth": 6,
+        "maxDepth": null
+    }
+]

@@ -1,0 +1,7 @@
+{
+  "id": "shelter-mvu-script",
+  "name": "末日避难所-MVU脚本",
+  "content": "import 'http://localhost:5500/dist/末日避难所/脚本/MVU/index.js'",
+  "info": "加载MVU变量框架",
+  "buttons": []
+}

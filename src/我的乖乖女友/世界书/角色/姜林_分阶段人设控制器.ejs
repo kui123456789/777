@@ -1,0 +1,20 @@
+<%_
+if (typeof jianglinGoodwill === 'undefined') var jianglinGoodwill = getvar('stat_data.姜林.好感度', { defaults: 0 });
+if (typeof jianglinRelation === 'undefined') var jianglinRelation = getvar('stat_data.姜林.关系状态', { defaults: '陌生人' });
+if (typeof goodwillValue === 'undefined') var goodwillValue = jianglinGoodwill;
+_%>
+
+<%_ if (jianglinRelation === '从属') { _%>
+<%- await getwi(null, '姜林_阶段06_契约从属期') %>
+<%_ } else if (jianglinRelation === '恋人') { _%>
+<%- await getwi(null, '姜林_阶段05_恋人甜蜜期') %>
+
+<%_ } else if (goodwillValue >= 80) { _%>
+<%- await getwi(null, '姜林_阶段04_情感爆发期') %>
+<%_ } else if (goodwillValue >= 60) { _%>
+<%- await getwi(null, '姜林_阶段03_暧昧拉扯期') %>
+<%_ } else if (goodwillValue >= 30) { _%>
+<%- await getwi(null, '姜林_阶段02_依赖萌芽期') %>
+<%_ } else { _%>
+<%- await getwi(null, '姜林_阶段01_陌生警惕期') %>
+<%_ } _%>

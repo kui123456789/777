@@ -1,0 +1,7 @@
+{
+  "id": "shelter-schema-script",
+  "name": "末日避难所-变量结构",
+  "content": "import 'http://localhost:5500/dist/末日避难所/脚本/变量结构/index.js'",
+  "info": "注册变量结构定义",
+  "buttons": []
+}
