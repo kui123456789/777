@@ -32,10 +32,7 @@ defineEmits<{
 }>();
 
 // 在 tabs 前面添加"正文"标签
-const allTabs = computed(() => [
-  { id: 'content', label: '正文', icon: 'fa-book-open' },
-  ...props.tabs,
-]);
+const allTabs = computed(() => [{ id: 'content', label: '正文', icon: 'fa-book-open' }, ...props.tabs]);
 </script>
 
 <style lang="scss" scoped>

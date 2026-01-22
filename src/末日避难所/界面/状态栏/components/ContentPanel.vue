@@ -14,12 +14,7 @@
         <span>选择你的行动</span>
       </div>
       <div class="options-grid">
-        <button
-          v-for="(option, index) in options"
-          :key="index"
-          class="option-button"
-          @click="sendOption(option)"
-        >
+        <button v-for="(option, index) in options" :key="index" class="option-button" @click="sendOption(option)">
           <span class="option-number">{{ index + 1 }}</span>
           <span class="option-text">{{ option }}</span>
         </button>
@@ -98,11 +93,7 @@ async function sendOption(optionText: string) {
 }
 
 const formattedContent = computed(() => {
-  return contentText.value
-    .replace(/&/g, '&amp;')
-    .replace(/\x3c/g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\n/g, '<br>');
+  return contentText.value.replace(/&/g, '&amp;').replace(/\x3c/g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
 });
 
 onMounted(() => {
@@ -117,9 +108,16 @@ onMounted(() => {
   overflow-y: auto;
   padding: 16px;
   background: rgba(0, 0, 0, 0.1);
-  &::-webkit-scrollbar { width: 6px; }
-  &::-webkit-scrollbar-thumb { background: #4a4a4a; border-radius: 3px; }
-  &::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+  }
 }
 .content-text {
   color: #d0d0d0;
@@ -136,9 +134,19 @@ onMounted(() => {
   justify-content: center;
   text-align: center;
   color: #888;
-  i { font-size: 48px; margin-bottom: 16px; opacity: 0.5; }
-  p { margin: 8px 0; font-size: 14px; }
-  .hint { font-size: 12px; color: #666; }
+  i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+  p {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+  .hint {
+    font-size: 12px;
+    color: #666;
+  }
 }
 
 // 选项区域样式

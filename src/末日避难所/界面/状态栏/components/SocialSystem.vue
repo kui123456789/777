@@ -67,15 +67,7 @@ function getRelationClass(value: number): string {
 function getRelationStyle(value: number) {
   const normalized = (value + 100) / 2; // Convert -100~100 to 0~100
   const color =
-    value >= 50
-      ? '#4caf50'
-      : value >= 20
-        ? '#8bc34a'
-        : value >= -20
-          ? '#9e9e9e'
-          : value >= -50
-            ? '#ff9800'
-            : '#f44336';
+    value >= 50 ? '#4caf50' : value >= 20 ? '#8bc34a' : value >= -20 ? '#9e9e9e' : value >= -50 ? '#ff9800' : '#f44336';
 
   return {
     width: `${normalized}%`,

@@ -70,7 +70,7 @@
         特质 (Perks)
       </h3>
 
-      <div v-if="Object.keys(data.监督者.特质).length === 0" class="empty-hint"> 尚未获得任何特质 </div>
+      <div v-if="Object.keys(data.监督者.特质).length === 0" class="empty-hint">尚未获得任何特质</div>
 
       <div v-else class="perk-list">
         <div v-for="(perk, name) in data.监督者.特质" :key="name" class="perk-item">

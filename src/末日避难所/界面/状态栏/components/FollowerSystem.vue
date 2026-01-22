@@ -23,9 +23,7 @@
           </div>
           <div class="basic-info">
             <div class="name">{{ follower.姓名 }}</div>
-            <div class="meta">
-              {{ follower.年龄 }}岁 · {{ follower.性别 }}
-            </div>
+            <div class="meta">{{ follower.年龄 }}岁 · {{ follower.性别 }}</div>
           </div>
           <div :class="['status-badge', follower.状态.toLowerCase()]">
             {{ follower.状态 }}

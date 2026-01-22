@@ -7,9 +7,7 @@
         设施区域
       </h3>
 
-      <div v-if="Object.keys(data.设施与库存.设施区域).length === 0" class="empty-hint">
-        尚未建造任何设施
-      </div>
+      <div v-if="Object.keys(data.设施与库存.设施区域).length === 0" class="empty-hint">尚未建造任何设施</div>
 
       <div v-else class="facility-grid">
         <div
@@ -43,9 +41,7 @@
         <span class="item-count">({{ Object.keys(data.设施与库存.仓库系统).length }}种物品)</span>
       </h3>
 
-      <div v-if="Object.keys(data.设施与库存.仓库系统).length === 0" class="empty-hint">
-        仓库为空
-      </div>
+      <div v-if="Object.keys(data.设施与库存.仓库系统).length === 0" class="empty-hint">仓库为空</div>
 
       <div v-else class="inventory-list">
         <div v-for="(item, name) in groupedItems" :key="name" class="item-group">
@@ -59,9 +55,7 @@
                 <div class="item-name">{{ itemName }}</div>
                 <div class="item-effect">{{ itemData.效果 || '无特殊效果' }}</div>
               </div>
-              <div class="item-quantity">
-                x{{ itemData.数量 }}
-              </div>
+              <div class="item-quantity">x{{ itemData.数量 }}</div>
             </div>
           </div>
         </div>
