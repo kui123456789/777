@@ -14,9 +14,7 @@ export const Schema = z.object({
       .number()
       .transform(v => _.clamp(v, 0, 100))
       .prefault(0),
-    关系状态: z
-      .enum(['陌生人', '朋友', '暧昧', '恋人', '从属'])
-      .prefault('陌生人'),
+    关系状态: z.enum(['陌生人', '朋友', '暧昧', '恋人', '从属']).prefault('陌生人'),
 
     // 基础状态
     基础状态: z.object({
@@ -76,9 +74,7 @@ export const Schema = z.object({
         .number()
         .transform(v => _.clamp(v, 0, 100))
         .prefault(60),
-      关系: z
-        .enum(['同学', '敌人', '奴隶', '玩物'])
-        .prefault('同学'),
+      关系: z.enum(['同学', '敌人', '奴隶', '玩物']).prefault('同学'),
       当前状态: z.string().prefault('傲慢'),
       是否处女: z.boolean().prefault(true),
       是否怀孕: z.boolean().prefault(false),
@@ -187,10 +183,10 @@ export const Schema = z.object({
       }),
     )
     .prefault({
-      '贴满贴纸的手机': { 描述: '屏幕有点裂痕的旧手机', 数量: 1 },
-      '半包薯片': { 描述: '番茄味的，吃了一半', 数量: 1 },
-      '你的备用钥匙': { 描述: '偷偷配的User家钥匙', 数量: 1 },
-      '没写完的作业本': { 描述: '上面画满了涂鸦', 数量: 1 },
+      贴满贴纸的手机: { 描述: '屏幕有点裂痕的旧手机', 数量: 1 },
+      半包薯片: { 描述: '番茄味的，吃了一半', 数量: 1 },
+      你的备用钥匙: { 描述: '偷偷配的User家钥匙', 数量: 1 },
+      没写完的作业本: { 描述: '上面画满了涂鸦', 数量: 1 },
     }),
 });
 export type Schema = z.output<typeof Schema>;

@@ -5,35 +5,15 @@
     <!-- 头部信息 -->
     <div class="header">
       <div class="title">角色状态记录</div>
-      <div class="info-text">
-        {{ data.世界.当前日期 }} {{ data.世界.当前时间 }} @ {{ data.世界.当前地点 }}
-      </div>
-      <div class="info-text" style="font-size: 11px;">{{ data.世界.天气 }}</div>
+      <div class="info-text">{{ data.世界.当前日期 }} {{ data.世界.当前时间 }} @ {{ data.世界.当前地点 }}</div>
+      <div class="info-text" style="font-size: 11px">{{ data.世界.天气 }}</div>
     </div>
 
     <!-- 标签页导航 -->
     <div class="tabs">
-      <div
-        class="tab-item"
-        :class="{ active: currentTab === '姜林' }"
-        @click="currentTab = '姜林'"
-      >
-        姜林
-      </div>
-      <div
-        class="tab-item"
-        :class="{ active: currentTab === '沈婉清' }"
-        @click="currentTab = '沈婉清'"
-      >
-        沈婉清
-      </div>
-      <div
-        class="tab-item"
-        :class="{ active: currentTab === '林小雨' }"
-        @click="currentTab = '林小雨'"
-      >
-        林小雨
-      </div>
+      <div class="tab-item" :class="{ active: currentTab === '姜林' }" @click="currentTab = '姜林'">姜林</div>
+      <div class="tab-item" :class="{ active: currentTab === '沈婉清' }" @click="currentTab = '沈婉清'">沈婉清</div>
+      <div class="tab-item" :class="{ active: currentTab === '林小雨' }" @click="currentTab = '林小雨'">林小雨</div>
     </div>
 
     <!-- 姜林面板 -->
@@ -67,7 +47,16 @@
           </div>
           <div class="row">
             <span class="label">小金库:</span>
-            <span class="value money interactive-btn" @click="showDetail('财务状况', `现金: ¥${Number(data.姜林.财务.现金).toFixed(1)}\n欠债: ¥${Number(data.姜林.财务.欠债).toFixed(1)}\n打工收入: ¥${Number(data.姜林.财务.打工收入).toFixed(1)}`)">¥{{ Number(data.姜林.财务.现金).toFixed(1) }}</span>
+            <span
+              class="value money interactive-btn"
+              @click="
+                showDetail(
+                  '财务状况',
+                  `现金: ¥${Number(data.姜林.财务.现金).toFixed(1)}\n欠债: ¥${Number(data.姜林.财务.欠债).toFixed(1)}\n打工收入: ¥${Number(data.姜林.财务.打工收入).toFixed(1)}`,
+                )
+              "
+              >¥{{ Number(data.姜林.财务.现金).toFixed(1) }}</span
+            >
           </div>
           <div v-if="data.姜林.财务.欠债 > 0" class="row">
             <span class="label">欠债:</span>
@@ -89,8 +78,16 @@
             <span class="value">{{ data.姜林.身体.大腿围 }}</span>
           </div>
           <div class="privacy-box">
-            <div class="interactive-btn" @click="showDetail('胸部状态', data.姜林.身体.私密部位.胸部)">胸部: {{ data.姜林.身体.私密部位.胸部 }}</div>
-            <div class="interactive-btn" style="margin-top:4px;" @click="showDetail('下体状态', data.姜林.身体.私密部位.下体)">下体: {{ data.姜林.身体.私密部位.下体 }}</div>
+            <div class="interactive-btn" @click="showDetail('胸部状态', data.姜林.身体.私密部位.胸部)">
+              胸部: {{ data.姜林.身体.私密部位.胸部 }}
+            </div>
+            <div
+              class="interactive-btn"
+              style="margin-top: 4px"
+              @click="showDetail('下体状态', data.姜林.身体.私密部位.下体)"
+            >
+              下体: {{ data.姜林.身体.私密部位.下体 }}
+            </div>
           </div>
         </div>
       </div>
@@ -100,7 +97,12 @@
         <div class="block-title">随身物品</div>
         <div class="inventory-grid">
           <template v-if="Object.keys(data.姜林.背包).length > 0">
-            <div v-for="(item, name) in data.姜林.背包" :key="name" class="item-card interactive-btn" @click="showDetail(String(name), item.描述)">
+            <div
+              v-for="(item, name) in data.姜林.背包"
+              :key="name"
+              class="item-card interactive-btn"
+              @click="showDetail(String(name), item.描述)"
+            >
               <div class="item-name">{{ name }}</div>
               <div class="item-count">x{{ item.数量 }}</div>
               <div class="item-desc">{{ item.描述 }}</div>
@@ -148,16 +150,36 @@
         <div class="handwritten-text">
           <div class="privacy-box">
             <div class="interactive-btn" @click="showDetail('胸部', formatBodyPart(data.沈婉清身体.胸部))">
-              胸部: {{ data.沈婉清身体.胸部.描述 }} - {{ data.沈婉清身体.胸部.状态 }} ({{ data.沈婉清身体.胸部.敏感度 }}%)
+              胸部: {{ data.沈婉清身体.胸部.描述 }} - {{ data.沈婉清身体.胸部.状态 }} ({{
+                data.沈婉清身体.胸部.敏感度
+              }}%)
             </div>
-            <div class="interactive-btn" style="margin-top:4px;" @click="showDetail('下体', formatBodyPart(data.沈婉清身体.下体))">
-              下体: {{ data.沈婉清身体.下体.描述 }} - {{ data.沈婉清身体.下体.状态 }} ({{ data.沈婉清身体.下体.敏感度 }}%)
+            <div
+              class="interactive-btn"
+              style="margin-top: 4px"
+              @click="showDetail('下体', formatBodyPart(data.沈婉清身体.下体))"
+            >
+              下体: {{ data.沈婉清身体.下体.描述 }} - {{ data.沈婉清身体.下体.状态 }} ({{
+                data.沈婉清身体.下体.敏感度
+              }}%)
             </div>
-            <div class="interactive-btn" style="margin-top:4px;" @click="showDetail('臀部', formatBodyPart(data.沈婉清身体.臀部))">
-              臀部: {{ data.沈婉清身体.臀部.描述 }} - {{ data.沈婉清身体.臀部.状态 }} ({{ data.沈婉清身体.臀部.敏感度 }}%)
+            <div
+              class="interactive-btn"
+              style="margin-top: 4px"
+              @click="showDetail('臀部', formatBodyPart(data.沈婉清身体.臀部))"
+            >
+              臀部: {{ data.沈婉清身体.臀部.描述 }} - {{ data.沈婉清身体.臀部.状态 }} ({{
+                data.沈婉清身体.臀部.敏感度
+              }}%)
             </div>
-            <div class="interactive-btn" style="margin-top:4px;" @click="showDetail('口腔', formatBodyPart(data.沈婉清身体.口腔))">
-              口腔: {{ data.沈婉清身体.口腔.描述 }} - {{ data.沈婉清身体.口腔.状态 }} ({{ data.沈婉清身体.口腔.敏感度 }}%)
+            <div
+              class="interactive-btn"
+              style="margin-top: 4px"
+              @click="showDetail('口腔', formatBodyPart(data.沈婉清身体.口腔))"
+            >
+              口腔: {{ data.沈婉清身体.口腔.描述 }} - {{ data.沈婉清身体.口腔.状态 }} ({{
+                data.沈婉清身体.口腔.敏感度
+              }}%)
             </div>
           </div>
         </div>
@@ -167,7 +189,12 @@
         <div class="block-title">随身物品</div>
         <div class="inventory-grid">
           <template v-if="Object.keys(data.沈婉清背包).length > 0">
-            <div v-for="(item, name) in data.沈婉清背包" :key="name" class="item-card interactive-btn" @click="showDetail(String(name), item.描述)">
+            <div
+              v-for="(item, name) in data.沈婉清背包"
+              :key="name"
+              class="item-card interactive-btn"
+              @click="showDetail(String(name), item.描述)"
+            >
               <div class="item-name">{{ name }}</div>
               <div class="item-count">x{{ item.数量 }}</div>
               <div class="item-desc">{{ item.描述 }}</div>
@@ -207,13 +234,27 @@
         <div class="handwritten-text">
           <div class="privacy-box">
             <div class="interactive-btn" @click="showDetail('胸部', formatBodyPart(data.林小雨身体.胸部))">
-              胸部: {{ data.林小雨身体.胸部.描述 }} - {{ data.林小雨身体.胸部.状态 }} ({{ data.林小雨身体.胸部.敏感度 }}%)
+              胸部: {{ data.林小雨身体.胸部.描述 }} - {{ data.林小雨身体.胸部.状态 }} ({{
+                data.林小雨身体.胸部.敏感度
+              }}%)
             </div>
-            <div class="interactive-btn" style="margin-top:4px;" @click="showDetail('下体', formatBodyPart(data.林小雨身体.下体))">
-              下体: {{ data.林小雨身体.下体.描述 }} - {{ data.林小雨身体.下体.状态 }} ({{ data.林小雨身体.下体.敏感度 }}%)
+            <div
+              class="interactive-btn"
+              style="margin-top: 4px"
+              @click="showDetail('下体', formatBodyPart(data.林小雨身体.下体))"
+            >
+              下体: {{ data.林小雨身体.下体.描述 }} - {{ data.林小雨身体.下体.状态 }} ({{
+                data.林小雨身体.下体.敏感度
+              }}%)
             </div>
-            <div class="interactive-btn" style="margin-top:4px;" @click="showDetail('臀部', formatBodyPart(data.林小雨身体.臀部))">
-              臀部: {{ data.林小雨身体.臀部.描述 }} - {{ data.林小雨身体.臀部.状态 }} ({{ data.林小雨身体.臀部.敏感度 }}%)
+            <div
+              class="interactive-btn"
+              style="margin-top: 4px"
+              @click="showDetail('臀部', formatBodyPart(data.林小雨身体.臀部))"
+            >
+              臀部: {{ data.林小雨身体.臀部.描述 }} - {{ data.林小雨身体.臀部.状态 }} ({{
+                data.林小雨身体.臀部.敏感度
+              }}%)
             </div>
           </div>
         </div>
@@ -223,7 +264,12 @@
         <div class="block-title">随身物品</div>
         <div class="inventory-grid">
           <template v-if="Object.keys(data.林小雨背包).length > 0">
-            <div v-for="(item, name) in data.林小雨背包" :key="name" class="item-card interactive-btn" @click="showDetail(String(name), item.描述)">
+            <div
+              v-for="(item, name) in data.林小雨背包"
+              :key="name"
+              class="item-card interactive-btn"
+              @click="showDetail(String(name), item.描述)"
+            >
               <div class="item-name">{{ name }}</div>
               <div class="item-count">x{{ item.数量 }}</div>
               <div class="item-desc">{{ item.描述 }}</div>
@@ -286,10 +332,11 @@ function formatBodyPart(part: any) {
   width: 100%;
   max-width: 500px;
   background-color: #fdfbf7;
-  background-image: linear-gradient(#e1e1e1 1px, transparent 1px),
-    linear-gradient(90deg, #e1e1e1 1px, transparent 1px);
+  background-image: linear-gradient(#e1e1e1 1px, transparent 1px), linear-gradient(90deg, #e1e1e1 1px, transparent 1px);
   background-size: 20px 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 0 10px rgba(255, 255, 255, 0.5) inset;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 10px rgba(255, 255, 255, 0.5) inset;
   position: relative;
   padding: 40px 30px;
   border-radius: 5px;
@@ -565,7 +612,7 @@ function formatBodyPart(part: any) {
   width: 80%;
   max-width: 400px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  font-family: 'Caveat', 'Ma Shan Zheng', "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Caveat', 'Ma Shan Zheng', 'Comic Sans MS', cursive, sans-serif;
 }
 
 .modal-header {
