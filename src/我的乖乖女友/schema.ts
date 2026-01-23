@@ -1,20 +1,31 @@
 export const Schema = z.object({
   // --- 世界环境 ---
   世界: z.object({
-    当前时间: z.string().prefault('2020年9月1日 18:30'),
+    当前日期: z.string().prefault('2020年9月1日'),
+    当前时间: z.string().prefault('18:30'),
     当前地点: z.string().prefault('巷口'),
+    天气: z.string().prefault('晴'),
   }),
 
   // --- 姜林的核心数据 ---
   姜林: z.object({
+    // 关系状态（用于分阶段控制器）
+    好感度: z.coerce
+      .number()
+      .transform(v => _.clamp(v, 0, 100))
+      .prefault(0),
+    关系状态: z
+      .enum(['陌生人', '朋友', '暧昧', '恋人', '从属'])
+      .prefault('陌生人'),
+
     // 基础状态
     基础状态: z.object({
-      好感度: z.coerce.number().prefault(0),
       心情: z.string().prefault('紧张'),
+      当前状态: z.string().prefault('正常'),
       体力: z.coerce
         .number()
-        .transform(v => _.clamp(v, 0, 100)) // 限制在0-100之间
-        .prefault(60), // 初始体力较低，体现虚弱
+        .transform(v => _.clamp(v, 0, 100))
+        .prefault(60),
     }),
 
     // 经济系统（精确到角）
@@ -50,12 +61,24 @@ export const Schema = z.object({
       .transform(data => _.pickBy(data, item => item.数量 > 0)),
   }),
 
-  // --- 林雅的核心数据 ---
-  林雅状态: z
+  // --- 沈婉清的核心数据（霸凌者/校花）---
+  沈婉清状态: z
     .object({
-      屈从度: z.coerce.number().prefault(0),
-      好感度: z.coerce.number().prefault(-50),
-      心情: z.coerce.number().prefault(60),
+      屈从度: z.coerce
+        .number()
+        .transform(v => _.clamp(v, 0, 100))
+        .prefault(0),
+      好感度: z.coerce
+        .number()
+        .transform(v => _.clamp(v, -100, 100))
+        .prefault(-50),
+      心情: z.coerce
+        .number()
+        .transform(v => _.clamp(v, 0, 100))
+        .prefault(60),
+      关系: z
+        .enum(['同学', '敌人', '奴隶', '玩物'])
+        .prefault('同学'),
       当前状态: z.string().prefault('傲慢'),
       是否处女: z.boolean().prefault(true),
       是否怀孕: z.boolean().prefault(false),
@@ -63,7 +86,7 @@ export const Schema = z.object({
     })
     .prefault({}),
 
-  林雅身体: z
+  沈婉清身体: z
     .object({
       胸部: z
         .object({
@@ -100,7 +123,7 @@ export const Schema = z.object({
     })
     .prefault({}),
 
-  林雅背包: z
+  沈婉清背包: z
     .record(
       z.string().describe('物品名称'),
       z.object({
@@ -164,10 +187,10 @@ export const Schema = z.object({
       }),
     )
     .prefault({
-      贴满贴纸的手机: { 描述: '屏幕有点裂痕的旧手机', 数量: 1 },
-      半包薯片: { 描述: '番茄味的，吃了一半', 数量: 1 },
-      你的备用钥匙: { 描述: '偷偷配的User家钥匙', 数量: 1 },
-      没写完的作业本: { 描述: '上面画满了涂鸦', 数量: 1 },
+      '贴满贴纸的手机': { 描述: '屏幕有点裂痕的旧手机', 数量: 1 },
+      '半包薯片': { 描述: '番茄味的，吃了一半', 数量: 1 },
+      '你的备用钥匙': { 描述: '偷偷配的User家钥匙', 数量: 1 },
+      '没写完的作业本': { 描述: '上面画满了涂鸦', 数量: 1 },
     }),
 });
 export type Schema = z.output<typeof Schema>;

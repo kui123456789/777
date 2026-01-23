@@ -5,12 +5,20 @@
     "世界": {
       "type": "object",
       "properties": {
+        "当前日期": {
+          "default": "2020年9月1日",
+          "type": "string"
+        },
         "当前时间": {
-          "default": "2020年9月1日 18:30",
+          "default": "18:30",
           "type": "string"
         },
         "当前地点": {
           "default": "巷口",
+          "type": "string"
+        },
+        "天气": {
+          "default": "晴",
           "type": "string"
         }
       }
@@ -18,14 +26,29 @@
     "姜林": {
       "type": "object",
       "properties": {
+        "好感度": {
+          "type": "number"
+        },
+        "关系状态": {
+          "default": "陌生人",
+          "type": "string",
+          "enum": [
+            "陌生人",
+            "朋友",
+            "暧昧",
+            "恋人",
+            "从属"
+          ]
+        },
         "基础状态": {
           "type": "object",
           "properties": {
-            "好感度": {
-              "type": "number"
-            },
             "心情": {
               "default": "紧张",
+              "type": "string"
+            },
+            "当前状态": {
+              "default": "正常",
               "type": "string"
             },
             "体力": {
@@ -106,7 +129,7 @@
         "背包"
       ]
     },
-    "林雅状态": {
+    "沈婉清状态": {
       "default": {},
       "type": "object",
       "properties": {
@@ -120,6 +143,16 @@
         "心情": {
           "default": 60,
           "type": "number"
+        },
+        "关系": {
+          "default": "同学",
+          "type": "string",
+          "enum": [
+            "同学",
+            "敌人",
+            "奴隶",
+            "玩物"
+          ]
         },
         "当前状态": {
           "default": "傲慢",
@@ -138,7 +171,7 @@
         }
       }
     },
-    "林雅身体": {
+    "沈婉清身体": {
       "default": {},
       "type": "object",
       "properties": {
@@ -227,7 +260,7 @@
         }
       }
     },
-    "林雅背包": {
+    "沈婉清背包": {
       "default": {
         "限量款iPhone": {
           "描述": "最新款的粉色iPhone，贴着水钻",

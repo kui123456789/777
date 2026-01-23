@@ -1,0 +1,28 @@
+/* 姜林的手写笔记风格 */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Ma+Shan+Zheng&display=swap');
+
+:root {
+  --c-paper: #fdfbf7;
+  --c-ink-dark: #2c3e50;
+  --c-ink-light: #555;
+  --c-ink-blue: #2980b9;
+  --c-ink-red: #c0392b;
+  --c-divider: #e1e1e1;
+  --c-muted: #7f8c8d;
+  --c-border: #bdc3c7;
+  --font-handwriting: 'Caveat', 'Ma Shan Zheng', 'Comic Sans MS', cursive, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-handwriting);
+  background-color: transparent;
+  color: var(--c-ink-dark);
+  font-size: 16px;
+  line-height: 1.6;
+}

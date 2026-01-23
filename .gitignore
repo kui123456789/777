@@ -11,3 +11,7 @@ pnpm-debug.log*
 
 auto-imports.d.ts
 components.d.ts
+
+# MCP config with token
+.cursor/mcp.json
+.kilocode/mcp.json
