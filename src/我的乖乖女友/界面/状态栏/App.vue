@@ -886,7 +886,9 @@ function startDrag(event: MouseEvent | TouchEvent, path: string, containerRef: H
 
   &.interactive-btn {
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
 
     &:hover {
       transform: scale(1.02);

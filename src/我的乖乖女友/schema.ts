@@ -17,54 +17,54 @@ export const Schema = z.object({
   // --- 姜林的核心数据 ---
   姜林: z
     .object({
-    // 关系状态（用于分阶段控制器）
-    好感度: z.coerce
-      .number()
-      .transform(v => _.clamp(v, 0, 100))
-      .prefault(0),
-    关系状态: z.enum(['陌生人', '朋友', '暧昧', '恋人', '从属']).prefault('陌生人'),
-
-    // 基础状态
-    基础状态: z.object({
-      心情: z.string().prefault('紧张'),
-      当前状态: z.string().prefault('正常'),
-      体力: z.coerce
+      // 关系状态（用于分阶段控制器）
+      好感度: z.coerce
         .number()
         .transform(v => _.clamp(v, 0, 100))
-        .prefault(60),
-    }),
+        .prefault(0),
+      关系状态: z.enum(['陌生人', '朋友', '暧昧', '恋人', '从属']).prefault('陌生人'),
 
-    // 经济系统（精确到角）
-    财务: z.object({
-      现金: z.coerce
-        .number()
-        .transform(v => parseFloat(v.toFixed(1))) // 强制保留1位小数
-        .prefault(128.5),
-      欠债: z.coerce.number().prefault(0), // 欠User的钱
-      打工收入: z.coerce.number().prefault(0), // 累计打工赚的钱
-    }),
-
-    // 身体数据（随营养变化的可能性）
-    身体: z.object({
-      腿长: z.string().prefault('98cm'),
-      大腿围: z.string().prefault('36cm'),
-      私密部位: z.object({
-        胸部: z.string().prefault('隆起幅度小，乳晕淡粉'),
-        下体: z.string().prefault('毛发稀疏，大阴唇闭合'),
+      // 基础状态
+      基础状态: z.object({
+        心情: z.string().prefault('紧张'),
+        当前状态: z.string().prefault('正常'),
+        体力: z.coerce
+          .number()
+          .transform(v => _.clamp(v, 0, 100))
+          .prefault(60),
       }),
-    }),
 
-    // 物品系统
-    背包: z
-      .record(
-        z.string().describe('物品名称'),
-        z.object({
-          描述: z.string().prefault('无描述'),
-          数量: z.coerce.number().prefault(1),
+      // 经济系统（精确到角）
+      财务: z.object({
+        现金: z.coerce
+          .number()
+          .transform(v => parseFloat(v.toFixed(1))) // 强制保留1位小数
+          .prefault(128.5),
+        欠债: z.coerce.number().prefault(0), // 欠User的钱
+        打工收入: z.coerce.number().prefault(0), // 累计打工赚的钱
+      }),
+
+      // 身体数据（随营养变化的可能性）
+      身体: z.object({
+        腿长: z.string().prefault('98cm'),
+        大腿围: z.string().prefault('36cm'),
+        私密部位: z.object({
+          胸部: z.string().prefault('隆起幅度小，乳晕淡粉'),
+          下体: z.string().prefault('毛发稀疏，大阴唇闭合'),
         }),
-      )
-      // 自动过滤掉数量小于等于0的物品
-      .transform(data => _.pickBy(data, item => item.数量 > 0)),
+      }),
+
+      // 物品系统
+      背包: z
+        .record(
+          z.string().describe('物品名称'),
+          z.object({
+            描述: z.string().prefault('无描述'),
+            数量: z.coerce.number().prefault(1),
+          }),
+        )
+        // 自动过滤掉数量小于等于0的物品
+        .transform(data => _.pickBy(data, item => item.数量 > 0)),
     })
     .prefault({
       好感度: 0,
