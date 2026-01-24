@@ -1,0 +1,17 @@
+{
+    "id": "f0dcfd1f-54a9-45b6-a99e-e529570c9e21",
+    "scriptName": "隐藏recall_and_analysis标签",
+    "findRegex": "<[Rr]ecall_[Aa]nd_[Aa]nalysis>[\\s\\S]*?<\\/[Rr]ecall_[Aa]nd_[Aa]nalysis>",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+        2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+}

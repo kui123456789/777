@@ -43,9 +43,9 @@ node tavern_sync.mjs bundle 末日避难所
 ```javascript
 const CONFIG = {
   worldbookName: '末日避难所',
-  bundledJsonPath: 'src/末日避难所/世界书/末日避难所.json',
+  bundledJsonPath: 'src/角色卡/末日避难所/世界书/末日避难所.json',
   dockerVolumePath: 'D:/你的/SillyTavern/data路径/worlds/末日避难所.json',
-  watchDir: 'src/末日避难所/世界书',
+  watchDir: 'src/角色卡/末日避难所/世界书',
 };
 ```
 

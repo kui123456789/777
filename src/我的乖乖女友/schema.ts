@@ -1,14 +1,22 @@
 export const Schema = z.object({
   // --- 世界环境 ---
-  世界: z.object({
-    当前日期: z.string().prefault('2020年9月1日'),
-    当前时间: z.string().prefault('18:30'),
-    当前地点: z.string().prefault('巷口'),
-    天气: z.string().prefault('晴'),
-  }),
+  世界: z
+    .object({
+      当前日期: z.string().prefault('2020年9月1日'),
+      当前时间: z.string().prefault('18:30'),
+      当前地点: z.string().prefault('巷口'),
+      天气: z.string().prefault('晴'),
+    })
+    .prefault({
+      当前日期: '2020年9月1日',
+      当前时间: '18:30',
+      当前地点: '巷口',
+      天气: '晴',
+    }),
 
   // --- 姜林的核心数据 ---
-  姜林: z.object({
+  姜林: z
+    .object({
     // 关系状态（用于分阶段控制器）
     好感度: z.coerce
       .number()
@@ -57,7 +65,30 @@ export const Schema = z.object({
       )
       // 自动过滤掉数量小于等于0的物品
       .transform(data => _.pickBy(data, item => item.数量 > 0)),
-  }),
+    })
+    .prefault({
+      好感度: 0,
+      关系状态: '陌生人',
+      基础状态: {
+        心情: '紧张',
+        当前状态: '正常',
+        体力: 60,
+      },
+      财务: {
+        现金: 128.5,
+        欠债: 0,
+        打工收入: 0,
+      },
+      身体: {
+        腿长: '98cm',
+        大腿围: '36cm',
+        私密部位: {
+          胸部: '隆起幅度小，乳晕淡粉',
+          下体: '毛发稀疏，大阴唇闭合',
+        },
+      },
+      背包: {},
+    }),
 
   // --- 沈婉清的核心数据（霸凌者/校花）---
   沈婉清状态: z

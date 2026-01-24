@@ -2,10 +2,18 @@
   "mcpServers": {
     "chrome-devtools": {
       "command": "pnpx",
-      "args": [
-        "chrome-devtools-mcp@latest",
-        "--autoConnect"
-      ]
+      "args": ["chrome-devtools-mcp@latest", "--autoConnect"]
+    },
+    "github": {
+      "command": "pnpx",
+      "args": ["@modelcontextprotocol/server-github", "--toolsets=all"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "browsermcp": {
+      "command": "pnpx",
+      "args": ["@browsermcp/mcp"]
     }
   }
 }

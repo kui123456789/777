@@ -1,0 +1,70 @@
+---
+变量更新规则:
+  世界:
+    当前时间:
+      format: HH:MM
+      check: pace it according to narrative flow
+    当前日期:
+      format: YYYY/MM/DD
+    当前星期:
+      format: 星期x
+    是否需要上学:
+      type: boolean
+      check: set to true when the current date is a weekday
+    是否处于NSFW场景:
+      type: boolean
+      check: set to true when the plot approaches a scene with erotic intent
+    下一回合界面选择:
+      type: |-
+        <%= getvar('始终使用galgame界面') ? "'galgame'" : "'纯文字尾附立绘' | '展示日记' | 'galgame'" %>
+      check:
+        # :<%_ if (getvar('始终使用galgame界面')) { _%>
+        - 禁止更改
+        # :<%_ } else { _%>
+        - set to '展示日记' when: the storyline reaches a point where viewing the diary is required
+        - reset to '纯文字尾附立绘' when: the current value is not '纯文字尾附立绘'
+        - default to '纯文字尾附立绘' if: none of the above conditions are met
+        # :<%_ } _%>
+  主线事件:
+    # :<%_ if (getvar('stat_data.主线事件.当前状态') === '无法触发') { _%>
+    check: 禁止更改
+    # :<%_ } else if (getvar('stat_data.主线事件.当前状态') === '冷却中') { _%>
+    # :<%_   if (getvar('stat_data.主线事件.剩余冷却回合数') === 0) { _%>
+    type: |-
+      {
+        当前状态: '冷却中';
+        剩余冷却回合数: number;
+      } | {
+        当前状态: '进行中';
+        当前阶段: '引入';
+        主题: string;
+        描述: string;
+        大纲: {
+          引入: string;
+          发展: string;
+          高潮: string;
+          结局: string;
+        };
+      }
+    # :<%_   } else { _%>
+    剩余冷却回合数:
+      type: number
+      check: update it to ${剩余冷却回合数-1}
+    # :<%_ } _%>
+    # :<%_ } else { _%>
+    当前阶段:
+      type: "'引入' | '发展' | '高潮' | '结局'"
+      check:
+        - step to next stage (引入->发展->高潮->解决) when storyline reaches stage progression points according to 主线事件系统 document
+        - set `主线事件.当前状态` to '冷却中' when the event concludes
+    # :<%_ } _%>
+  络络:
+    亲密度:
+      type: number
+      check: update by ±(1~4) according to 络络's attitude towards <user>'s behavior only if she's currently aware of it
+    阅读日记数量:
+      type: number
+      check: +1 when <user> reads a diary entry
+    拥有联系方式:
+      type: boolean
+      check: set to true when 络络 and <user> exchange contact details

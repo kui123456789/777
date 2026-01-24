@@ -4,7 +4,7 @@
  */
 
 const WORLDBOOK_NAME = '末日避难所';
-const WORLDBOOK_URL = 'http://localhost:5500/src/末日避难所/世界书/末日避难所.json';
+const WORLDBOOK_URL = 'http://localhost:5500/src/角色卡/末日避难所/世界书/末日避难所.json';
 
 async function importWorldbook() {
   try {

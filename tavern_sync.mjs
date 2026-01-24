@@ -1,4 +1,4 @@
-import {fileURLToPath as __webpack_fileURLToPath__} from "node:url";
+﻿import {fileURLToPath as __webpack_fileURLToPath__} from "node:url";
 var __webpack_dirname__ = __webpack_fileURLToPath__(import.meta.url.replace(/\/(?:[^\/]*)$/, ""));
 var __webpack_filename__ = __webpack_fileURLToPath__(import.meta.url);
 import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "node:module";
@@ -62138,6 +62138,7 @@ const zh_to_en_map = {
     预设: 'preset',
     酒馆中的名称: 'name',
     本地文件路径: 'file',
+    导出文件路径: 'export_file',
 };
 function is_zh(data) {
     return _.has(data, '配置');
@@ -66301,4 +66302,5 @@ program
     .showHelpAfterError(true)
     .showSuggestionAfterError(true)
     .parse();
+
 
