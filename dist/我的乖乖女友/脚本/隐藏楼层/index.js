@@ -1,0 +1,2 @@
+$(()=>{console.info('[隐藏楼层脚本] 加载成功');const o='hide-old-floors-style';$(`#${o}`).remove(),$('<style>').attr('id',o).text('\n    #chat .mes:not(:last-of-type) {\n      display: none !important;\n    }\n  ').appendTo('head'),$(window).on('pagehide',()=>{$(`#${o}`).remove(),console.info('[隐藏楼层脚本] 卸载成功')})});
+//# sourceMappingURL=index.js.map
