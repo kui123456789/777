@@ -1,0 +1,44 @@
+/* 末日避难所预览样式 */
+
+:root {
+  --c-vault-dark: #1a1a1a;
+  --c-vault-medium: #2d2d2d;
+  --c-vault-light: #e0e0e0;
+  --c-vault-accent: #d4a84b;
+  --c-vault-warning: #ff6b35;
+  --c-vault-danger: #f44336;
+  --c-vault-success: #4caf50;
+  --c-vault-info: #4fc3f7;
+  --font-display: 'Share Tech Mono', 'Consolas', 'Monaco', monospace;
+  --font-body: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #0a0a0a;
+  color: var(--c-vault-light);
+  line-height: 1.4;
+  padding: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+  border-radius: 3px;
+}

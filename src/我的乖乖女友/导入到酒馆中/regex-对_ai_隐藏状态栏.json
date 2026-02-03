@@ -1,0 +1,17 @@
+{
+    "id": "df90fd1f-6f92-4855-bdc8-ec8cd98a5c19",
+    "scriptName": "对 AI 隐藏状态栏",
+    "findRegex": "<StatusPlaceHolderImpl/>",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+        2
+    ],
+    "disabled": false,
+    "markdownOnly": false,
+    "promptOnly": true,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+}

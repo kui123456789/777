@@ -1,0 +1,17 @@
+{
+    "id": "d1ea268b-349f-4833-9cc7-b345cd93890a",
+    "scriptName": "隐藏maintext标签",
+    "findRegex": "<[Mm]aintext>[\\s\\S]*?<\\/[Mm]aintext>",
+    "replaceString": "",
+    "trimStrings": [],
+    "placement": [
+        2
+    ],
+    "disabled": false,
+    "markdownOnly": true,
+    "promptOnly": false,
+    "runOnEdit": true,
+    "substituteRegex": 0,
+    "minDepth": null,
+    "maxDepth": null
+}

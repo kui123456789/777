@@ -1,0 +1,111 @@
+/* 姜林的手写笔记风格 */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Ma+Shan+Zheng&display=swap');
+
+.tavern-inline-status-bar {
+  --c-paper: #fdfbf7;
+  --c-ink-dark: #2c3e50;
+  --c-ink-light: #555;
+  --c-ink-blue: #2980b9;
+  --c-ink-red: #c0392b;
+  --c-divider: #e1e1e1;
+  --c-muted: #7f8c8d;
+  --c-border: #bdc3c7;
+  --font-handwriting: 'Caveat', 'Ma Shan Zheng', 'Comic Sans MS', cursive, sans-serif;
+
+  font-family: var(--font-handwriting);
+  background-color: transparent;
+  color: var(--c-ink-dark);
+  font-size: 16px;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.tavern-inline-status-bar *,
+.tavern-inline-status-bar *::before,
+.tavern-inline-status-bar *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========== 关键样式 - 必须在全局 CSS 中定义以确保传送成功 ========== */
+
+/* 基础行布局 */
+.tavern-inline-status-bar .row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 4px !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  background-color: transparent !important;
+}
+
+.tavern-inline-status-bar .label {
+  font-weight: bold !important;
+  color: #555 !important;
+  min-width: 45px !important;
+  font-size: 14px !important;
+}
+
+.tavern-inline-status-bar .value {
+  color: #2980b9 !important;
+}
+
+/* 进度条样式现已由 ProgressBar.vue 组件使用内联样式定义 */
+
+/* 关系徽章 */
+.tavern-inline-status-bar .relationship-badge {
+  background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+  color: white !important;
+  padding: 1px 6px !important;
+  border-radius: 8px !important;
+  font-size: 10px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 信息块 */
+.tavern-inline-status-bar .info-block {
+  margin-bottom: 10px !important;
+  position: relative !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.tavern-inline-status-bar .block-title {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #c0392b !important;
+  margin-bottom: 4px !important;
+  display: inline-block !important;
+  border-bottom: 1px solid #c0392b !important;
+  transform: rotate(-1deg) !important;
+}
+
+.tavern-inline-status-bar .handwritten-text {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  margin-left: 6px !important;
+  background-color: transparent !important;
+}
+
+/* 金钱显示 */
+.tavern-inline-status-bar .value.money {
+  color: #27ae60 !important;
+}
+
+.tavern-inline-status-bar .value.debt {
+  color: #c0392b !important;
+}
+
+/* 心情图标 */
+.tavern-inline-status-bar .mood-icon {
+  font-size: 12px !important;
+}
+
+.tavern-inline-status-bar .circle-highlight {
+  border: 1px solid #e74c3c !important;
+  border-radius: 50% 60% 40% 70% / 60% 50% 70% 40% !important;
+  padding: 1px 4px !important;
+  display: inline-block !important;
+}

@@ -1,0 +1,7 @@
+{
+  "id": "jianglin-schema-script",
+  "name": "我的乖乖女友-变量结构",
+  "content": "import 'http://localhost:5500/dist/角色卡/我的乖乖女友/脚本/变量结构/index.js'",
+  "info": "注册变量结构定义",
+  "buttons": []
+}

@@ -1,0 +1,18 @@
+{
+  "type": "script",
+  "enabled": true,
+  "name": "实时同步更新世界书",
+  "id": "874da4db-5868-4248-97ca-ce496e756dd0",
+  "content": "import 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_sync/dist/script.js'",
+  "info": "",
+  "button": {
+    "enabled": true,
+    "buttons": []
+  },
+  "data": {
+    "url": "http://localhost:6620",
+    "delay": 100,
+    "should_notify": true,
+    "notify_for_breaking_change": false
+  }
+}

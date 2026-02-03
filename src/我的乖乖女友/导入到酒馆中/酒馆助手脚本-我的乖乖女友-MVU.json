@@ -1,0 +1,38 @@
+{
+  "type": "script",
+  "enabled": true,
+  "name": "我的乖乖女友-MVU",
+  "id": "23a0dad2-5942-41ff-af11-365b011d7edd",
+  "content": "import 'https://testingcf.jsdelivr.net/gh/MagicalAstrogy/MagVarUpdate/artifact/bundle.js';",
+  "info": "MVU变量框架",
+  "button": {
+    "enabled": true,
+    "buttons": [
+      {
+        "name": "重新处理变量",
+        "visible": true
+      },
+      {
+        "name": "重新读取初始变量",
+        "visible": true
+      },
+      {
+        "name": "快照楼层",
+        "visible": false
+      },
+      {
+        "name": "重演楼层",
+        "visible": false
+      },
+      {
+        "name": "重试额外模型解析",
+        "visible": false
+      },
+      {
+        "name": "清除旧楼层变量",
+        "visible": false
+      }
+    ]
+  },
+  "data": {}
+}

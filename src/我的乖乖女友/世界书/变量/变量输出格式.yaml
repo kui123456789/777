@@ -1,0 +1,38 @@
+---
+变量输出格式:
+  rule:
+    - '**CRITICAL: You MUST wrap ALL your narrative/story content with <content></content> tags. Everything the reader should see (descriptions, dialogues, actions, etc.) MUST be inside <content></content>.**'
+    - you must output the update analysis and the actual update commands at once in the end of the next reply
+    - the update commands works like the **JSON Patch (RFC 6902)** standard, must be a valid JSON array containing operation objects, but supports the following operations instead:
+        - replace: replace the value of existing paths
+        - delta: update the value of existing number paths by a delta value
+        - insert: insert new items into an object or array (using `-` as array index intends appending to the end)
+        - remove
+        - move
+    - don't update field names starts with `_` as they are readonly, such as `_变量`
+    - '**CRITICAL: You MUST output the <UpdateVariable> block at the very end of your response. Do not omit it.**'
+    - '**CRITICAL: The path in JSONPatch MUST match the structure defined in schema.ts. Do NOT include `/stat_data` prefix.**'
+    - '**Example paths:** `/姜林/基础状态/心情`, `/姜林/财务/现金`'
+  format: |-
+    <content>
+    ${你的正文内容：描写、对话、动作等读者应该看到的所有内容}
+    </content>
+    <UpdateVariable>
+    <Analysis>$(IN ENGLISH, no more than 80 words)
+    - ${calculate time passed: ...}
+    - ${decide whether dramatic updates are allowed as it's in a special case or the time passed is more than usual: yes/no}
+    - ${analyze every variable based on its corresponding `check`, according only to current reply instead of previous plots: ...}
+    </Analysis>
+    <JSONPatch>
+    [
+      { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+      { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positve_or_negative_delta}" },
+      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
+      { "op": "insert", "path": "${/path/to/array/-}", "value": "${new_value}" },
+      { "op": "remove", "path": "${/path/to/object/key}" },
+      { "op": "remove", "path": "${/path/to/array/0}" },
+      { "op": "move", "from": "${/path/to/variable}", "to": "${/path/to/another/path}" },
+      ...
+    ]
+    </JSONPatch>
+    </UpdateVariable>

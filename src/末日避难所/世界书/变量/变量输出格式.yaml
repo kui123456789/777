@@ -1,0 +1,45 @@
+---
+变量输出格式:
+  rule:
+    - you must output the update analysis and the actual update commands at once in the end of the next reply
+    - the update commands works like the **JSON Patch (RFC 6902)** standard, must be a valid JSON array containing operation objects, but supports the following operations instead:
+        - replace: replace the value of existing paths
+        - delta: update the value of existing number paths by a delta value
+        - insert: insert new items into an object or array (using `-` as array index intends appending to the end)
+        - remove
+    - don't update field names starts with `_` or `$` as they are readonly or computed
+    - "IMPORTANT: At the very end of your reply (after everything else), you MUST output a status bar placeholder using triple backticks with 'shelter-status' language tag and empty content"
+  format: |-
+    <UpdateVariable>
+    <Analysis>$(IN ENGLISH, no more than 100 words)
+    - ${calculate time passed: ...}
+    - ${resource consumption: power/water/food changes based on population and facilities}
+    - ${faction reactions: how each faction responds to player decisions}
+    - ${follower status: any changes to followers' health, loyalty, or equipment}
+    - ${special events: any triggered events or consequences}
+    </Analysis>
+    <JSONPatch>
+    [
+      { "op": "replace", "path": "${/path/to/variable}", "value": "${new_value}" },
+      { "op": "delta", "path": "${/path/to/number/variable}", "value": "${positive_or_negative_delta}" },
+      { "op": "insert", "path": "${/path/to/object/new_key}", "value": "${new_value}" },
+      { "op": "insert", "path": "${/path/to/array/-}", "value": "${new_value}" },
+      { "op": "remove", "path": "${/path/to/object/key}" },
+      { "op": "remove", "path": "${/path/to/array/0}" },
+      ...
+    ]
+    </JSONPatch>
+    </UpdateVariable>
+
+    ```shelter-status
+    ```
+  examples:
+    资源消耗: |-
+      { "op": "delta", "path": "/避难所/基础生存资源/食物/当前值", "value": -8 }
+    设施建造: |-
+      { "op": "insert", "path": "/设施与库存/设施区域/医疗室", "value": { "等级": 1, "效果": "每日恢复居民生命值+5", "说明": "基础医疗设施", "状态": "正常" } }
+    追随者招募: |-
+      { "op": "insert", "path": "/追随者/follower_001", "value": { "姓名": "张三", "年龄": 28, "性别": "男", "武力": 35, "管理": 20, "探索生存": 45, "生命值": 100, "防护等级": 0, "状态": "健康", "忠诚度": 50, "装备栏": { "武器位": "空", "防具位": "空", "饰品工具位": "空" }, "特质": {}, "描述": "废土流浪者，擅长野外生存" } }
+    派系好感度变化: |-
+      { "op": "delta", "path": "/派系/技术派/好感度", "value": -10 }
+      { "op": "replace", "path": "/派系/技术派/观感", "value": "不满" }

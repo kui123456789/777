@@ -1,0 +1,15 @@
+{
+  "id": "jianglin-status-bar",
+  "scriptName": "我的乖乖女友-状态栏",
+  "findRegex": "<StatusPlaceHolderImpl/>",
+  "replaceString": "```\n<body>\n<script>\n$('body').load('http://localhost:5500/dist/角色卡/我的乖乖女友/界面/状态栏/index.html')\n</script>\n</body>\n```",
+  "trimStrings": [],
+  "placement": [1, 2],
+  "disabled": false,
+  "markdownOnly": true,
+  "promptOnly": false,
+  "runOnEdit": true,
+  "substituteRegex": 0,
+  "minDepth": null,
+  "maxDepth": null
+}

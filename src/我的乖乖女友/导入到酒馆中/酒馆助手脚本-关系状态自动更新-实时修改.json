@@ -1,0 +1,13 @@
+{
+  "type": "script",
+  "enabled": true,
+  "name": "关系状态自动更新-实时修改",
+  "id": "2ad6818b-01d9-4694-b277-bd42296c3384",
+  "content": "import 'http://localhost:5500/dist/我的乖乖女友/脚本/关系状态自动更新/index.js'",
+  "info": "当好感度变化时自动更新关系状态：0-29陌生人，30-59朋友，60-79暧昧，80+恋人",
+  "button": {
+    "enabled": true,
+    "buttons": []
+  },
+  "data": {}
+}

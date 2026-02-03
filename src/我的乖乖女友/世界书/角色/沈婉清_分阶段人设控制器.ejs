@@ -1,0 +1,17 @@
+<%_
+// 从 stat_data.沈婉清状态 获取屈从度和关系
+var wanqingSub = getvar('stat_data.沈婉清状态.屈从度', { defaults: 0 });
+var wanqingRel = getvar('stat_data.沈婉清状态.关系', { defaults: '同学' });
+_%>
+
+<%_ if (wanqingRel === '玩物' || wanqingSub >= 81) { _%>
+<%- await getwi(null, '沈婉清_阶段05_崩坏玩物期') %>
+<%_ } else if (wanqingSub >= 61) { _%>
+<%- await getwi(null, '沈婉清_阶段04_恐惧服从期') %>
+<%_ } else if (wanqingSub >= 41) { _%>
+<%- await getwi(null, '沈婉清_阶段03_被迫妥协期') %>
+<%_ } else if (wanqingSub >= 21) { _%>
+<%- await getwi(null, '沈婉清_阶段02_震惊动摇期') %>
+<%_ } else { _%>
+<%- await getwi(null, '沈婉清_阶段01_傲慢施虐期') %>
+<%_ } _%>

@@ -1,0 +1,13 @@
+{
+  "type": "script",
+  "enabled": true,
+  "name": "我的乖乖女友-流式状态栏",
+  "id": "streaming-status-bar-script-v1",
+  "content": "import 'http://localhost:5500/dist/我的乖乖女友/脚本/流式状态栏/index.js'",
+  "info": "流式楼层界面 - 在 AI 输出过程中实时显示状态栏（现代卡片式 UI）",
+  "button": {
+    "enabled": true,
+    "buttons": []
+  },
+  "data": {}
+}
