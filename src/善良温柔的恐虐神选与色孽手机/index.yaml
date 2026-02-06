@@ -556,7 +556,7 @@
         ```
         <body>
         <script>
-        $('body').load('https://testingcf.jsdelivr.net/gh/kui123456789/777/dist/善良温柔的恐虐神选与色孽手机/界面/手机/index.html')
+        $('body').load('https://testingcf.jsdelivr.net/gh/kui123456789/777/dist/%E5%96%84%E8%89%AF%E6%B8%A9%E6%9F%94%E7%9A%84%E6%81%90%E8%99%90%E7%A5%9E%E9%80%89%E4%B8%8E%E8%89%B2%E5%AD%BD%E6%89%8B%E6%9C%BA/%E7%95%8C%E9%9D%A2/%E6%89%8B%E6%9C%BA/index.html')
         </script>
         </body>
         ```
@@ -581,4 +581,4 @@
         启用: true
         类型: 脚本
         内容: |-
-          import 'https://testingcf.jsdelivr.net/gh/kui123456789/777/dist/善良温柔的恐虐神选与色孽手机/脚本/变量结构/index.js';
+          import 'https://testingcf.jsdelivr.net/gh/kui123456789/777/dist/%E5%96%84%E8%89%AF%E6%B8%A9%E6%9F%94%E7%9A%84%E6%81%90%E8%99%90%E7%A5%9E%E9%80%89%E4%B8%8E%E8%89%B2%E5%AD%BD%E6%89%8B%E6%9C%BA/%E8%84%9A%E6%9C%AC/%E5%8F%98%E9%87%8F%E7%BB%93%E6%9E%84/index.js';
