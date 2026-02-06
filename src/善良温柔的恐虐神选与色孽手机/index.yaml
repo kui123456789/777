@@ -556,7 +556,7 @@
         ```
         <body>
         <script>
-        $('body').load('http://localhost:5500/dist/善良温柔的恐虐神选与色孽手机/界面/手机/index.html')
+        $('body').load('https://testingcf.jsdelivr.net/gh/kui123456789/777/dist/善良温柔的恐虐神选与色孽手机/界面/手机/index.html')
         </script>
         </body>
         ```
@@ -581,4 +581,4 @@
         启用: true
         类型: 脚本
         内容: |-
-          import 'http://localhost:5500/dist/善良温柔的恐虐神选与色孽手机/脚本/变量结构/index.js';
+          import 'https://testingcf.jsdelivr.net/gh/kui123456789/777/dist/善良温柔的恐虐神选与色孽手机/脚本/变量结构/index.js';
