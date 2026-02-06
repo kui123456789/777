@@ -1,0 +1,1036 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "世界": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "当前时间": {
+          "default": "中午",
+          "type": "string"
+        },
+        "日期": {
+          "default": "周一",
+          "type": "string"
+        },
+        "当前地点": {
+          "default": "学校",
+          "type": "string"
+        }
+      }
+    },
+    "林海": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "色孽点": {
+          "description": "通过色情行为获得的货币",
+          "$ref": "#/$defs/__schema0"
+        },
+        "手机功能": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "透视开启": {
+              "type": "boolean"
+            },
+            "身体柔韧化开启": {
+              "type": "boolean"
+            },
+            "远程操控开启": {
+              "type": "boolean"
+            },
+            "催眠目标": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "背包": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "物品名称"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "数量": {
+                "default": 1,
+                "type": "number"
+              },
+              "描述": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "解锁商品": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "description": "商品ID"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              },
+              "icon": {
+                "default": "📦",
+                "type": "string"
+              },
+              "category": {
+                "default": "特殊",
+                "type": "string",
+                "enum": [
+                  "特殊",
+                  "消耗品",
+                  "装备"
+                ]
+              },
+              "stackable": {
+                "type": "boolean"
+              },
+              "quantity": {
+                "default": 1,
+                "type": "number"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "description",
+              "price"
+            ]
+          }
+        }
+      }
+    },
+    "鹿忻": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "体力": {
+          "default": 100,
+          "type": "number"
+        },
+        "好感度": {
+          "default": 50,
+          "type": "number"
+        },
+        "当前状态": {
+          "default": "正常",
+          "type": "string",
+          "enum": [
+            "正常",
+            "高潮",
+            "昏迷",
+            "崩溃",
+            "睡眠"
+          ]
+        },
+        "敏感度": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "乳穴": {
+              "type": "number"
+            },
+            "阴道": {
+              "type": "number"
+            },
+            "子宫": {
+              "description": "鹿忻特质：基础极高",
+              "default": 190,
+              "$ref": "#/$defs/__schema1"
+            },
+            "直肠": {
+              "type": "number"
+            },
+            "喉咙": {
+              "type": "number"
+            }
+          }
+        },
+        "开发度": {
+          "$ref": "#/$defs/__schema2"
+        },
+        "实时状态": {
+          "$ref": "#/$defs/__schema4"
+        },
+        "身体柔韧化": {
+          "$ref": "#/$defs/__schema7"
+        },
+        "植入物": {
+          "$ref": "#/$defs/__schema11"
+        },
+        "高潮统计": {
+          "$ref": "#/$defs/__schema14"
+        },
+        "身体容纳": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "着装": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "上装": {
+              "default": "校服衬衫",
+              "type": "string"
+            },
+            "下装": {
+              "default": "百褶短裙",
+              "type": "string"
+            },
+            "内衣": {
+              "default": "白色棉质文胸",
+              "type": "string"
+            },
+            "内裤": {
+              "default": "纯白棉质三角内裤",
+              "type": "string"
+            },
+            "袜子": {
+              "default": "黑色中筒袜",
+              "type": "string"
+            },
+            "鞋子": {
+              "default": "制服皮鞋",
+              "type": "string"
+            },
+            "饰品": {
+              "default": "无",
+              "type": "string"
+            }
+          }
+        },
+        "深层生理": {
+          "$ref": "#/$defs/__schema17"
+        },
+        "催眠状态": {
+          "$ref": "#/$defs/__schema27"
+        }
+      }
+    },
+    "鹿晴": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "体力": {
+          "default": 100,
+          "type": "number"
+        },
+        "好感度": {
+          "default": 60,
+          "type": "number"
+        },
+        "当前状态": {
+          "default": "无表情",
+          "type": "string",
+          "enum": [
+            "正常",
+            "高潮",
+            "昏迷",
+            "无表情",
+            "睡眠"
+          ]
+        },
+        "敏感度": {
+          "$ref": "#/$defs/__schema34"
+        },
+        "开发度": {
+          "$ref": "#/$defs/__schema2"
+        },
+        "实时状态": {
+          "$ref": "#/$defs/__schema4"
+        },
+        "身体柔韧化": {
+          "$ref": "#/$defs/__schema7"
+        },
+        "植入物": {
+          "$ref": "#/$defs/__schema11"
+        },
+        "高潮统计": {
+          "$ref": "#/$defs/__schema14"
+        },
+        "身体容纳": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "着装": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "上装": {
+              "default": "校服衬衫",
+              "type": "string"
+            },
+            "下装": {
+              "default": "百褶短裙",
+              "type": "string"
+            },
+            "内衣": {
+              "default": "变形的白色文胸",
+              "type": "string"
+            },
+            "内裤": {
+              "default": "浅色棉质三角内裤",
+              "type": "string"
+            },
+            "袜子": {
+              "default": "黑色棉质中筒袜",
+              "type": "string"
+            },
+            "鞋子": {
+              "default": "黑色皮鞋",
+              "type": "string"
+            },
+            "饰品": {
+              "default": "无",
+              "type": "string"
+            }
+          }
+        },
+        "深层生理": {
+          "$ref": "#/$defs/__schema17"
+        },
+        "催眠状态": {
+          "$ref": "#/$defs/__schema27"
+        }
+      }
+    },
+    "戎华": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "体力": {
+          "default": 100,
+          "type": "number"
+        },
+        "好感度": {
+          "default": 40,
+          "type": "number"
+        },
+        "星怒值": {
+          "description": "受虐与服从的程度",
+          "$ref": "#/$defs/__schema35"
+        },
+        "当前状态": {
+          "default": "正常",
+          "type": "string",
+          "enum": [
+            "正常",
+            "高潮",
+            "昏迷",
+            "发情",
+            "睡眠"
+          ]
+        },
+        "敏感度": {
+          "$ref": "#/$defs/__schema34"
+        },
+        "开发度": {
+          "$ref": "#/$defs/__schema2"
+        },
+        "实时状态": {
+          "$ref": "#/$defs/__schema4"
+        },
+        "身体柔韧化": {
+          "$ref": "#/$defs/__schema7"
+        },
+        "植入物": {
+          "$ref": "#/$defs/__schema11"
+        },
+        "高潮统计": {
+          "$ref": "#/$defs/__schema14"
+        },
+        "身体容纳": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "着装": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "上装": {
+              "default": "校服",
+              "type": "string"
+            },
+            "下装": {
+              "default": "长裙",
+              "type": "string"
+            },
+            "内衣": {
+              "default": "黑色运动内衣",
+              "type": "string"
+            },
+            "内裤": {
+              "default": "黑色内裤",
+              "type": "string"
+            },
+            "袜子": {
+              "default": "船袜",
+              "type": "string"
+            },
+            "鞋子": {
+              "default": "运动鞋",
+              "type": "string"
+            },
+            "饰品": {
+              "default": "无",
+              "type": "string"
+            }
+          }
+        },
+        "深层生理": {
+          "$ref": "#/$defs/__schema17"
+        },
+        "催眠状态": {
+          "$ref": "#/$defs/__schema27"
+        }
+      }
+    },
+    "林曦": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "体力": {
+          "default": 100,
+          "type": "number"
+        },
+        "好感度": {
+          "type": "number"
+        },
+        "当前状态": {
+          "default": "运行中",
+          "type": "string"
+        },
+        "电量": {
+          "default": 100,
+          "type": "number"
+        },
+        "模拟人格状态": {
+          "default": "正常",
+          "type": "string",
+          "enum": [
+            "正常",
+            "过载",
+            "崩溃",
+            "重启中"
+          ]
+        },
+        "敏感度": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "乳穴": {
+              "type": "number"
+            },
+            "阴道": {
+              "type": "number"
+            },
+            "人造子宫": {
+              "type": "number"
+            },
+            "直肠": {
+              "type": "number"
+            },
+            "喉咙": {
+              "type": "number"
+            }
+          }
+        },
+        "身体柔韧化": {
+          "$ref": "#/$defs/__schema7"
+        },
+        "植入物": {
+          "$ref": "#/$defs/__schema11"
+        },
+        "身体容纳": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "人造子宫精液量": {
+              "type": "number"
+            },
+            "腹部隆起": {
+              "type": "boolean"
+            },
+            "异物": {
+              "default": {},
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "着装": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "上装": {
+              "default": "宽松外套",
+              "type": "string"
+            },
+            "下装": {
+              "default": "红黑短裙",
+              "type": "string"
+            },
+            "内衣": {
+              "default": "无",
+              "type": "string"
+            },
+            "内裤": {
+              "default": "无",
+              "type": "string"
+            },
+            "袜子": {
+              "default": "无",
+              "type": "string"
+            },
+            "鞋子": {
+              "default": "运动鞋",
+              "type": "string"
+            },
+            "饰品": {
+              "default": "无",
+              "type": "string"
+            }
+          }
+        },
+        "肢体状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "头": {
+              "$ref": "#/$defs/__schema36"
+            },
+            "左臂": {
+              "$ref": "#/$defs/__schema37"
+            },
+            "右臂": {
+              "$ref": "#/$defs/__schema38"
+            },
+            "左腿": {
+              "$ref": "#/$defs/__schema39"
+            },
+            "右腿": {
+              "$ref": "#/$defs/__schema40"
+            }
+          },
+          "description": "true为安装，false为拆卸"
+        },
+        "深层状态": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "CPU温度": {
+              "description": "摄氏度",
+              "default": 45,
+              "$ref": "#/$defs/__schema41"
+            },
+            "内存占用": {
+              "description": "百分比",
+              "default": 30,
+              "$ref": "#/$defs/__schema42"
+            },
+            "情感模拟强度": {
+              "description": "0-100",
+              "default": 50,
+              "$ref": "#/$defs/__schema43"
+            },
+            "感知处理延迟": {
+              "description": "毫秒",
+              "default": 5,
+              "$ref": "#/$defs/__schema44"
+            },
+            "自我意识指数": {
+              "description": "0-100",
+              "default": 70,
+              "$ref": "#/$defs/__schema45"
+            },
+            "情感溢出风险": {
+              "description": "0-100 情感模拟过载风险",
+              "default": 20,
+              "$ref": "#/$defs/__schema46"
+            }
+          }
+        },
+        "程序催眠": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "指令覆盖深度": {
+              "description": "0-100 核心指令被覆盖程度",
+              "$ref": "#/$defs/__schema47"
+            },
+            "服从协议强度": {
+              "description": "0-100 对用户指令的服从程度",
+              "default": 50,
+              "$ref": "#/$defs/__schema48"
+            },
+            "自主判断抑制": {
+              "description": "0-100 自主判断能力被抑制程度",
+              "$ref": "#/$defs/__schema49"
+            },
+            "植入指令": {
+              "default": {},
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/__schema32"
+              }
+            },
+            "系统警告等级": {
+              "description": "0-3 内部警告等级",
+              "$ref": "#/$defs/__schema50"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "__schema0": {
+      "type": "number"
+    },
+    "__schema1": {
+      "type": "number"
+    },
+    "__schema2": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "阴道开发度": {
+          "description": "0-100 不可调节，记录使用程度",
+          "$ref": "#/$defs/__schema3"
+        },
+        "肛门开发度": {
+          "type": "number"
+        },
+        "乳孔开发度": {
+          "type": "number"
+        },
+        "喉穴开发度": {
+          "type": "number"
+        }
+      }
+    },
+    "__schema3": {
+      "type": "number"
+    },
+    "__schema4": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "高潮幅度": {
+          "description": ">100超量高潮, >1000生命危险, 9999=DEAD",
+          "$ref": "#/$defs/__schema5"
+        },
+        "怀孕概率": {
+          "description": "0-100% 可调节",
+          "$ref": "#/$defs/__schema6"
+        },
+        "是否死亡": {
+          "type": "boolean"
+        }
+      }
+    },
+    "__schema5": {
+      "type": "number"
+    },
+    "__schema6": {
+      "type": "number"
+    },
+    "__schema7": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "启用": {
+          "type": "boolean"
+        },
+        "关节柔韧度": {
+          "description": "0-100",
+          "$ref": "#/$defs/__schema8"
+        },
+        "软组织强韧度": {
+          "type": "number"
+        },
+        "回弹速度": {
+          "description": "0-100 扩张后恢复原状速度",
+          "default": 100,
+          "$ref": "#/$defs/__schema9"
+        },
+        "痛感转化率": {
+          "description": "0-100 痛苦转化为快感的程度",
+          "$ref": "#/$defs/__schema10"
+        }
+      }
+    },
+    "__schema8": {
+      "type": "number"
+    },
+    "__schema9": {
+      "type": "number"
+    },
+    "__schema10": {
+      "type": "number"
+    },
+    "__schema11": {
+      "default": {},
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "description": "植入物名称"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "类型": {
+            "default": "跳弹",
+            "type": "string",
+            "enum": [
+              "跳弹",
+              "乳塞",
+              "肛塞",
+              "其他"
+            ]
+          },
+          "位置": {
+            "type": "string"
+          },
+          "震动强度": {
+            "description": "0-100",
+            "$ref": "#/$defs/__schema12"
+          },
+          "形态变化": {
+            "description": "0-100 尺寸/形状变化程度",
+            "$ref": "#/$defs/__schema13"
+          },
+          "已激活": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "__schema12": {
+      "type": "number"
+    },
+    "__schema13": {
+      "type": "number"
+    },
+    "__schema14": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "单次最高幅度": {
+          "type": "number"
+        },
+        "累计次数": {
+          "type": "number"
+        }
+      }
+    },
+    "__schema15": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "子宫精液量": {
+          "description": "单位ml",
+          "$ref": "#/$defs/__schema16"
+        },
+        "肠道精液量": {
+          "type": "number"
+        },
+        "乳腺精液量": {
+          "type": "number"
+        },
+        "腹部隆起": {
+          "type": "boolean"
+        },
+        "异物": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "__schema16": {
+      "type": "number"
+    },
+    "__schema17": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "心跳": {
+          "description": "BPM 正常60-100",
+          "default": 72,
+          "$ref": "#/$defs/__schema18"
+        },
+        "呼吸频率": {
+          "description": "次/分 正常12-20",
+          "default": 16,
+          "$ref": "#/$defs/__schema19"
+        },
+        "体温": {
+          "default": 36.5,
+          "type": "number"
+        },
+        "荷尔蒙": {
+          "default": {},
+          "type": "object",
+          "properties": {
+            "多巴胺": {
+              "description": "0-100 快感/奖励",
+              "default": 50,
+              "$ref": "#/$defs/__schema20"
+            },
+            "内啡肽": {
+              "description": "0-100 愉悦/止痛",
+              "default": 50,
+              "$ref": "#/$defs/__schema21"
+            },
+            "肾上腺素": {
+              "description": "0-100 兴奋/应激",
+              "default": 30,
+              "$ref": "#/$defs/__schema22"
+            },
+            "催产素": {
+              "description": "0-100 亲密/依恋",
+              "default": 40,
+              "$ref": "#/$defs/__schema23"
+            }
+          }
+        },
+        "神经反应度": {
+          "description": "0-100 整体神经敏感程度",
+          "default": 50,
+          "$ref": "#/$defs/__schema24"
+        },
+        "肌肉紧张度": {
+          "description": "0-100",
+          "default": 30,
+          "$ref": "#/$defs/__schema25"
+        },
+        "瞳孔扩张": {
+          "description": "0-100 情绪激动时扩张",
+          "default": 50,
+          "$ref": "#/$defs/__schema26"
+        }
+      }
+    },
+    "__schema18": {
+      "type": "number"
+    },
+    "__schema19": {
+      "type": "number"
+    },
+    "__schema20": {
+      "type": "number"
+    },
+    "__schema21": {
+      "type": "number"
+    },
+    "__schema22": {
+      "type": "number"
+    },
+    "__schema23": {
+      "type": "number"
+    },
+    "__schema24": {
+      "type": "number"
+    },
+    "__schema25": {
+      "type": "number"
+    },
+    "__schema26": {
+      "type": "number"
+    },
+    "__schema27": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "催眠深度": {
+          "description": "0-100 当前催眠深度",
+          "$ref": "#/$defs/__schema28"
+        },
+        "暗示接受度": {
+          "description": "0-100 对暗示的接受程度",
+          "default": 50,
+          "$ref": "#/$defs/__schema29"
+        },
+        "抵抗力": {
+          "description": "0-100 催眠抵抗",
+          "default": 100,
+          "$ref": "#/$defs/__schema30"
+        },
+        "意识模糊度": {
+          "description": "0-100 意识清醒程度的反向",
+          "$ref": "#/$defs/__schema31"
+        },
+        "植入暗示": {
+          "default": {},
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/__schema32"
+          }
+        },
+        "累计催眠次数": {
+          "type": "number"
+        },
+        "上次催眠时间": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "__schema28": {
+      "type": "number"
+    },
+    "__schema29": {
+      "type": "number"
+    },
+    "__schema30": {
+      "type": "number"
+    },
+    "__schema31": {
+      "type": "number"
+    },
+    "__schema32": {
+      "type": "object",
+      "properties": {
+        "内容": {
+          "type": "string"
+        },
+        "强度": {
+          "description": "0-100 暗示的根植深度",
+          "$ref": "#/$defs/__schema33"
+        },
+        "触发词": {
+          "type": "string"
+        },
+        "激活状态": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "内容"
+      ]
+    },
+    "__schema33": {
+      "type": "number"
+    },
+    "__schema34": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "乳穴": {
+          "type": "number"
+        },
+        "阴道": {
+          "type": "number"
+        },
+        "子宫": {
+          "type": "number"
+        },
+        "直肠": {
+          "type": "number"
+        },
+        "喉咙": {
+          "type": "number"
+        }
+      }
+    },
+    "__schema35": {
+      "type": "number"
+    },
+    "__schema36": {
+      "default": true,
+      "type": "boolean"
+    },
+    "__schema37": {
+      "default": true,
+      "type": "boolean"
+    },
+    "__schema38": {
+      "default": true,
+      "type": "boolean"
+    },
+    "__schema39": {
+      "default": true,
+      "type": "boolean"
+    },
+    "__schema40": {
+      "default": true,
+      "type": "boolean"
+    },
+    "__schema41": {
+      "type": "number"
+    },
+    "__schema42": {
+      "type": "number"
+    },
+    "__schema43": {
+      "type": "number"
+    },
+    "__schema44": {
+      "type": "number"
+    },
+    "__schema45": {
+      "type": "number"
+    },
+    "__schema46": {
+      "type": "number"
+    },
+    "__schema47": {
+      "type": "number"
+    },
+    "__schema48": {
+      "type": "number"
+    },
+    "__schema49": {
+      "type": "number"
+    },
+    "__schema50": {
+      "type": "number"
+    }
+  }
+}
