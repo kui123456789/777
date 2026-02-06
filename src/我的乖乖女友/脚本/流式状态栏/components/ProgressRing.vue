@@ -35,8 +35,8 @@ watch(
 </script>
 
 <template>
-  <div class="relative w-12 h-12 flex items-center justify-center select-none">
-    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 44 44">
+  <div class="relative flex h-12 w-12 items-center justify-center select-none">
+    <svg class="h-full w-full -rotate-90 transform" viewBox="0 0 44 44">
       <!-- Background Circle -->
       <circle
         class="text-white/10"

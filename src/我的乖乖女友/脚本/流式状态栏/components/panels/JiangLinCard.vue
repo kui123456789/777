@@ -15,11 +15,11 @@ const showBody = ref(false);
 
 <template>
   <StatusCard class="bg-gradient-to-br from-pink-500/10 to-rose-500/10">
-    <div class="flex items-center gap-4 mb-4">
+    <div class="mb-4 flex items-center gap-4">
       <CharacterAvatar name="姜林" color="bg-pink-500/40" />
-      <div class="flex-1 min-w-0">
-        <h3 class="text-lg font-bold text-white truncate">姜林</h3>
-        <div class="text-xs text-white/60 truncate">{{ data.姜林.关系状态 }}</div>
+      <div class="min-w-0 flex-1">
+        <h3 class="truncate text-lg font-bold text-white">姜林</h3>
+        <div class="truncate text-xs text-white/60">{{ data.姜林.关系状态 }}</div>
       </div>
       <div class="ml-auto flex gap-2">
         <StatBadge label="心情" :value="data.姜林.基础状态.心情" />
@@ -28,11 +28,11 @@ const showBody = ref(false);
     </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <div class="flex flex-col items-center gap-2 bg-white/5 p-3 rounded-xl transition hover:bg-white/10">
+      <div class="flex flex-col items-center gap-2 rounded-xl bg-white/5 p-3 transition hover:bg-white/10">
         <span class="text-xs text-white/60">好感度</span>
         <ProgressRing :model-value="data.姜林.好感度" color="text-pink-400" />
       </div>
-      <div class="flex flex-col items-center gap-2 bg-white/5 p-3 rounded-xl transition hover:bg-white/10">
+      <div class="flex flex-col items-center gap-2 rounded-xl bg-white/5 p-3 transition hover:bg-white/10">
         <span class="text-xs text-white/60">体力</span>
         <ProgressRing :model-value="data.姜林.基础状态.体力" color="text-rose-400" />
       </div>
@@ -40,8 +40,8 @@ const showBody = ref(false);
 
     <!-- Body Data Toggle -->
     <button
+      class="mt-4 w-full border-t border-white/10 py-2 text-xs text-white/50 transition hover:text-white/80"
       @click="showBody = !showBody"
-      class="w-full mt-4 py-2 text-xs text-white/50 hover:text-white/80 transition border-t border-white/10"
     >
       {{ showBody ? '▲ 收起身体数据' : '▼ 展开身体数据' }}
     </button>
@@ -51,13 +51,13 @@ const showBody = ref(false);
       <div v-if="showBody" class="mt-3 space-y-2">
         <!-- Basic Body -->
         <div class="flex gap-2 text-xs">
-          <span class="bg-white/5 px-2 py-1 rounded">腿长: {{ data.姜林.身体.腿长 }}</span>
-          <span class="bg-white/5 px-2 py-1 rounded">大腿围: {{ data.姜林.身体.大腿围 }}</span>
+          <span class="rounded bg-white/5 px-2 py-1">腿长: {{ data.姜林.身体.腿长 }}</span>
+          <span class="rounded bg-white/5 px-2 py-1">大腿围: {{ data.姜林.身体.大腿围 }}</span>
         </div>
 
         <!-- Private Parts -->
-        <div class="bg-pink-500/10 border border-pink-500/20 rounded-lg p-3 space-y-2">
-          <div class="text-xs font-bold text-pink-300 mb-2">私密部位</div>
+        <div class="space-y-2 rounded-lg border border-pink-500/20 bg-pink-500/10 p-3">
+          <div class="mb-2 text-xs font-bold text-pink-300">私密部位</div>
           <div class="grid grid-cols-1 gap-1.5 text-xs">
             <div class="flex justify-between">
               <span class="text-white/50">乳房</span>

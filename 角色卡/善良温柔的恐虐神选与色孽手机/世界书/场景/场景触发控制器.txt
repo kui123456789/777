@@ -1,0 +1,32 @@
+@@preprocessing
+<%_
+// 1. 声明变量：读取当前的场景、时间和星期
+// 请确保你在酒馆的【变量管理】里是用的这些变量名哦
+if (typeof currentScene === 'undefined') var currentScene = getvar('stat_data.当前场景', { defaults: '高二教室' });
+if (typeof timeOfDay === 'undefined') var timeOfDay = getvar('stat_data.时间段', { defaults: '上午' });
+if (typeof dayOfWeek === 'undefined') var dayOfWeek = getvar('stat_data.星期', { defaults: '星期一' });
+_%>
+
+<%_ /* --- 场景1：商场更衣室 --- */ _%>
+<%_ /* 触发逻辑：只要场景名里有“更衣室”或“试衣间”就触发 */ _%>
+<%_ if (currentScene.includes('更衣室') || currentScene.includes('试衣间') || currentScene.includes('服装店')) { _%>
+更衣室场景触发
+<%_ } _%>
+
+<%_ /* --- 场景2：高二教室 --- */ _%>
+<%_ /* 触发逻辑：场景是“教室”或者“高二三班” */ _%>
+<%_ if (currentScene.includes('教室') || currentScene.includes('高二')) { _%>
+教室场景触发
+<%_ } _%>
+
+<%_ /* --- 场景3：学校图书馆 --- */ _%>
+<%_ /* 触发逻辑：场景是“图书馆”，且如果是中午（根据设定是午休无人时段），可能会触发特殊版 */ _%>
+<%_ if (currentScene.includes('图书馆')) { _%>
+图书馆场景触发
+<%_ } _%>
+
+<%_ /* --- 场景4：林海家 --- */ _%>
+<%_ /* 触发逻辑：场景包含“林海家”或者只是单纯的“家”且不在别人家 */ _%>
+<%_ if (currentScene.includes('林海家') || (currentScene === '家')) { _%>
+林海家场景触发
+<%_ } _%>

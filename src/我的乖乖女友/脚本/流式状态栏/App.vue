@@ -31,7 +31,7 @@ const components = {
 </script>
 
 <template>
-  <div class="w-full font-sans text-gray-200 select-none overflow-hidden">
+  <div class="w-full overflow-hidden font-sans text-gray-200 select-none">
     <!-- Message Content Section (上方) -->
     <MessageContent
       :message="context.message"
@@ -40,7 +40,7 @@ const components = {
     />
 
     <!-- Status Bar Section (下方) -->
-    <div class="my-2 max-w-xl mx-auto">
+    <div class="mx-auto my-2 max-w-xl">
       <!-- Streaming State -->
       <Transition name="fade" mode="out-in">
         <div v-if="context.during_streaming" key="streaming">
@@ -50,17 +50,17 @@ const components = {
         <!-- Finished State -->
         <div v-else key="content" class="flex flex-col gap-3">
           <!-- Tabs -->
-          <div class="flex gap-2 p-1.5 bg-black/40 backdrop-blur-md rounded-xl border border-white/5">
+          <div class="flex gap-2 rounded-xl border border-white/5 bg-black/40 p-1.5 backdrop-blur-md">
             <button
               v-for="tab in tabs"
               :key="tab"
-              @click="activeTab = tab"
               :class="[
-                'flex-1 py-2 text-xs font-bold rounded-lg transition-all duration-300 border',
+                'flex-1 rounded-lg border py-2 text-xs font-bold transition-all duration-300',
                 activeTab === tab
                   ? themes[tab] + ' scale-[1.02]'
-                  : 'text-white/40 border-transparent hover:text-white/60 hover:bg-white/5',
+                  : 'border-transparent text-white/40 hover:bg-white/5 hover:text-white/60',
               ]"
+              @click="activeTab = tab"
             >
               {{ tab }}
             </button>
@@ -68,7 +68,7 @@ const components = {
 
           <!-- Panel -->
           <Transition name="slide-up" mode="out-in">
-            <component :is="components[activeTab]" :data="data" :key="activeTab" />
+            <component :is="components[activeTab]" :key="activeTab" :data="data" />
           </Transition>
         </div>
       </Transition>

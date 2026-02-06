@@ -15,11 +15,11 @@ const showBody = ref(false);
 
 <template>
   <StatusCard class="bg-gradient-to-br from-sky-500/10 to-cyan-500/10">
-    <div class="flex items-center gap-4 mb-4">
+    <div class="mb-4 flex items-center gap-4">
       <CharacterAvatar name="林小雨" color="bg-sky-500/40" />
-      <div class="flex-1 min-w-0">
-        <h3 class="text-lg font-bold text-white truncate">林小雨</h3>
-        <div class="text-xs text-white/60 truncate">妹妹</div>
+      <div class="min-w-0 flex-1">
+        <h3 class="truncate text-lg font-bold text-white">林小雨</h3>
+        <div class="truncate text-xs text-white/60">妹妹</div>
       </div>
       <div class="ml-auto flex gap-2">
         <StatBadge label="心情" :value="data.林小雨状态.心情" />
@@ -28,12 +28,12 @@ const showBody = ref(false);
     </div>
 
     <div class="grid grid-cols-2 gap-4">
-      <div class="flex flex-col items-center gap-2 bg-white/5 p-3 rounded-xl transition hover:bg-white/10">
+      <div class="flex flex-col items-center gap-2 rounded-xl bg-white/5 p-3 transition hover:bg-white/10">
         <span class="text-xs text-white/60">兄控度</span>
         <ProgressRing :model-value="data.林小雨状态.兄控度" color="text-sky-400" />
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-2 bg-white/5 p-3 rounded-xl transition hover:bg-white/10"
+        class="flex flex-col items-center justify-center gap-2 rounded-xl bg-white/5 p-3 transition hover:bg-white/10"
       >
         <span class="text-xs text-white/60">当前状态</span>
         <span class="text-lg font-bold text-sky-300">{{ data.林小雨状态.当前状态 }}</span>
@@ -41,20 +41,20 @@ const showBody = ref(false);
     </div>
 
     <!-- Status Badges -->
-    <div class="flex gap-2 mt-4 flex-wrap">
+    <div class="mt-4 flex flex-wrap gap-2">
       <span
-        class="text-xs px-2 py-1 bg-white/5 rounded"
+        class="rounded bg-white/5 px-2 py-1 text-xs"
         :class="data.林小雨状态.是否处女 ? 'text-pink-300' : 'text-gray-400'"
       >
         {{ data.林小雨状态.是否处女 ? '处女' : '非处女' }}
       </span>
-      <span class="text-xs px-2 py-1 bg-white/5 rounded text-white/60"> 年龄: {{ data.林小雨状态.年龄 }}岁 </span>
+      <span class="rounded bg-white/5 px-2 py-1 text-xs text-white/60"> 年龄: {{ data.林小雨状态.年龄 }}岁 </span>
     </div>
 
     <!-- Body Data Toggle -->
     <button
+      class="mt-4 w-full border-t border-white/10 py-2 text-xs text-white/50 transition hover:text-white/80"
       @click="showBody = !showBody"
-      class="w-full mt-4 py-2 text-xs text-white/50 hover:text-white/80 transition border-t border-white/10"
     >
       {{ showBody ? '▲ 收起身体数据' : '▼ 展开身体数据' }}
     </button>
@@ -62,7 +62,7 @@ const showBody = ref(false);
     <!-- Body Data Panel -->
     <Transition name="slide">
       <div v-if="showBody" class="mt-3 space-y-2">
-        <div class="bg-sky-500/10 border border-sky-500/20 rounded-lg p-3 space-y-3">
+        <div class="space-y-3 rounded-lg border border-sky-500/20 bg-sky-500/10 p-3">
           <!-- 胸部 -->
           <div class="space-y-1">
             <div class="text-xs font-bold text-sky-300">胸部</div>

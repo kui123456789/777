@@ -60,7 +60,10 @@ export function mountStreamingMessages(
     states.keys().forEach(message_id => destroyIfInvalid(message_id));
   };
 
-  const renderOneMessage = async (message_id: number, stream_message?: string) => {
+  const renderOneMessage = async (
+    message_id: number,
+    stream_message_or_options?: string | { stream_message?: string; force_message?: string },
+  ) => {
     if (has_stoped) {
       return;
     }
@@ -68,7 +71,13 @@ export function mountStreamingMessages(
       return;
     }
 
-    const message = stream_message ?? getChatMessages(message_id)[0].message ?? '';
+    // 兼容旧的 string 参数和新的 options 对象
+    const options =
+      typeof stream_message_or_options === 'string'
+        ? { stream_message: stream_message_or_options }
+        : stream_message_or_options;
+
+    const message = options?.stream_message ?? options?.force_message ?? getChatMessages(message_id)[0].message ?? '';
     if (filter && !filter(message_id, message)) {
       states.get(message_id)?.destroy();
       return;
@@ -79,12 +88,14 @@ export function mountStreamingMessages(
     const $mes_text = $message_element.find('.mes_text').addClass('hidden!');
     $message_element.find('.TH-streaming').addClass('hidden!');
 
+    const during_streaming = Boolean(options?.stream_message);
+
     let $host = $message_element.find(`#${prefix}-${message_id}`);
     if ($host.length > 0) {
       const state = states.get(message_id);
       if (state) {
         state.data.message = message;
-        state.data.during_streaming = Boolean(stream_message);
+        state.data.during_streaming = during_streaming;
         return;
       }
     }
@@ -114,7 +125,7 @@ export function mountStreamingMessages(
       host_id: `${prefix}-${message_id}`,
       message_id,
       message,
-      during_streaming: Boolean(stream_message),
+      during_streaming,
     });
     const app = creator().provide('streaming_message_context', data);
     if (host === 'iframe') {
@@ -210,8 +221,13 @@ export function mountStreamingMessages(
     }),
   );
   scopedEventOn(tavern_events.MESSAGE_DELETED, () => setTimeout(errorCatched(renderAllMessage), 1000));
+  // 监听开场白切换事件，使用事件参数中的 output 重新渲染第一条消息 (message_id=0)
+  scopedEventOn(tavern_events.CHARACTER_FIRST_MESSAGE_SELECTED, event_args => {
+    states.get(0)?.destroy();
+    renderOneMessage(0, { force_message: event_args.output });
+  });
   scopedEventOn(tavern_events.STREAM_TOKEN_RECEIVED, message => {
-    renderOneMessage(Number($('#chat').children('.mes.last_mes').attr('mesid')), message);
+    renderOneMessage(Number($('#chat').children('.mes.last_mes').attr('mesid')), { stream_message: message });
   });
 
   if (host === 'div') {

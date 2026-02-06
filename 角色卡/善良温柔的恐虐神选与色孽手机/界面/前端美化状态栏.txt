@@ -1,0 +1,539 @@
+```html
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <style>
+    :root {
+      --bg-color: #0a0510;
+      --card-bg: rgba(20, 10, 30, 0.85);
+      --primary: #d500f9; /* 霓虹紫 */
+      --secondary: #00e5ff; /* 赛博蓝 */
+      --danger: #ff1744; /* 警告红 */
+      --text-main: #e0e0e0;
+      --text-dim: #a0a0a0;
+      --border-glow: 0 0 8px rgba(213, 0, 249, 0.5);
+      --font-tech: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      margin: 0;
+      padding: 0; /* 修正：body边距清零 */
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      background-image:
+        linear-gradient(rgba(10, 5, 16, 0.9) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 5, 16, 0.9) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* 滚动条美化 */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-color); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+    /* 通用容器 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px; /* 修正：边距移至容器 */
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    /* 顶部系统栏 */
+    .system-bar {
+      display: flex;
+      justify-content: space-between;
+      background: var(--card-bg);
+      border: 1px solid var(--primary);
+      box-shadow: var(--border-glow);
+      padding: 10px 15px;
+      border-radius: 4px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sys-info span {
+      margin-right: 15px;
+      color: var(--secondary);
+      font-family: var(--font-tech);
+      font-weight: bold;
+    }
+
+    .points-box {
+      color: var(--primary);
+      font-weight: bold;
+      text-shadow: 0 0 5px var(--primary);
+    }
+
+    /* 林海控制面板 */
+    .control-panel {
+      background: var(--card-bg);
+      border-left: 3px solid var(--secondary);
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 8px;
+    }
+
+    .function-tag {
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid var(--secondary);
+      color: var(--secondary);
+      padding: 4px 8px;
+      text-align: center;
+      font-size: 12px;
+      border-radius: 2px;
+    }
+    .function-tag.active {
+      background: var(--secondary);
+      color: #000;
+      box-shadow: 0 0 8px var(--secondary);
+    }
+
+    /* 角色卡片网格 */
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+    }
+
+    .char-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .char-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--border-glow);
+      transform: translateY(-2px);
+    }
+
+    /* 角色标题 */
+    .char-header {
+      background: linear-gradient(90deg, rgba(213, 0, 249, 0.2), transparent);
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(213, 0, 249, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .char-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--primary);
+      letter-spacing: 1px;
+    }
+
+    .char-status {
+      font-size: 12px;
+      padding: 2px 6px;
+      background: #000;
+      border-radius: 4px;
+      color: var(--text-dim);
+    }
+    .status-h { color: var(--danger); font-weight: bold; animation: pulse 1s infinite; }
+
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
+
+    /* 数据区域 */
+    .char-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+      padding-bottom: 4px;
+      margin-bottom: 2px;
+    }
+
+    .label { color: var(--text-dim); font-size: 12px; }
+    .value { color: var(--text-main); font-family: var(--font-tech); font-weight: bold; }
+    .value.high { color: var(--danger); }
+    .value.mid { color: var(--secondary); }
+
+    /* 敏感度雷达图模拟 */
+    .sense-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      background: rgba(0,0,0,0.3);
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .sense-item { text-align: center; }
+    .sense-val { display: block; color: var(--secondary); font-size: 13px; }
+    .sense-lbl { display: block; font-size: 10px; color: var(--text-dim); transform: scale(0.9); }
+
+    /* 容纳监控 */
+    .capacity-box {
+      background: rgba(20, 10, 20, 0.5);
+      border: 1px solid rgba(255, 23, 68, 0.3);
+      padding: 8px;
+      border-radius: 4px;
+    }
+    .cap-title { font-size: 12px; color: var(--danger); margin-bottom: 5px; display: block; }
+
+    .belly-alert {
+      color: var(--danger);
+      font-weight: bold;
+      text-align: center;
+      margin-top: 5px;
+      display: none;
+      animation: pulse 2s infinite;
+    }
+    .belly-alert.show { display: block; }
+
+    /* 物品/着装列表 */
+    .list-box {
+      font-size: 12px;
+    }
+    .list-item {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-dim);
+    }
+    .list-val { color: var(--text-main); text-align: right; }
+
+    /* 林曦专用 */
+    .robot-limbs {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5px;
+    }
+    .limb {
+      width: 20px;
+      height: 20px;
+      background: var(--secondary);
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+    .limb.active { opacity: 1; box-shadow: 0 0 5px var(--secondary); }
+
+    /* 折叠按钮 */
+    .toggle-btn {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: none;
+      color: var(--text-dim);
+      padding: 4px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .detail-section { display: none; }
+    .detail-section.show { display: block; }
+
+  </style>
+  <script type="module">
+    function populateCharacterData() {
+      const all_variables = getAllVariables();
+
+      // 辅助函数：安全获取数值
+      const getVal = (path, def = 'N/A') => _.get(all_variables, path, def);
+      const getNum = (path, def = 0) => _.get(all_variables, path, def);
+
+      // === 世界信息 ===
+      $('#world-time').text(getVal('stat_data.世界.当前时间'));
+      $('#world-date').text(getVal('stat_data.世界.日期'));
+      $('#world-loc').text(getVal('stat_data.世界.当前地点'));
+
+      // === 林海状态 ===
+      $('#lh-points').text(getVal('stat_data.林海.色孽点', 0));
+
+      const funcs = _.get(all_variables, 'stat_data.林海.手机功能', {});
+      $('#func-xray').toggleClass('active', !!funcs.透视开启);
+      $('#func-flex').toggleClass('active', !!funcs.身体柔韧化开启);
+      $('#func-remote').toggleClass('active', !!funcs.远程操控开启);
+      $('#func-hypno-target').text(funcs.催眠目标 || '无');
+
+      // === 角色卡片渲染函数 ===
+      const renderChar = (key, nameId, isRobot = false) => {
+        const base = `stat_data.${key}`;
+
+        // 基础信息
+        $(`#${nameId}-hp`).text(getVal(`${base}.体力`));
+        $(`#${nameId}-fav`).text(getVal(`${base}.好感度`));
+        const state = getVal(`${base}.当前状态`);
+        $(`#${nameId}-state`).text(state);
+        if(state === '高潮' || state === '崩溃') $(`#${nameId}-state`).addClass('status-h');
+        else $(`#${nameId}-state`).removeClass('status-h');
+
+        if(nameId === 'rx') {
+            $(`#${nameId}-star`).text(getVal(`${base}.星怒值`, 0));
+        }
+
+        // 敏感度 (如果是林曦，子宫字段不同)
+        const sense = _.get(all_variables, `${base}.敏感度`, {});
+        $(`#${nameId}-s-breast`).text(sense.乳穴 || 0);
+        $(`#${nameId}-s-pussy`).text(sense.阴道 || 0);
+        $(`#${nameId}-s-womb`).text(isRobot ? (sense.人造子宫 || 0) : (sense.子宫 || 0));
+        $(`#${nameId}-s-anal`).text(sense.直肠 || 0);
+        $(`#${nameId}-s-throat`).text(sense.喉咙 || 0);
+
+        // 高潮统计
+        if(!isRobot) {
+            $(`#${nameId}-org-max`).text(getVal(`${base}.高潮统计.单次最高幅度`));
+            $(`#${nameId}-org-count`).text(getVal(`${base}.高潮统计.累计次数`));
+        }
+
+        // 身体容纳
+        const cap = _.get(all_variables, `${base}.身体容纳`, {});
+        const wombVol = isRobot ? (cap.人造子宫精液量 || 0) : (cap.子宫精液量 || 0);
+        $(`#${nameId}-vol-womb`).text(wombVol + 'ml');
+        if(!isRobot) $(`#${nameId}-vol-gut`).text((cap.肠道精液量 || 0) + 'ml');
+
+        // 腹部隆起警告
+        if (cap.腹部隆起) $(`#${nameId}-belly-alert`).addClass('show');
+        else $(`#${nameId}-belly-alert`).removeClass('show');
+
+        // 异物列表
+        const objs = cap.异物 || {};
+        const objHtml = Object.entries(objs).map(([k, v]) =>
+          `<div class="list-item"><span class="label">${k}</span><span class="list-val">${v}</span></div>`
+        ).join('') || '<div class="list-item"><span class="label">体内</span><span class="list-val">无异物</span></div>';
+        $(`#${nameId}-obj-list`).html(objHtml);
+
+        // 着装列表
+        const clothes = _.get(all_variables, `${base}.着装`, {});
+        const clothHtml = Object.entries(clothes).map(([k, v]) =>
+          `<div class="list-item"><span class="label">${k}</span><span class="list-val">${v}</span></div>`
+        ).join('');
+        $(`#${nameId}-cloth-list`).html(clothHtml);
+
+        // 林曦特殊
+        if(isRobot) {
+             $(`#${nameId}-power`).text(getVal(`${base}.电量`));
+             $(`#${nameId}-sim`).text(getVal(`${base}.模拟人格状态`));
+             const limbs = _.get(all_variables, `${base}.肢体状态`, {});
+             $('#lx-limb-head').toggleClass('active', !!limbs.头);
+             $('#lx-limb-la').toggleClass('active', !!limbs.左臂);
+             $('#lx-limb-ra').toggleClass('active', !!limbs.右臂);
+             $('#lx-limb-ll').toggleClass('active', !!limbs.左腿);
+             $('#lx-limb-rl').toggleClass('active', !!limbs.右腿);
+        }
+      };
+
+      renderChar('鹿忻', 'lx');
+      renderChar('鹿晴', 'lq');
+      renderChar('戎华', 'rh');
+      renderChar('林曦', 'linxi', true);
+
+      // 背包简单展示
+      const bag = _.get(all_variables, 'stat_data.林海.背包', {});
+      const bagHtml = Object.keys(bag).length > 0
+        ? Object.entries(bag).map(([k,v]) => `[${k} x${v.数量}]`).join(' ')
+        : '空';
+      $('#lh-bag').text(bagHtml);
+    }
+
+    async function init() {
+      await waitGlobalInitialized('Mvu');
+      populateCharacterData();
+
+      eventOn(Mvu.events.VARIABLE_UPDATE_ENDED, () => {
+        populateCharacterData();
+      });
+
+      // 折叠功能
+      window.toggleDetails = function(id) {
+        $(`#${id}-details`).toggleClass('show');
+      }
+    }
+
+    $(errorCatched(init));
+  </script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- 系统信息 -->
+    <div class="system-bar">
+      <div class="sys-info">
+        <span id="world-date">周一</span>
+        <span id="world-time">12:00</span>
+        <span id="world-loc" style="color:var(--text-main)">学校</span>
+      </div>
+      <div class="sys-info">
+        色孽点: <span id="lh-points" class="points-box">0</span>
+      </div>
+    </div>
+
+    <!-- 林海控制面板 -->
+    <div class="control-panel">
+      <div id="func-xray" class="function-tag">透视</div>
+      <div id="func-flex" class="function-tag">肉体改造</div>
+      <div id="func-remote" class="function-tag">远程操控</div>
+      <div class="function-tag" style="border-color:var(--primary);color:var(--primary)">
+        催眠: <span id="func-hypno-target">无</span>
+      </div>
+      <div style="grid-column: 1/-1; font-size:12px; color:var(--text-dim);">
+        背包: <span id="lh-bag" style="color:var(--text-main)"></span>
+      </div>
+    </div>
+
+    <!-- 角色网格 -->
+    <div class="char-grid">
+
+      <!-- 鹿忻 -->
+      <div class="char-card">
+        <div class="char-header">
+          <span class="char-name">鹿忻</span>
+          <span id="lx-state" class="char-status">正常</span>
+        </div>
+        <div class="char-body">
+          <div class="data-row"><span class="label">好感度</span><span id="lx-fav" class="value">0</span></div>
+          <div class="data-row"><span class="label">体力</span><span id="lx-hp" class="value">100</span></div>
+          <div class="data-row"><span class="label">最高/累计高潮</span><span class="value"><span id="lx-org-max">0</span>% / <span id="lx-org-count">0</span></span></div>
+
+          <div class="sense-grid">
+            <div class="sense-item"><span id="lx-s-breast" class="sense-val">0</span><span class="sense-lbl">乳</span></div>
+            <div class="sense-item"><span id="lx-s-pussy" class="sense-val">0</span><span class="sense-lbl">阴</span></div>
+            <div class="sense-item"><span id="lx-s-womb" class="sense-val high">0</span><span class="sense-lbl">宫</span></div>
+            <div class="sense-item"><span id="lx-s-anal" class="sense-val">0</span><span class="sense-lbl">肠</span></div>
+            <div class="sense-item"><span id="lx-s-throat" class="sense-val">0</span><span class="sense-lbl">喉</span></div>
+          </div>
+
+          <div class="capacity-box">
+            <span class="cap-title">BODY CAPACITY</span>
+            <div class="data-row"><span class="label">子宫精液</span><span id="lx-vol-womb" class="value">0ml</span></div>
+            <div class="data-row"><span class="label">肠道精液</span><span id="lx-vol-gut" class="value">0ml</span></div>
+            <div id="lx-obj-list" class="list-box" style="margin-top:5px;"></div>
+            <div id="lx-belly-alert" class="belly-alert">⚠ 腹部严重隆起 ⚠</div>
+          </div>
+
+          <button class="toggle-btn" onclick="toggleDetails('lx')">▼ 展开着装 ▼</button>
+          <div id="lx-details" class="detail-section list-box">
+             <div id="lx-cloth-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 鹿晴 -->
+      <div class="char-card">
+        <div class="char-header">
+          <span class="char-name">鹿晴</span>
+          <span id="lq-state" class="char-status">无表情</span>
+        </div>
+        <div class="char-body">
+          <div class="data-row"><span class="label">好感度</span><span id="lq-fav" class="value">0</span></div>
+          <div class="data-row"><span class="label">体力</span><span id="lq-hp" class="value">100</span></div>
+          <div class="data-row"><span class="label">最高/累计高潮</span><span class="value"><span id="lq-org-max">0</span>% / <span id="lq-org-count">0</span></span></div>
+
+          <div class="sense-grid">
+            <div class="sense-item"><span id="lq-s-breast" class="sense-val">0</span><span class="sense-lbl">乳</span></div>
+            <div class="sense-item"><span id="lq-s-pussy" class="sense-val">0</span><span class="sense-lbl">阴</span></div>
+            <div class="sense-item"><span id="lq-s-womb" class="sense-val">0</span><span class="sense-lbl">宫</span></div>
+            <div class="sense-item"><span id="lq-s-anal" class="sense-val">0</span><span class="sense-lbl">肠</span></div>
+            <div class="sense-item"><span id="lq-s-throat" class="sense-val">0</span><span class="sense-lbl">喉</span></div>
+          </div>
+
+          <div class="capacity-box">
+            <span class="cap-title">BODY CAPACITY</span>
+            <div class="data-row"><span class="label">子宫精液</span><span id="lq-vol-womb" class="value">0ml</span></div>
+            <div class="data-row"><span class="label">肠道精液</span><span id="lq-vol-gut" class="value">0ml</span></div>
+            <div id="lq-obj-list" class="list-box" style="margin-top:5px;"></div>
+            <div id="lq-belly-alert" class="belly-alert">⚠ 腹部严重隆起 ⚠</div>
+          </div>
+
+          <button class="toggle-btn" onclick="toggleDetails('lq')">▼ 展开着装 ▼</button>
+          <div id="lq-details" class="detail-section list-box">
+             <div id="lq-cloth-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 戎华 -->
+      <div class="char-card">
+        <div class="char-header">
+          <span class="char-name">戎华</span>
+          <span id="rh-state" class="char-status">正常</span>
+        </div>
+        <div class="char-body">
+          <div class="data-row"><span class="label">星怒值</span><span id="rh-star" class="value high">0</span></div>
+          <div class="data-row"><span class="label">好感度</span><span id="rh-fav" class="value">0</span></div>
+          <div class="data-row"><span class="label">体力</span><span id="rh-hp" class="value">100</span></div>
+          <div class="data-row"><span class="label">最高/累计高潮</span><span class="value"><span id="rh-org-max">0</span>% / <span id="rh-org-count">0</span></span></div>
+
+          <div class="sense-grid">
+            <div class="sense-item"><span id="rh-s-breast" class="sense-val">0</span><span class="sense-lbl">乳</span></div>
+            <div class="sense-item"><span id="rh-s-pussy" class="sense-val">0</span><span class="sense-lbl">阴</span></div>
+            <div class="sense-item"><span id="rh-s-womb" class="sense-val">0</span><span class="sense-lbl">宫</span></div>
+            <div class="sense-item"><span id="rh-s-anal" class="sense-val">0</span><span class="sense-lbl">肠</span></div>
+            <div class="sense-item"><span id="rh-s-throat" class="sense-val">0</span><span class="sense-lbl">喉</span></div>
+          </div>
+
+          <div class="capacity-box">
+            <span class="cap-title">BODY CAPACITY</span>
+            <div class="data-row"><span class="label">子宫精液</span><span id="rh-vol-womb" class="value">0ml</span></div>
+            <div class="data-row"><span class="label">肠道精液</span><span id="rh-vol-gut" class="value">0ml</span></div>
+            <div id="rh-obj-list" class="list-box" style="margin-top:5px;"></div>
+            <div id="rh-belly-alert" class="belly-alert">⚠ 腹部严重隆起 ⚠</div>
+          </div>
+
+          <button class="toggle-btn" onclick="toggleDetails('rh')">▼ 展开着装 ▼</button>
+          <div id="rh-details" class="detail-section list-box">
+             <div id="rh-cloth-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 林曦 -->
+      <div class="char-card" style="border-color:var(--secondary)">
+        <div class="char-header" style="background: linear-gradient(90deg, rgba(0, 229, 255, 0.2), transparent);">
+          <span class="char-name" style="color:var(--secondary)">林曦 (N-2)</span>
+          <span id="linxi-state" class="char-status">运行中</span>
+        </div>
+        <div class="char-body">
+          <div class="data-row"><span class="label">电量</span><span id="linxi-power" class="value">100%</span></div>
+          <div class="data-row"><span class="label">模拟人格</span><span id="linxi-sim" class="value mid">正常</span></div>
+
+          <div class="robot-limbs">
+             <div id="lx-limb-la" class="limb" title="左臂"></div>
+             <div id="lx-limb-head" class="limb" title="头部" style="border-radius:2px;"></div>
+             <div id="lx-limb-ra" class="limb" title="右臂"></div>
+             <div id="lx-limb-ll" class="limb" title="左腿" style="border-radius:4px;"></div>
+             <div id="lx-limb-rl" class="limb" title="右腿" style="border-radius:4px;"></div>
+          </div>
+
+          <div class="sense-grid">
+            <div class="sense-item"><span id="linxi-s-breast" class="sense-val">0</span><span class="sense-lbl">乳</span></div>
+            <div class="sense-item"><span id="linxi-s-pussy" class="sense-val">0</span><span class="sense-lbl">阴</span></div>
+            <div class="sense-item"><span id="linxi-s-womb" class="sense-val">0</span><span class="sense-lbl">人造宫</span></div>
+            <div class="sense-item"><span id="linxi-s-anal" class="sense-val">0</span><span class="sense-lbl">直肠</span></div>
+            <div class="sense-item"><span id="linxi-s-throat" class="sense-val">0</span><span class="sense-lbl">喉</span></div>
+          </div>
+
+          <div class="capacity-box">
+            <span class="cap-title">UNIT CAPACITY</span>
+            <div class="data-row"><span class="label">储存液量</span><span id="linxi-vol-womb" class="value">0ml</span></div>
+            <div id="linxi-obj-list" class="list-box" style="margin-top:5px;"></div>
+            <div id="linxi-belly-alert" class="belly-alert">⚠ 容器满载 ⚠</div>
+          </div>
+
+          <button class="toggle-btn" onclick="toggleDetails('linxi')">▼ 展开组件 ▼</button>
+          <div id="linxi-details" class="detail-section list-box">
+             <div id="linxi-cloth-list"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
+```

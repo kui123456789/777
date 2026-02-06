@@ -34,9 +34,9 @@
         <span>新的数值</span>
         <input
           ref="abilityInputRef"
+          v-model="abilityInputValue"
           type="number"
           step="1"
-          v-model="abilityInputValue"
           @keyup.enter.prevent="handleAbilityConfirm"
         />
       </label>

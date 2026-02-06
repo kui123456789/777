@@ -20,7 +20,7 @@ export function useAudioManager() {
   // 懒加载 AudioContext（需要用户交互后才能创建）
   function getAudioContext(): AudioContext {
     if (!audioContext) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
     return audioContext;

@@ -1062,8 +1062,8 @@ export class SaveManager {
 
       // 创建存档名称
       let saveName = '';
-      let dialogueCount = gameData.story.dialogue.length;
-      let memoriesCount = gameData.storySummary.length;
+      const dialogueCount = gameData.story.dialogue.length;
+      const memoriesCount = gameData.storySummary.length;
 
       if (isManual && customName) {
         saveName = `${customName} #${nextId} [对话:${dialogueCount}条|记忆:${memoriesCount}条]`;

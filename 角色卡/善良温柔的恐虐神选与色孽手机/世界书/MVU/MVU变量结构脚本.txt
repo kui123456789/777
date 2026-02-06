@@ -1,0 +1,302 @@
+import { registerMvuSchema } from 'https://testingcf.jsdelivr.net/gh/StageDog/tavern_resource/dist/util/mvu_zod.js';
+
+export const Schema = z.object({
+  世界: z.object({
+    当前时间: z.string().prefault('中午'),
+    当前地点: z.string().prefault('学校'),
+    日期: z.string().prefault('周一'),
+  }),
+
+  林海: z.object({
+    色孽点: z.coerce.number().prefault(0).describe('通过色情行为获得的货币'),
+    手机功能: z.object({
+      透视开启: z.boolean().prefault(false),
+      身体柔韧化开启: z.boolean().prefault(false),
+      远程操控开启: z.boolean().prefault(false),
+      催眠目标: z.string().nullable().prefault(null),
+    }),
+    背包: z.record(
+      z.string().describe('物品名称'),
+      z.object({
+        数量: z.coerce.number().prefault(1),
+        描述: z.string().optional(),
+      })
+    ).prefault({}),
+  }),
+
+  鹿忻: z.object({
+    体力: z.coerce.number().prefault(100),
+    好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(50),
+    当前状态: z.enum(['正常', '高潮', '昏迷', '崩溃', '睡眠']).prefault('正常'),
+
+    敏感度: z.object({
+      乳穴: z.coerce.number().prefault(0),
+      阴道: z.coerce.number().prefault(0),
+      子宫: z.coerce.number().prefault(190).describe('鹿忻特质：基础极高'),
+      直肠: z.coerce.number().prefault(0),
+      喉咙: z.coerce.number().prefault(0),
+    }),
+
+    高潮统计: z.object({
+      单次最高幅度: z.coerce.number().prefault(0),
+      累计次数: z.coerce.number().prefault(0),
+    }),
+
+    身体容纳: z.object({
+      子宫精液量: z.coerce.number().prefault(0).describe('单位ml'),
+      肠道精液量: z.coerce.number().prefault(0),
+      乳腺精液量: z.coerce.number().prefault(0),
+      腹部隆起: z.boolean().prefault(false),
+      异物: z.record(z.string(), z.string()).prefault({}),
+    }),
+
+    着装: z.record(
+      z.enum(['上装', '下装', '内衣', '内裤', '袜子', '鞋子', '饰品']),
+      z.string()
+    ).prefault({
+      上装: '校服衬衫',
+      下装: '百褶短裙',
+      内衣: '白色棉质文胸',
+      内裤: '纯白棉质三角内裤',
+      袜子: '黑色中筒袜',
+      鞋子: '制服皮鞋'
+    }),
+
+    深层生理: z.object({
+      心跳: z.coerce.number().prefault(72).describe('BPM 正常60-100'),
+      呼吸频率: z.coerce.number().prefault(16).describe('次/分 正常12-20'),
+      体温: z.coerce.number().prefault(36.5),
+      荷尔蒙: z.object({
+        多巴胺: z.coerce.number().prefault(50).describe('0-100 快感/奖励'),
+        内啡肽: z.coerce.number().prefault(50).describe('0-100 愉悦/止痛'),
+        肾上腺素: z.coerce.number().prefault(30).describe('0-100 兴奋/应激'),
+        催产素: z.coerce.number().prefault(40).describe('0-100 亲密/依恋'),
+      }),
+      神经反应度: z.coerce.number().prefault(50).describe('0-100 整体神经敏感程度'),
+      肌肉紧张度: z.coerce.number().prefault(30).describe('0-100'),
+      瞳孔扩张: z.coerce.number().prefault(50).describe('0-100 情绪激动时扩张'),
+    }),
+
+    催眠状态: z.object({
+      催眠深度: z.coerce.number().prefault(0).describe('0-100 当前催眠深度'),
+      暗示接受度: z.coerce.number().prefault(50).describe('0-100 对暗示的接受程度'),
+      抵抗力: z.coerce.number().prefault(100).describe('0-100 催眠抵抗'),
+      意识模糊度: z.coerce.number().prefault(0).describe('0-100 意识清醒程度的反向'),
+      植入暗示: z.record(z.string(), z.object({
+        内容: z.string(),
+        强度: z.coerce.number().prefault(0).describe('0-100 暗示的根植深度'),
+        触发词: z.string().optional(),
+        激活状态: z.boolean().prefault(false),
+      })).prefault({}),
+      累计催眠次数: z.coerce.number().prefault(0),
+      上次催眠时间: z.string().nullable().prefault(null),
+    }),
+  }),
+
+  鹿晴: z.object({
+    体力: z.coerce.number().prefault(100),
+    好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(60),
+    当前状态: z.enum(['正常', '高潮', '昏迷', '无表情', '睡眠']).prefault('无表情'),
+
+    敏感度: z.object({
+      乳穴: z.coerce.number().prefault(0),
+      阴道: z.coerce.number().prefault(0),
+      子宫: z.coerce.number().prefault(0),
+      直肠: z.coerce.number().prefault(0),
+      喉咙: z.coerce.number().prefault(0),
+    }),
+
+    高潮统计: z.object({
+      单次最高幅度: z.coerce.number().prefault(0),
+      累计次数: z.coerce.number().prefault(0),
+    }),
+
+    身体容纳: z.object({
+      子宫精液量: z.coerce.number().prefault(0),
+      肠道精液量: z.coerce.number().prefault(0),
+      乳腺精液量: z.coerce.number().prefault(0),
+      腹部隆起: z.boolean().prefault(false),
+      异物: z.record(z.string(), z.string()).prefault({}),
+    }),
+
+    着装: z.record(
+      z.enum(['上装', '下装', '内衣', '内裤', '袜子', '鞋子', '饰品']),
+      z.string()
+    ).prefault({
+      上装: '校服衬衫',
+      下装: '百褶短裙',
+      内衣: '变形的白色文胸',
+      内裤: '浅色棉质三角内裤',
+      袜子: '黑色棉质中筒袜',
+      鞋子: '黑色皮鞋'
+    }),
+
+    深层生理: z.object({
+      心跳: z.coerce.number().prefault(72),
+      呼吸频率: z.coerce.number().prefault(16),
+      体温: z.coerce.number().prefault(36.5),
+      荷尔蒙: z.object({
+        多巴胺: z.coerce.number().prefault(50),
+        内啡肽: z.coerce.number().prefault(50),
+        肾上腺素: z.coerce.number().prefault(30),
+        催产素: z.coerce.number().prefault(40),
+      }),
+      神经反应度: z.coerce.number().prefault(50),
+      肌肉紧张度: z.coerce.number().prefault(30),
+      瞳孔扩张: z.coerce.number().prefault(50),
+    }),
+
+    催眠状态: z.object({
+      催眠深度: z.coerce.number().prefault(0),
+      暗示接受度: z.coerce.number().prefault(50),
+      抵抗力: z.coerce.number().prefault(100),
+      意识模糊度: z.coerce.number().prefault(0),
+      植入暗示: z.record(z.string(), z.object({
+        内容: z.string(),
+        强度: z.coerce.number().prefault(0),
+        触发词: z.string().optional(),
+        激活状态: z.boolean().prefault(false),
+      })).prefault({}),
+      累计催眠次数: z.coerce.number().prefault(0),
+      上次催眠时间: z.string().nullable().prefault(null),
+    }),
+  }),
+
+  戎华: z.object({
+    体力: z.coerce.number().prefault(100),
+    好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(40),
+    星怒值: z.coerce.number().prefault(0).describe('受虐与服从的程度'),
+    当前状态: z.enum(['正常', '高潮', '昏迷', '发情', '睡眠']).prefault('正常'),
+
+    敏感度: z.object({
+      乳穴: z.coerce.number().prefault(0),
+      阴道: z.coerce.number().prefault(0),
+      子宫: z.coerce.number().prefault(0),
+      直肠: z.coerce.number().prefault(0),
+      喉咙: z.coerce.number().prefault(0),
+    }),
+
+    高潮统计: z.object({
+      单次最高幅度: z.coerce.number().prefault(0),
+      累计次数: z.coerce.number().prefault(0),
+    }),
+
+    身体容纳: z.object({
+      子宫精液量: z.coerce.number().prefault(0),
+      肠道精液量: z.coerce.number().prefault(0),
+      乳腺精液量: z.coerce.number().prefault(0),
+      腹部隆起: z.boolean().prefault(false),
+      异物: z.record(z.string(), z.string()).prefault({}),
+    }),
+
+    着装: z.record(
+      z.enum(['上装', '下装', '内衣', '内裤', '袜子', '鞋子', '饰品']),
+      z.string()
+    ).prefault({
+      上装: '校服',
+      下装: '长裙',
+      内衣: '黑色运动内衣',
+      内裤: '黑色内裤',
+      袜子: '船袜',
+      鞋子: '运动鞋'
+    }),
+
+    深层生理: z.object({
+      心跳: z.coerce.number().prefault(72),
+      呼吸频率: z.coerce.number().prefault(16),
+      体温: z.coerce.number().prefault(36.5),
+      荷尔蒙: z.object({
+        多巴胺: z.coerce.number().prefault(50),
+        内啡肽: z.coerce.number().prefault(50),
+        肾上腺素: z.coerce.number().prefault(30),
+        催产素: z.coerce.number().prefault(40),
+      }),
+      神经反应度: z.coerce.number().prefault(50),
+      肌肉紧张度: z.coerce.number().prefault(30),
+      瞳孔扩张: z.coerce.number().prefault(50),
+    }),
+
+    催眠状态: z.object({
+      催眠深度: z.coerce.number().prefault(0),
+      暗示接受度: z.coerce.number().prefault(50),
+      抵抗力: z.coerce.number().prefault(100),
+      意识模糊度: z.coerce.number().prefault(0),
+      植入暗示: z.record(z.string(), z.object({
+        内容: z.string(),
+        强度: z.coerce.number().prefault(0),
+        触发词: z.string().optional(),
+        激活状态: z.boolean().prefault(false),
+      })).prefault({}),
+      累计催眠次数: z.coerce.number().prefault(0),
+      上次催眠时间: z.string().nullable().prefault(null),
+    }),
+  }),
+
+  林曦: z.object({
+    体力: z.coerce.number().prefault(100),
+    好感度: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(0),
+    当前状态: z.string().prefault('运行中'),
+    电量: z.coerce.number().transform(v => _.clamp(v, 0, 100)).prefault(100),
+    模拟人格状态: z.enum(['正常', '过载', '崩溃', '重启中']).prefault('正常'),
+
+    敏感度: z.object({
+      乳穴: z.coerce.number().prefault(0),
+      阴道: z.coerce.number().prefault(0),
+      人造子宫: z.coerce.number().prefault(0),
+      直肠: z.coerce.number().prefault(0),
+      喉咙: z.coerce.number().prefault(0),
+    }),
+
+    身体容纳: z.object({
+      人造子宫精液量: z.coerce.number().prefault(0),
+      腹部隆起: z.boolean().prefault(false),
+      异物: z.record(z.string(), z.string()).prefault({}),
+    }),
+
+    着装: z.record(
+      z.enum(['上装', '下装', '内衣', '内裤', '袜子', '鞋子', '饰品']),
+      z.string()
+    ).prefault({
+      上装: '宽松外套',
+      下装: '红黑短裙',
+      内衣: '无',
+      内裤: '无',
+      袜子: '无',
+      鞋子: '运动鞋'
+    }),
+
+    肢体状态: z.object({
+      头: z.boolean().prefault(true),
+      左臂: z.boolean().prefault(true),
+      右臂: z.boolean().prefault(true),
+      左腿: z.boolean().prefault(true),
+      右腿: z.boolean().prefault(true),
+    }).describe('true为安装，false为拆卸'),
+
+    深层状态: z.object({
+      CPU温度: z.coerce.number().prefault(45).describe('摄氏度'),
+      内存占用: z.coerce.number().prefault(30).describe('百分比'),
+      情感模拟强度: z.coerce.number().prefault(50).describe('0-100'),
+      感知处理延迟: z.coerce.number().prefault(5).describe('毫秒'),
+      自我意识指数: z.coerce.number().prefault(70).describe('0-100'),
+      情感溢出风险: z.coerce.number().prefault(20).describe('0-100 情感模拟过载风险'),
+    }),
+
+    程序催眠: z.object({
+      指令覆盖深度: z.coerce.number().prefault(0).describe('0-100 核心指令被覆盖程度'),
+      服从协议强度: z.coerce.number().prefault(50).describe('0-100 对用户指令的服从程度'),
+      自主判断抑制: z.coerce.number().prefault(0).describe('0-100 自主判断能力被抑制程度'),
+      植入指令: z.record(z.string(), z.object({
+        内容: z.string(),
+        强度: z.coerce.number().prefault(0),
+        触发词: z.string().optional(),
+        激活状态: z.boolean().prefault(false),
+      })).prefault({}),
+      系统警告等级: z.coerce.number().prefault(0).describe('0-3 内部警告等级'),
+    }),
+  }),
+});
+
+$(() => {
+  registerMvuSchema(Schema);
+})
