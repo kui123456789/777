@@ -1,9 +1,9 @@
 import {fileURLToPath as __webpack_fileURLToPath__} from "node:url";
-const __webpack_dirname__ = __webpack_fileURLToPath__(import.meta.url.replace(/\/(?:[^\/]*)$/, ""));
-const __webpack_filename__ = __webpack_fileURLToPath__(import.meta.url);
+var __webpack_dirname__ = __webpack_fileURLToPath__(import.meta.url.replace(/\/(?:[^\/]*)$/, ""));
+var __webpack_filename__ = __webpack_fileURLToPath__(import.meta.url);
 import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "node:module";
 const __WEBPACK_EXTERNAL_createRequire_require = __WEBPACK_EXTERNAL_createRequire(import.meta.url);
-/******/ const __webpack_modules__ = ({
+/******/ var __webpack_modules__ = ({
 
 /***/ 9
 (module, __unused_webpack_exports, __webpack_require__) {
@@ -22,8 +22,8 @@ const __WEBPACK_EXTERNAL_createRequire_require = __WEBPACK_EXTERNAL_createRequir
  * @private
  */
 
-const Negotiator = __webpack_require__(1882)
-const mime = __webpack_require__(1976)
+var Negotiator = __webpack_require__(1882)
+var mime = __webpack_require__(1976)
 
 /**
  * Module exports.
@@ -91,12 +91,12 @@ function Accepts (req) {
 
 Accepts.prototype.type =
 Accepts.prototype.types = function (types_) {
-  let types = types_
+  var types = types_
 
   // support flattened arguments
   if (types && !Array.isArray(types)) {
     types = new Array(arguments.length)
-    for (let i = 0; i < types.length; i++) {
+    for (var i = 0; i < types.length; i++) {
       types[i] = arguments[i]
     }
   }
@@ -111,9 +111,9 @@ Accepts.prototype.types = function (types_) {
     return types[0]
   }
 
-  const mimes = types.map(extToMime)
-  const accepts = this.negotiator.mediaTypes(mimes.filter(validMime))
-  const first = accepts[0]
+  var mimes = types.map(extToMime)
+  var accepts = this.negotiator.mediaTypes(mimes.filter(validMime))
+  var first = accepts[0]
 
   return first
     ? types[mimes.indexOf(first)]
@@ -135,12 +135,12 @@ Accepts.prototype.types = function (types_) {
 
 Accepts.prototype.encoding =
 Accepts.prototype.encodings = function (encodings_) {
-  let encodings = encodings_
+  var encodings = encodings_
 
   // support flattened arguments
   if (encodings && !Array.isArray(encodings)) {
     encodings = new Array(arguments.length)
-    for (let i = 0; i < encodings.length; i++) {
+    for (var i = 0; i < encodings.length; i++) {
       encodings[i] = arguments[i]
     }
   }
@@ -168,12 +168,12 @@ Accepts.prototype.encodings = function (encodings_) {
 
 Accepts.prototype.charset =
 Accepts.prototype.charsets = function (charsets_) {
-  let charsets = charsets_
+  var charsets = charsets_
 
   // support flattened arguments
   if (charsets && !Array.isArray(charsets)) {
     charsets = new Array(arguments.length)
-    for (let i = 0; i < charsets.length; i++) {
+    for (var i = 0; i < charsets.length; i++) {
       charsets[i] = arguments[i]
     }
   }
@@ -203,12 +203,12 @@ Accepts.prototype.lang =
 Accepts.prototype.langs =
 Accepts.prototype.language =
 Accepts.prototype.languages = function (languages_) {
-  let languages = languages_
+  var languages = languages_
 
   // support flattened arguments
   if (languages && !Array.isArray(languages)) {
     languages = new Array(arguments.length)
-    for (let i = 0; i < languages.length; i++) {
+    for (var i = 0; i < languages.length; i++) {
       languages[i] = arguments[i]
     }
   }
@@ -255,14 +255,14 @@ function validMime (type) {
 
 
 
-const identity = __webpack_require__(3619);
-const Pair = __webpack_require__(5009);
-const YAMLMap = __webpack_require__(4538);
-const YAMLSeq = __webpack_require__(3939);
-const resolveEnd = __webpack_require__(720);
-const resolveProps = __webpack_require__(6571);
-const utilContainsNewline = __webpack_require__(9119);
-const utilMapIncludes = __webpack_require__(5559);
+var identity = __webpack_require__(3619);
+var Pair = __webpack_require__(5009);
+var YAMLMap = __webpack_require__(4538);
+var YAMLSeq = __webpack_require__(3939);
+var resolveEnd = __webpack_require__(720);
+var resolveProps = __webpack_require__(6571);
+var utilContainsNewline = __webpack_require__(9119);
+var utilMapIncludes = __webpack_require__(5559);
 
 const blockMsg = 'Block collections are not allowed within flow collections';
 const isBlock = (token) => token && (token.type === 'block-map' || token.type === 'block-seq');
@@ -3243,10 +3243,10 @@ class Polling extends transport_1.Transport {
         const res = req.res;
         // remove the reference to the ServerResponse object (as the first request of the session is kept in memory by default)
         req.res = null;
-        if (req.method === "GET") {
+        if ("GET" === req.method) {
             this.onPollRequest(req, res);
         }
-        else if (req.method === "POST") {
+        else if ("POST" === req.method) {
             this.onDataRequest(req, res);
         }
         else {
@@ -3301,7 +3301,7 @@ class Polling extends transport_1.Transport {
             res.end();
             return;
         }
-        const isBinary = req.headers["content-type"] === "application/octet-stream";
+        const isBinary = "application/octet-stream" === req.headers["content-type"];
         if (isBinary && this.protocol === 4) {
             return this.onError("invalid content");
         }
@@ -3360,7 +3360,7 @@ class Polling extends transport_1.Transport {
     onData(data) {
         debug('received "%s"', data);
         const callback = (packet) => {
-            if (packet.type === "close") {
+            if ("close" === packet.type) {
                 debug("got xhr close packet");
                 this.onClose();
                 return false;
@@ -3437,7 +3437,7 @@ class Polling extends transport_1.Transport {
         };
         const respond = (data) => {
             headers["Content-Length"] =
-                typeof data === "string" ? Buffer.byteLength(data) : data.length;
+                "string" === typeof data ? Buffer.byteLength(data) : data.length;
             this.res.writeHead(200, this.headers(this.req, headers));
             this.res.end(data);
             callback();
@@ -3666,7 +3666,7 @@ exports.colors = [
  * TODO: add a `localStorage` variable to explicitly enable/disable colors
  */
 
- 
+// eslint-disable-next-line complexity
 function useColors() {
 	// NB: In an Electron preload script, document will be defined but not fully
 	// initialized. Since we know we're in Chrome, we'll just detect this case
@@ -3684,7 +3684,7 @@ function useColors() {
 
 	// Is webkit? http://stackoverflow.com/a/16459606/376773
 	// document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-	 
+	// eslint-disable-next-line no-return-assign
 	return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
 		// Is firebug? http://stackoverflow.com/a/398120/376773
 		(typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
@@ -3834,22 +3834,22 @@ formatters.j = function (v) {
 
 
 
-const map = __webpack_require__(1615);
-const _null = __webpack_require__(6756);
-const seq = __webpack_require__(7470);
-const string = __webpack_require__(9292);
-const bool = __webpack_require__(6987);
-const float = __webpack_require__(5193);
-const int = __webpack_require__(1510);
-const schema = __webpack_require__(2652);
-const schema$1 = __webpack_require__(5075);
-const binary = __webpack_require__(9367);
-const merge = __webpack_require__(968);
-const omap = __webpack_require__(5659);
-const pairs = __webpack_require__(533);
-const schema$2 = __webpack_require__(5509);
-const set = __webpack_require__(3436);
-const timestamp = __webpack_require__(3676);
+var map = __webpack_require__(1615);
+var _null = __webpack_require__(6756);
+var seq = __webpack_require__(7470);
+var string = __webpack_require__(9292);
+var bool = __webpack_require__(6987);
+var float = __webpack_require__(5193);
+var int = __webpack_require__(1510);
+var schema = __webpack_require__(2652);
+var schema$1 = __webpack_require__(5075);
+var binary = __webpack_require__(9367);
+var merge = __webpack_require__(968);
+var omap = __webpack_require__(5659);
+var pairs = __webpack_require__(533);
+var schema$2 = __webpack_require__(5509);
+var set = __webpack_require__(3436);
+var timestamp = __webpack_require__(3676);
 
 const schemas = new Map([
     ['core', schema.schema],
@@ -3942,7 +3942,7 @@ exports.getTags = getTags;
 
 (function(){
 
-  let
+  var
     buf,
     bufIdx = 0,
     hexBytes = [],
@@ -3977,7 +3977,7 @@ exports.getTags = getTags;
   };
 
   // Node & Browser support
-  let crypt0;
+  var crypt0;
   if (typeof crypto !== 'undefined') {
     crypt0 = crypto;
   } else if( (typeof window !== 'undefined') && (typeof window.msCrypto !== 'undefined')) {
@@ -4000,20 +4000,20 @@ exports.getTags = getTags;
       if (crypt0.getRandomValues) {
         if (typeof Uint8Array.prototype.slice !== 'function') {
           return function(n) {
-            const bytes = new Uint8Array(n);
+            var bytes = new Uint8Array(n);
             crypt0.getRandomValues(bytes);
             return Array.from(bytes);
           };
         }
         return function(n) {
-          const bytes = new Uint8Array(n);
+          var bytes = new Uint8Array(n);
           crypt0.getRandomValues(bytes);
           return bytes;
         };
       }
     }
     return function(n) {
-      let i, r = [];
+      var i, r = [];
       for (i = 0; i < n; i++) {
         r.push(Math.floor(Math.random() * 256));
       }
@@ -4032,7 +4032,7 @@ exports.getTags = getTags;
 
   // uuid.bin
   function uuidBin() {
-    const b = randomBytesBuffered(16);
+    var b = randomBytesBuffered(16);
     b[6] = (b[6] & 0x0f) | 0x40;
     b[8] = (b[8] & 0x3f) | 0x80;
     return b;
@@ -4040,7 +4040,7 @@ exports.getTags = getTags;
 
   // String UUIDv4 (Random)
   function uuid() {
-    const b = uuidBin();
+    var b = uuidBin();
     return hexBytes[b[0]] + hexBytes[b[1]] +
       hexBytes[b[2]] + hexBytes[b[3]] + '-' +
       hexBytes[b[4]] + hexBytes[b[5]] + '-' +
@@ -4597,10 +4597,10 @@ function inflateOnError(err) {
 
 
 
-const identity = __webpack_require__(3619);
-const Pair = __webpack_require__(5009);
-const Scalar = __webpack_require__(7201);
-const YAMLSeq = __webpack_require__(3939);
+var identity = __webpack_require__(3619);
+var Pair = __webpack_require__(5009);
+var Scalar = __webpack_require__(7201);
+var YAMLSeq = __webpack_require__(3939);
 
 function resolvePairs(seq, onError) {
     if (identity.isSeq(seq)) {
@@ -5445,11 +5445,11 @@ module.exports = Receiver;
 
 
 
-const log = __webpack_require__(925);
-const merge = __webpack_require__(968);
-const stringify = __webpack_require__(6848);
-const identity = __webpack_require__(3619);
-const toJS = __webpack_require__(9455);
+var log = __webpack_require__(925);
+var merge = __webpack_require__(968);
+var stringify = __webpack_require__(6848);
+var identity = __webpack_require__(3619);
+var toJS = __webpack_require__(9455);
 
 function addPairToJSMap(ctx, map, { key, value }) {
     if (identity.isNode(key) && key.addToJSMap)
@@ -5484,7 +5484,7 @@ function addPairToJSMap(ctx, map, { key, value }) {
 function stringifyKey(key, jsKey, ctx) {
     if (jsKey === null)
         return '';
-     
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
     if (typeof jsKey !== 'object')
         return String(jsKey);
     if (identity.isNode(key) && ctx?.doc) {
@@ -5537,7 +5537,7 @@ function applyReviver(reviver, obj, key, val) {
             for (let i = 0, len = val.length; i < len; ++i) {
                 const v0 = val[i];
                 const v1 = applyReviver(reviver, val, String(i), v0);
-                 
+                // eslint-disable-next-line @typescript-eslint/no-array-delete
                 if (v1 === undefined)
                     delete val[i];
                 else if (v1 !== v0)
@@ -5588,7 +5588,7 @@ exports.applyReviver = applyReviver;
 
 
 
-const node_process = __webpack_require__(932);
+var node_process = __webpack_require__(932);
 
 function debug(logLevel, ...messages) {
     if (logLevel === 'debug')
@@ -5621,8 +5621,8 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("process");
 
 
 
-const identity = __webpack_require__(3619);
-const Scalar = __webpack_require__(7201);
+var identity = __webpack_require__(3619);
+var Scalar = __webpack_require__(7201);
 
 // If the value associated with a merge key is a single mapping node, each of
 // its key/value pairs is inserted into the current mapping, unless the key
@@ -5696,10 +5696,10 @@ exports.merge = merge;
 
 
 
-const resolveBlockScalar = __webpack_require__(6965);
-const resolveFlowScalar = __webpack_require__(5158);
-const errors = __webpack_require__(1188);
-const stringifyString = __webpack_require__(5921);
+var resolveBlockScalar = __webpack_require__(6965);
+var resolveFlowScalar = __webpack_require__(5158);
+var errors = __webpack_require__(1188);
+var stringifyString = __webpack_require__(5921);
 
 function resolveAsScalar(token, strict = true, onError) {
     if (token) {
@@ -6005,13 +6005,13 @@ exports["default"] = {
 
 
 
-const composer = __webpack_require__(1828);
-const Document = __webpack_require__(6121);
-const errors = __webpack_require__(1188);
-const log = __webpack_require__(925);
-const identity = __webpack_require__(3619);
-const lineCounter = __webpack_require__(9752);
-const parser = __webpack_require__(4884);
+var composer = __webpack_require__(1828);
+var Document = __webpack_require__(6121);
+var errors = __webpack_require__(1188);
+var log = __webpack_require__(925);
+var identity = __webpack_require__(3619);
+var lineCounter = __webpack_require__(9752);
+var parser = __webpack_require__(4884);
 
 function parseOptions(options) {
     const prettyErrors = options.prettyErrors !== false;
@@ -6308,7 +6308,7 @@ exports.humanReadableArgName = humanReadableArgName;
 
 
 
-const Scalar = __webpack_require__(7201);
+var Scalar = __webpack_require__(7201);
 
 function boolStringify({ value, source }, ctx) {
     const boolObj = value ? trueTag : falseTag;
@@ -6351,10 +6351,10 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("node:child_process");
 
 
 
-const identity = __webpack_require__(3619);
-const Scalar = __webpack_require__(7201);
-const stringify = __webpack_require__(6848);
-const stringifyComment = __webpack_require__(1995);
+var identity = __webpack_require__(3619);
+var Scalar = __webpack_require__(7201);
+var stringify = __webpack_require__(6848);
+var stringifyComment = __webpack_require__(1995);
 
 function stringifyPair({ key, value }, ctx, onComment, onChompKeep) {
     const { allNullValues, doc, indent, indentStep, options: { commentString, indentSeq, simpleKeys } } = ctx;
@@ -6510,12 +6510,12 @@ exports.stringifyPair = stringifyPair;
 
 
 
-const Pair = __webpack_require__(5009);
-const YAMLMap = __webpack_require__(4538);
-const resolveProps = __webpack_require__(6571);
-const utilContainsNewline = __webpack_require__(9119);
-const utilFlowIndentCheck = __webpack_require__(2967);
-const utilMapIncludes = __webpack_require__(5559);
+var Pair = __webpack_require__(5009);
+var YAMLMap = __webpack_require__(4538);
+var resolveProps = __webpack_require__(6571);
+var utilContainsNewline = __webpack_require__(9119);
+var utilFlowIndentCheck = __webpack_require__(2967);
+var utilMapIncludes = __webpack_require__(5559);
 
 const startColMsg = 'All mapping items must start at the same column';
 function resolveBlockMap({ composeNode, composeEmptyNode }, ctx, bm, onError, tag) {
@@ -7008,7 +7008,7 @@ exports.DualOptions = DualOptions;
 
 
 
-const stringifyNumber = __webpack_require__(1277);
+var stringifyNumber = __webpack_require__(1277);
 
 const intIdentify = (value) => typeof value === 'bigint' || Number.isInteger(value);
 const intResolve = (str, offset, radix, { intAsBigInt }) => (intAsBigInt ? BigInt(str) : parseInt(str.substring(offset), radix));
@@ -7072,8 +7072,8 @@ module.exports = (flag, argv = process.argv) => {
 
 
 
-const identity = __webpack_require__(3619);
-const YAMLMap = __webpack_require__(4538);
+var identity = __webpack_require__(3619);
+var YAMLMap = __webpack_require__(4538);
 
 const map = {
     collection: 'map',
@@ -7098,8 +7098,8 @@ exports.map = map;
 
 
 
-const Scalar = __webpack_require__(7201);
-const stringifyNumber = __webpack_require__(1277);
+var Scalar = __webpack_require__(7201);
+var stringifyNumber = __webpack_require__(1277);
 
 const floatNaN = {
     identify: value => typeof value === 'number',
@@ -7161,7 +7161,7 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("node:process");
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-const __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -7290,7 +7290,7 @@ class Socket extends typed_events_1.StrictEventEmitter {
      * @private
      */
     buildHandshake(auth) {
-        let _a, _b, _c, _d;
+        var _a, _b, _c, _d;
         return {
             headers: ((_a = this.request) === null || _a === void 0 ? void 0 : _a.headers) || {},
             time: new Date() + "",
@@ -7508,7 +7508,7 @@ class Socket extends typed_events_1.StrictEventEmitter {
      */
     packet(packet, opts = {}) {
         packet.nsp = this.nsp.name;
-        opts.compress = opts.compress !== false;
+        opts.compress = false !== opts.compress;
         this.client._packet(packet, opts);
     }
     /**
@@ -7614,7 +7614,7 @@ class Socket extends typed_events_1.StrictEventEmitter {
     onevent(packet) {
         const args = packet.data || [];
         debug("emitting event %j", args);
-        if (packet.id != null) {
+        if (null != packet.id) {
             debug("attaching ack callback to event");
             args.push(this.ack(packet.id));
         }
@@ -7656,7 +7656,7 @@ class Socket extends typed_events_1.StrictEventEmitter {
      */
     onack(packet) {
         const ack = this.acks.get(packet.id);
-        if (typeof ack == "function") {
+        if ("function" == typeof ack) {
             debug("calling ack %s with %j", packet.id, packet.data);
             ack.apply(this, packet.data);
             this.acks.delete(packet.id);
@@ -8321,7 +8321,7 @@ class BroadcastOperator {
         }
         const ack = data.pop();
         let timedOut = false;
-        const responses = [];
+        let responses = [];
         const timer = setTimeout(() => {
             timedOut = true;
             ack.apply(this, [
@@ -8589,13 +8589,13 @@ exports.RemoteSocket = RemoteSocket;
 
 
 
-const node_process = __webpack_require__(932);
-const directives = __webpack_require__(7034);
-const Document = __webpack_require__(6121);
-const errors = __webpack_require__(1188);
-const identity = __webpack_require__(3619);
-const composeDoc = __webpack_require__(8295);
-const resolveEnd = __webpack_require__(720);
+var node_process = __webpack_require__(932);
+var directives = __webpack_require__(7034);
+var Document = __webpack_require__(6121);
+var errors = __webpack_require__(1188);
+var identity = __webpack_require__(3619);
+var composeDoc = __webpack_require__(8295);
+var resolveEnd = __webpack_require__(720);
 
 function getErrorPos(src) {
     if (typeof src === 'number')
@@ -8658,7 +8658,7 @@ class Composer {
             else
                 this.errors.push(new errors.YAMLParseError(pos, code, message));
         };
-         
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         this.directives = new directives.Directives({ version: options.version || '1.2' });
         this.options = options;
     }
@@ -8826,10 +8826,10 @@ exports.Composer = Composer;
 
 
 
-const preferredCharsets = __webpack_require__(8958)
-const preferredEncodings = __webpack_require__(8417)
-const preferredLanguages = __webpack_require__(2338)
-const preferredMediaTypes = __webpack_require__(5434)
+var preferredCharsets = __webpack_require__(8958)
+var preferredEncodings = __webpack_require__(8417)
+var preferredLanguages = __webpack_require__(2338)
+var preferredMediaTypes = __webpack_require__(5434)
 
 /**
  * Module exports.
@@ -8854,7 +8854,7 @@ function Negotiator(request) {
 }
 
 Negotiator.prototype.charset = function charset(available) {
-  const set = this.charsets(available);
+  var set = this.charsets(available);
   return set && set[0];
 };
 
@@ -8863,7 +8863,7 @@ Negotiator.prototype.charsets = function charsets(available) {
 };
 
 Negotiator.prototype.encoding = function encoding(available) {
-  const set = this.encodings(available);
+  var set = this.encodings(available);
   return set && set[0];
 };
 
@@ -8872,7 +8872,7 @@ Negotiator.prototype.encodings = function encodings(available) {
 };
 
 Negotiator.prototype.language = function language(available) {
-  const set = this.languages(available);
+  var set = this.languages(available);
   return set && set[0];
 };
 
@@ -8881,7 +8881,7 @@ Negotiator.prototype.languages = function languages(available) {
 };
 
 Negotiator.prototype.mediaType = function mediaType(available) {
-  const set = this.mediaTypes(available);
+  var set = this.mediaTypes(available);
   return set && set[0];
 };
 
@@ -8907,11 +8907,11 @@ Negotiator.prototype.preferredMediaTypes = Negotiator.prototype.mediaTypes;
 
 
 
-const identity = __webpack_require__(3619);
-const map = __webpack_require__(1615);
-const seq = __webpack_require__(7470);
-const string = __webpack_require__(9292);
-const tags = __webpack_require__(222);
+var identity = __webpack_require__(3619);
+var map = __webpack_require__(1615);
+var seq = __webpack_require__(7470);
+var string = __webpack_require__(9292);
+var tags = __webpack_require__(222);
 
 const sortMapEntriesByKey = (a, b) => a.key < b.key ? -1 : a.key > b.key ? 1 : 0;
 class Schema {
@@ -8965,16 +8965,16 @@ exports.Schema = Schema;
  * @private
  */
 
-const db = __webpack_require__(6713)
-const extname = (__webpack_require__(6928).extname)
+var db = __webpack_require__(6713)
+var extname = (__webpack_require__(6928).extname)
 
 /**
  * Module variables.
  * @private
  */
 
-const EXTRACT_TYPE_REGEXP = /^\s*([^;\s]*)(?:;|\s|$)/
-const TEXT_TYPE_REGEXP = /^text\//i
+var EXTRACT_TYPE_REGEXP = /^\s*([^;\s]*)(?:;|\s|$)/
+var TEXT_TYPE_REGEXP = /^text\//i
 
 /**
  * Module exports.
@@ -9005,8 +9005,8 @@ function charset (type) {
   }
 
   // TODO: use media-typer
-  const match = EXTRACT_TYPE_REGEXP.exec(type)
-  const mime = match && db[match[1].toLowerCase()]
+  var match = EXTRACT_TYPE_REGEXP.exec(type)
+  var mime = match && db[match[1].toLowerCase()]
 
   if (mime && mime.charset) {
     return mime.charset
@@ -9033,7 +9033,7 @@ function contentType (str) {
     return false
   }
 
-  let mime = str.indexOf('/') === -1
+  var mime = str.indexOf('/') === -1
     ? exports.lookup(str)
     : str
 
@@ -9043,7 +9043,7 @@ function contentType (str) {
 
   // TODO: use content-type or other module
   if (mime.indexOf('charset') === -1) {
-    const charset = exports.charset(mime)
+    var charset = exports.charset(mime)
     if (charset) mime += '; charset=' + charset.toLowerCase()
   }
 
@@ -9063,10 +9063,10 @@ function extension (type) {
   }
 
   // TODO: use media-typer
-  const match = EXTRACT_TYPE_REGEXP.exec(type)
+  var match = EXTRACT_TYPE_REGEXP.exec(type)
 
   // get extensions
-  const exts = match && exports.extensions[match[1].toLowerCase()]
+  var exts = match && exports.extensions[match[1].toLowerCase()]
 
   if (!exts || !exts.length) {
     return false
@@ -9088,7 +9088,7 @@ function lookup (path) {
   }
 
   // get the extension ("ext" or ".ext" or full path)
-  const extension = extname('x.' + path)
+  var extension = extname('x.' + path)
     .toLowerCase()
     .substr(1)
 
@@ -9106,11 +9106,11 @@ function lookup (path) {
 
 function populateMaps (extensions, types) {
   // source preference (least -> most)
-  const preference = ['nginx', 'apache', undefined, 'iana']
+  var preference = ['nginx', 'apache', undefined, 'iana']
 
   Object.keys(db).forEach(function forEachMimeType (type) {
-    const mime = db[type]
-    const exts = mime.extensions
+    var mime = db[type]
+    var exts = mime.extensions
 
     if (!exts || !exts.length) {
       return
@@ -9120,12 +9120,12 @@ function populateMaps (extensions, types) {
     extensions[type] = exts
 
     // extension -> mime
-    for (let i = 0; i < exts.length; i++) {
-      const extension = exts[i]
+    for (var i = 0; i < exts.length; i++) {
+      var extension = exts[i]
 
       if (types[extension]) {
-        const from = preference.indexOf(db[types[extension]].source)
-        const to = preference.indexOf(mime.source)
+        var from = preference.indexOf(db[types[extension]].source)
+        var to = preference.indexOf(mime.source)
 
         if (types[extension] !== 'application/octet-stream' &&
           (from > to || (from === to && types[extension].substr(0, 12) === 'application/'))) {
@@ -9148,7 +9148,7 @@ function populateMaps (extensions, types) {
 
 
 
-const identity = __webpack_require__(3619);
+var identity = __webpack_require__(3619);
 
 const BREAK = Symbol('break visit');
 const SKIP = Symbol('skip children');
@@ -9429,22 +9429,22 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("tty");
 
 
 
-const composer = __webpack_require__(1828);
-const Document = __webpack_require__(6121);
-const Schema = __webpack_require__(1948);
-const errors = __webpack_require__(1188);
-const Alias = __webpack_require__(6149);
-const identity = __webpack_require__(3619);
-const Pair = __webpack_require__(5009);
-const Scalar = __webpack_require__(7201);
-const YAMLMap = __webpack_require__(4538);
-const YAMLSeq = __webpack_require__(3939);
-const cst = __webpack_require__(2081);
-const lexer = __webpack_require__(5989);
-const lineCounter = __webpack_require__(9752);
-const parser = __webpack_require__(4884);
-const publicApi = __webpack_require__(1235);
-const visit = __webpack_require__(1984);
+var composer = __webpack_require__(1828);
+var Document = __webpack_require__(6121);
+var Schema = __webpack_require__(1948);
+var errors = __webpack_require__(1188);
+var Alias = __webpack_require__(6149);
+var identity = __webpack_require__(3619);
+var Pair = __webpack_require__(5009);
+var Scalar = __webpack_require__(7201);
+var YAMLMap = __webpack_require__(4538);
+var YAMLSeq = __webpack_require__(3939);
+var cst = __webpack_require__(2081);
+var lexer = __webpack_require__(5989);
+var lineCounter = __webpack_require__(9752);
+var parser = __webpack_require__(4884);
+var publicApi = __webpack_require__(1235);
+var visit = __webpack_require__(1984);
 
 
 
@@ -9486,9 +9486,9 @@ exports.visitAsync = visit.visitAsync;
 
 
 
-const cstScalar = __webpack_require__(1106);
-const cstStringify = __webpack_require__(9641);
-const cstVisit = __webpack_require__(2823);
+var cstScalar = __webpack_require__(1106);
+var cstStringify = __webpack_require__(9641);
+var cstVisit = __webpack_require__(2823);
 
 /** The byte order mark */
 const BOM = '\u{FEFF}';
@@ -9703,7 +9703,7 @@ module.exports.preferredLanguages = preferredLanguages;
  * @private
  */
 
-const simpleLanguageRegExp = /^\s*([^\s\-;]+)(?:-([^\s;]+))?\s*(?:;(.*))?$/;
+var simpleLanguageRegExp = /^\s*([^\s\-;]+)(?:-([^\s;]+))?\s*(?:;(.*))?$/;
 
 /**
  * Parse the Accept-Language header.
@@ -9711,10 +9711,10 @@ const simpleLanguageRegExp = /^\s*([^\s\-;]+)(?:-([^\s;]+))?\s*(?:;(.*))?$/;
  */
 
 function parseAcceptLanguage(accept) {
-  const accepts = accept.split(',');
+  var accepts = accept.split(',');
 
   for (var i = 0, j = 0; i < accepts.length; i++) {
-    const language = parseLanguage(accepts[i].trim(), i);
+    var language = parseLanguage(accepts[i].trim(), i);
 
     if (language) {
       accepts[j++] = language;
@@ -9733,20 +9733,20 @@ function parseAcceptLanguage(accept) {
  */
 
 function parseLanguage(str, i) {
-  const match = simpleLanguageRegExp.exec(str);
+  var match = simpleLanguageRegExp.exec(str);
   if (!match) return null;
 
-  const prefix = match[1]
-  const suffix = match[2]
-  let full = prefix
+  var prefix = match[1]
+  var suffix = match[2]
+  var full = prefix
 
   if (suffix) full += "-" + suffix;
 
-  let q = 1;
+  var q = 1;
   if (match[3]) {
-    const params = match[3].split(';')
-    for (let j = 0; j < params.length; j++) {
-      const p = params[j].split('=');
+    var params = match[3].split(';')
+    for (var j = 0; j < params.length; j++) {
+      var p = params[j].split('=');
       if (p[0] === 'q') q = parseFloat(p[1]);
     }
   }
@@ -9766,10 +9766,10 @@ function parseLanguage(str, i) {
  */
 
 function getLanguagePriority(language, accepted, index) {
-  let priority = {o: -1, q: 0, s: 0};
+  var priority = {o: -1, q: 0, s: 0};
 
-  for (let i = 0; i < accepted.length; i++) {
-    const spec = specify(language, accepted[i], index);
+  for (var i = 0; i < accepted.length; i++) {
+    var spec = specify(language, accepted[i], index);
 
     if (spec && (priority.s - spec.s || priority.q - spec.q || priority.o - spec.o) < 0) {
       priority = spec;
@@ -9785,9 +9785,9 @@ function getLanguagePriority(language, accepted, index) {
  */
 
 function specify(language, spec, index) {
-  const p = parseLanguage(language)
+  var p = parseLanguage(language)
   if (!p) return null;
-  let s = 0;
+  var s = 0;
   if(spec.full.toLowerCase() === p.full.toLowerCase()){
     s |= 4;
   } else if (spec.prefix.toLowerCase() === p.full.toLowerCase()) {
@@ -9813,7 +9813,7 @@ function specify(language, spec, index) {
 
 function preferredLanguages(accept, provided) {
   // RFC 2616 sec 14.4: no header = *
-  const accepts = parseAcceptLanguage(accept === undefined ? '*' : accept || '');
+  var accepts = parseAcceptLanguage(accept === undefined ? '*' : accept || '');
 
   if (!provided) {
     // sorted list of all languages
@@ -9823,7 +9823,7 @@ function preferredLanguages(accept, provided) {
       .map(getFullLanguage);
   }
 
-  const priorities = provided.map(function getPriority(type, index) {
+  var priorities = provided.map(function getPriority(type, index) {
     return getLanguagePriority(type, accepts, index);
   });
 
@@ -9868,7 +9868,7 @@ function isQuality(spec) {
 
 /* crc32.js (C) 2014-2015 SheetJS -- http://sheetjs.com */
 /* vim: set ts=2: */
-let CRC32;
+var CRC32;
 (function (factory) {
 	if(typeof DO_NOT_EXPORT_CRC === 'undefined') {
 		if(true) {
@@ -9882,9 +9882,9 @@ let CRC32;
 CRC32.version = '0.3.0';
 /* see perf/crc32table.js */
 function signed_crc_table() {
-	let c = 0, table = new Array(256);
+	var c = 0, table = new Array(256);
 
-	for(let n =0; n != 256; ++n){
+	for(var n =0; n != 256; ++n){
 		c = n;
 		c = ((c&1) ? (-306674912 ^ (c >>> 1)) : (c >>> 1));
 		c = ((c&1) ? (-306674912 ^ (c >>> 1)) : (c >>> 1));
@@ -9900,12 +9900,12 @@ function signed_crc_table() {
 	return typeof Int32Array !== 'undefined' ? new Int32Array(table) : table;
 }
 
-const table = signed_crc_table();
+var table = signed_crc_table();
 /* charCodeAt is the best approach for binary strings */
-const use_buffer = typeof Buffer !== 'undefined';
+var use_buffer = typeof Buffer !== 'undefined';
 function crc32_bstr(bstr) {
 	if(bstr.length > 32768) if(use_buffer) return crc32_buf_8(new Buffer(bstr));
-	let crc = -1, L = bstr.length - 1;
+	var crc = -1, L = bstr.length - 1;
 	for(var i = 0; i < L;) {
 		crc =  table[(crc ^ bstr.charCodeAt(i++)) & 0xFF] ^ (crc >>> 8);
 		crc =  table[(crc ^ bstr.charCodeAt(i++)) & 0xFF] ^ (crc >>> 8);
@@ -9978,9 +9978,9 @@ CRC32.str = crc32_str;
 
 
 
-const Alias = __webpack_require__(6149);
-const identity = __webpack_require__(3619);
-const Scalar = __webpack_require__(7201);
+var Alias = __webpack_require__(6149);
+var identity = __webpack_require__(3619);
+var Scalar = __webpack_require__(7201);
 
 const defaultTagPrefix = 'tag:yaml.org,2002:';
 function findTagObject(value, tagName, tags) {
@@ -10031,7 +10031,7 @@ function createNode(value, tagName, ctx) {
     let tagObj = findTagObject(value, tagName, schema.tags);
     if (!tagObj) {
         if (value && typeof value.toJSON === 'function') {
-             
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call
             value = value.toJSON();
         }
         if (!value || typeof value !== 'object') {
@@ -10110,7 +10110,7 @@ exports.emptyScalarPosition = emptyScalarPosition;
 
 
 
-const stringifyNumber = __webpack_require__(1277);
+var stringifyNumber = __webpack_require__(1277);
 
 const intIdentify = (value) => typeof value === 'bigint' || Number.isInteger(value);
 function intResolve(str, offset, radix, { intAsBigInt }) {
@@ -11798,13 +11798,13 @@ function socketOnError() {
 
 
 
-const map = __webpack_require__(1615);
-const _null = __webpack_require__(6756);
-const seq = __webpack_require__(7470);
-const string = __webpack_require__(9292);
-const bool = __webpack_require__(6987);
-const float = __webpack_require__(5193);
-const int = __webpack_require__(1510);
+var map = __webpack_require__(1615);
+var _null = __webpack_require__(6756);
+var seq = __webpack_require__(7470);
+var string = __webpack_require__(9292);
+var bool = __webpack_require__(6987);
+var float = __webpack_require__(5193);
+var int = __webpack_require__(1510);
 
 const schema = [
     map.map,
@@ -12045,14 +12045,14 @@ function encodePacketToBinary(packet, callback) {
 (module) {
 
 /*! https://mths.be/utf8js v2.1.2 by @mathias */
-const stringFromCharCode = String.fromCharCode;
+var stringFromCharCode = String.fromCharCode;
 // Taken from https://mths.be/punycode
 function ucs2decode(string) {
-    const output = [];
-    let counter = 0;
-    const length = string.length;
-    let value;
-    let extra;
+    var output = [];
+    var counter = 0;
+    var length = string.length;
+    var value;
+    var extra;
     while (counter < length) {
         value = string.charCodeAt(counter++);
         if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
@@ -12076,10 +12076,10 @@ function ucs2decode(string) {
 }
 // Taken from https://mths.be/punycode
 function ucs2encode(array) {
-    const length = array.length;
-    let index = -1;
-    let value;
-    let output = '';
+    var length = array.length;
+    var index = -1;
+    var value;
+    var output = '';
     while (++index < length) {
         value = array[index];
         if (value > 0xFFFF) {
@@ -12109,7 +12109,7 @@ function encodeCodePoint(codePoint, strict) {
     if ((codePoint & 0xFFFFFF80) == 0) { // 1-byte sequence
         return stringFromCharCode(codePoint);
     }
-    let symbol = '';
+    var symbol = '';
     if ((codePoint & 0xFFFFF800) == 0) { // 2-byte sequence
         symbol = stringFromCharCode(((codePoint >> 6) & 0x1F) | 0xC0);
     }
@@ -12130,12 +12130,12 @@ function encodeCodePoint(codePoint, strict) {
 }
 function utf8encode(string, opts) {
     opts = opts || {};
-    const strict = opts.strict !== false;
-    const codePoints = ucs2decode(string);
-    const length = codePoints.length;
-    let index = -1;
-    let codePoint;
-    let byteString = '';
+    var strict = false !== opts.strict;
+    var codePoints = ucs2decode(string);
+    var length = codePoints.length;
+    var index = -1;
+    var codePoint;
+    var byteString = '';
     while (++index < length) {
         codePoint = codePoints[index];
         byteString += encodeCodePoint(codePoint, strict);
@@ -12147,7 +12147,7 @@ function readContinuationByte() {
     if (byteIndex >= byteCount) {
         throw Error('Invalid byte index');
     }
-    const continuationByte = byteArray[byteIndex] & 0xFF;
+    var continuationByte = byteArray[byteIndex] & 0xFF;
     byteIndex++;
     if ((continuationByte & 0xC0) == 0x80) {
         return continuationByte & 0x3F;
@@ -12156,11 +12156,11 @@ function readContinuationByte() {
     throw Error('Invalid continuation byte');
 }
 function decodeSymbol(strict) {
-    let byte1;
-    let byte2;
-    let byte3;
-    let byte4;
-    let codePoint;
+    var byte1;
+    var byte2;
+    var byte3;
+    var byte4;
+    var codePoint;
     if (byteIndex > byteCount) {
         throw Error('Invalid byte index');
     }
@@ -12210,17 +12210,17 @@ function decodeSymbol(strict) {
     }
     throw Error('Invalid UTF-8 detected');
 }
-let byteArray;
-let byteCount;
-let byteIndex;
+var byteArray;
+var byteCount;
+var byteIndex;
 function utf8decode(byteString, opts) {
     opts = opts || {};
-    const strict = opts.strict !== false;
+    var strict = false !== opts.strict;
     byteArray = ucs2decode(byteString);
     byteCount = byteArray.length;
     byteIndex = 0;
-    const codePoints = [];
-    let tmp;
+    var codePoints = [];
+    var tmp;
     while ((tmp = decodeSymbol(strict)) !== false) {
         codePoints.push(tmp);
     }
@@ -12346,9 +12346,9 @@ exports.visit = visit;
 
 
 
-const applyReviver = __webpack_require__(873);
-const identity = __webpack_require__(3619);
-const toJS = __webpack_require__(9455);
+var applyReviver = __webpack_require__(873);
+var identity = __webpack_require__(3619);
+var toJS = __webpack_require__(9455);
 
 class NodeBase {
     constructor(type) {
@@ -12392,8 +12392,8 @@ exports.NodeBase = NodeBase;
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-const __rest = (this && this.__rest) || function (s, e) {
-    const t = {};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
@@ -12414,7 +12414,7 @@ const DEFAULT_TIMEOUT = 5000;
 function randomId() {
     return (0, crypto_1.randomBytes)(8).toString("hex");
 }
-let MessageType;
+var MessageType;
 (function (MessageType) {
     MessageType[MessageType["INITIAL_HEARTBEAT"] = 1] = "INITIAL_HEARTBEAT";
     MessageType[MessageType["HEARTBEAT"] = 2] = "HEARTBEAT";
@@ -12586,7 +12586,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
      * @protected
      */
     onResponse(response) {
-        let _a, _b;
+        var _a, _b;
         const requestId = response.data.requestId;
         debug("[%s] received response %s to request %s", this.uid, response.type, requestId);
         switch (response.type) {
@@ -12633,7 +12633,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
         }
     }
     async broadcast(packet, opts) {
-        let _a;
+        var _a;
         const onlyLocal = (_a = opts.flags) === null || _a === void 0 ? void 0 : _a.local;
         if (!onlyLocal) {
             try {
@@ -12662,7 +12662,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
      * @private
      */
     addOffsetIfNecessary(packet, opts, offset) {
-        let _a;
+        var _a;
         if (!this.nsp.server.opts.connectionStateRecovery) {
             return;
         }
@@ -12676,7 +12676,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
         }
     }
     broadcastWithAck(packet, opts, clientCountCallback, ack) {
-        let _a;
+        var _a;
         const onlyLocal = (_a = opts === null || opts === void 0 ? void 0 : opts.flags) === null || _a === void 0 ? void 0 : _a.local;
         if (!onlyLocal) {
             const requestId = randomId();
@@ -12701,7 +12701,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
         super.broadcastWithAck(packet, opts, clientCountCallback, ack);
     }
     async addSockets(opts, rooms) {
-        let _a;
+        var _a;
         const onlyLocal = (_a = opts.flags) === null || _a === void 0 ? void 0 : _a.local;
         if (!onlyLocal) {
             try {
@@ -12720,7 +12720,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
         super.addSockets(opts, rooms);
     }
     async delSockets(opts, rooms) {
-        let _a;
+        var _a;
         const onlyLocal = (_a = opts.flags) === null || _a === void 0 ? void 0 : _a.local;
         if (!onlyLocal) {
             try {
@@ -12739,7 +12739,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
         super.delSockets(opts, rooms);
     }
     async disconnectSockets(opts, close) {
-        let _a;
+        var _a;
         const onlyLocal = (_a = opts.flags) === null || _a === void 0 ? void 0 : _a.local;
         if (!onlyLocal) {
             try {
@@ -12758,7 +12758,7 @@ class ClusterAdapter extends in_memory_adapter_1.Adapter {
         super.disconnectSockets(opts, close);
     }
     async fetchSockets(opts) {
-        let _a;
+        var _a;
         const [localSockets, serverCount] = await Promise.all([
             super.fetchSockets(opts),
             this.serverCount(),
@@ -12974,7 +12974,7 @@ class ClusterAdapterWithHeartbeat extends ClusterAdapter {
         });
     }
     async fetchSockets(opts) {
-        let _a;
+        var _a;
         const [localSockets, serverCount] = await Promise.all([
             super.fetchSockets({
                 rooms: opts.rooms,
@@ -13078,7 +13078,7 @@ exports.ClusterAdapterWithHeartbeat = ClusterAdapterWithHeartbeat;
 
 
 
-const utilContainsNewline = __webpack_require__(9119);
+var utilContainsNewline = __webpack_require__(9119);
 
 function flowIndentCheck(indent, fc, onError) {
     if (fc?.type === 'flow-collection') {
@@ -13109,9 +13109,9 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("node:fs");
 
 
 
-const identity = __webpack_require__(3619);
-const stringify = __webpack_require__(6848);
-const stringifyComment = __webpack_require__(1995);
+var identity = __webpack_require__(3619);
+var stringify = __webpack_require__(6848);
+var stringifyComment = __webpack_require__(1995);
 
 function stringifyCollection(collection, ctx, options) {
     const flow = ctx.inFlow ?? collection.flow;
@@ -13259,16 +13259,16 @@ exports.stringifyCollection = stringifyCollection;
 /***/ 3074
 (module, __unused_webpack_exports, __webpack_require__) {
 
-const crc32 = __webpack_require__(2355)
+var crc32 = __webpack_require__(2355)
 
 module.exports = extractChunks
 
 // Used for fast-ish conversion between uint8s and uint32s/int32s.
 // Also required in order to remain agnostic for both Node Buffers and
 // Uint8Arrays.
-const uint8 = new Uint8Array(4)
-const int32 = new Int32Array(uint8.buffer)
-const uint32 = new Uint32Array(uint8.buffer)
+var uint8 = new Uint8Array(4)
+var int32 = new Int32Array(uint8.buffer)
+var uint32 = new Uint32Array(uint8.buffer)
 
 function extractChunks (data) {
   if (data[0] !== 0x89) throw new Error('Invalid .png file header')
@@ -13280,9 +13280,9 @@ function extractChunks (data) {
   if (data[6] !== 0x1A) throw new Error('Invalid .png file header')
   if (data[7] !== 0x0A) throw new Error('Invalid .png file header: possibly caused by DOS-Unix line ending conversion?')
 
-  let ended = false
-  const chunks = []
-  let idx = 8
+  var ended = false
+  var chunks = []
+  var idx = 8
 
   while (idx < data.length) {
     // Read the length of the current chunk,
@@ -13293,15 +13293,15 @@ function extractChunks (data) {
     uint8[0] = data[idx++]
 
     // Chunk includes name/type for CRC check (see below).
-    const length = uint32[0] + 4
-    const chunk = new Uint8Array(length)
+    var length = uint32[0] + 4
+    var chunk = new Uint8Array(length)
     chunk[0] = data[idx++]
     chunk[1] = data[idx++]
     chunk[2] = data[idx++]
     chunk[3] = data[idx++]
 
     // Get the name in ASCII for identification.
-    const name = (
+    var name = (
       String.fromCharCode(chunk[0]) +
       String.fromCharCode(chunk[1]) +
       String.fromCharCode(chunk[2]) +
@@ -13326,7 +13326,7 @@ function extractChunks (data) {
     }
 
     // Read the contents of the chunk out of the main buffer.
-    for (let i = 4; i < length; i++) {
+    for (var i = 4; i < length; i++) {
       chunk[i] = data[idx++]
     }
 
@@ -13337,8 +13337,8 @@ function extractChunks (data) {
     uint8[1] = data[idx++]
     uint8[0] = data[idx++]
 
-    const crcActual = int32[0]
-    const crcExpect = crc32.buf(chunk)
+    var crcActual = int32[0]
+    var crcExpect = crc32.buf(chunk)
     if (crcExpect !== crcActual) {
       throw new Error(
         'CRC values for ' + name + ' header do not match, PNG file is likely corrupted'
@@ -13347,7 +13347,7 @@ function extractChunks (data) {
 
     // The chunk data is now copied to remove the 4 preceding
     // bytes used for the chunk name/type.
-    const chunkData = new Uint8Array(chunk.buffer.slice(4))
+    var chunkData = new Uint8Array(chunk.buffer.slice(4))
 
     chunks.push({
       name: name,
@@ -13455,7 +13455,7 @@ class WebSocket extends transport_1.Transport {
      * @private
      */
     _canSendPreEncodedFrame(packet) {
-        let _a, _b, _c;
+        var _a, _b, _c;
         return (!this.perMessageDeflate &&
             // @ts-expect-error use of untyped member
             typeof ((_b = (_a = this.socket) === null || _a === void 0 ? void 0 : _a._sender) === null || _b === void 0 ? void 0 : _b.sendFrame) === "function" &&
@@ -13502,8 +13502,8 @@ module.exports = {
 
 
 
-const identity = __webpack_require__(3619);
-const visit = __webpack_require__(1984);
+var identity = __webpack_require__(3619);
+var visit = __webpack_require__(1984);
 
 /**
  * Verify that the input string is a valid anchor.
@@ -13585,13 +13585,13 @@ exports.findNewAnchor = findNewAnchor;
 
 
 
-const identity = __webpack_require__(3619);
-const Scalar = __webpack_require__(7201);
-const YAMLMap = __webpack_require__(4538);
-const YAMLSeq = __webpack_require__(3939);
-const resolveBlockMap = __webpack_require__(1451);
-const resolveBlockSeq = __webpack_require__(6058);
-const resolveFlowCollection = __webpack_require__(50);
+var identity = __webpack_require__(3619);
+var Scalar = __webpack_require__(7201);
+var YAMLMap = __webpack_require__(4538);
+var YAMLSeq = __webpack_require__(3939);
+var resolveBlockMap = __webpack_require__(1451);
+var resolveBlockSeq = __webpack_require__(6058);
+var resolveFlowCollection = __webpack_require__(50);
 
 function resolveCollection(CN, ctx, token, onError, tagName, tag) {
     const coll = token.type === 'block-map'
@@ -13682,9 +13682,9 @@ exports.composeCollection = composeCollection;
 
 
 
-const identity = __webpack_require__(3619);
-const Pair = __webpack_require__(5009);
-const YAMLMap = __webpack_require__(4538);
+var identity = __webpack_require__(3619);
+var Pair = __webpack_require__(5009);
+var YAMLMap = __webpack_require__(4538);
 
 class YAMLSet extends YAMLMap.YAMLMap {
     constructor(schema) {
@@ -14401,12 +14401,12 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("querystring");
 
 
 
-const Alias = __webpack_require__(6149);
-const identity = __webpack_require__(3619);
-const composeCollection = __webpack_require__(3353);
-const composeScalar = __webpack_require__(5849);
-const resolveEnd = __webpack_require__(720);
-const utilEmptyScalarPosition = __webpack_require__(2523);
+var Alias = __webpack_require__(6149);
+var identity = __webpack_require__(3619);
+var composeCollection = __webpack_require__(3353);
+var composeScalar = __webpack_require__(5849);
+var resolveEnd = __webpack_require__(720);
+var utilEmptyScalarPosition = __webpack_require__(2523);
 
 const CN = { composeNode, composeEmptyNode };
 function composeNode(ctx, token, props, onError) {
@@ -14580,7 +14580,7 @@ exports.isSeq = isSeq;
 
 
 
-const stringifyNumber = __webpack_require__(1277);
+var stringifyNumber = __webpack_require__(1277);
 
 /** Internal types handle bigint as number, because TS can't figure it out. */
 function parseSexagesimal(str, asBigInt) {
@@ -14710,7 +14710,7 @@ class JSONP extends polling_1.Polling {
         // we leverage the qs module so that we get built-in DoS protection
         // and the fast alternative to decodeURIComponent
         data = qs.parse(data).d;
-        if (typeof data === "string") {
+        if ("string" === typeof data) {
             // client will send already escaped newlines as \\\\n and newlines as \\n
             // \\n must be replaced with \n and \\\\n with \\n
             data = data.replace(rSlashes, function (match, slashes) {
@@ -14740,12 +14740,12 @@ exports.JSONP = JSONP;
 
 
 
-const createNode = __webpack_require__(2464);
-const stringifyCollection = __webpack_require__(3040);
-const Collection = __webpack_require__(5025);
-const identity = __webpack_require__(3619);
-const Scalar = __webpack_require__(7201);
-const toJS = __webpack_require__(9455);
+var createNode = __webpack_require__(2464);
+var stringifyCollection = __webpack_require__(3040);
+var Collection = __webpack_require__(5025);
+var identity = __webpack_require__(3619);
+var Scalar = __webpack_require__(7201);
+var toJS = __webpack_require__(9455);
 
 class YAMLSeq extends Collection.Collection {
     static get tagName() {
@@ -14882,8 +14882,8 @@ exports.serialize = serialize;
  * @private
  */
 
-const __toString = Object.prototype.toString
-const __hasOwnProperty = Object.prototype.hasOwnProperty
+var __toString = Object.prototype.toString
+var __hasOwnProperty = Object.prototype.hasOwnProperty
 
 /**
  * RegExp to match cookie-name in RFC 6265 sec 4.1.1
@@ -14897,7 +14897,7 @@ const __hasOwnProperty = Object.prototype.hasOwnProperty
  *                     "`" / "|" / "~" / DIGIT / ALPHA
  */
 
-const cookieNameRegExp = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
+var cookieNameRegExp = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
 
 /**
  * RegExp to match cookie-value in RFC 6265 sec 4.1.1
@@ -14909,7 +14909,7 @@ const cookieNameRegExp = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
  *                     ; and backslash
  */
 
-const cookieValueRegExp = /^("?)[\u0021\u0023-\u002B\u002D-\u003A\u003C-\u005B\u005D-\u007E]*\1$/;
+var cookieValueRegExp = /^("?)[\u0021\u0023-\u002B\u002D-\u003A\u003C-\u005B\u005D-\u007E]*\1$/;
 
 /**
  * RegExp to match domain-value in RFC 6265 sec 4.1.1
@@ -14935,7 +14935,7 @@ const cookieValueRegExp = /^("?)[\u0021\u0023-\u002B\u002D-\u003A\u003C-\u005B\u
  * cause the user agent to ignore the attribute.)
  */
 
-const domainValueRegExp = /^([.]?[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)([.][a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$/i;
+var domainValueRegExp = /^([.]?[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)([.][a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$/i;
 
 /**
  * RegExp to match path-value in RFC 6265 sec 4.1.1
@@ -14945,7 +14945,7 @@ const domainValueRegExp = /^([.]?[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)([.][a-z0-9]
  *                     ; defined in RFC 5234 appendix B.1
  */
 
-const pathValueRegExp = /^[\u0020-\u003A\u003D-\u007E]*$/;
+var pathValueRegExp = /^[\u0020-\u003A\u003D-\u007E]*$/;
 
 /**
  * Parse a cookie header.
@@ -14964,15 +14964,15 @@ function parse(str, opt) {
     throw new TypeError('argument str must be a string');
   }
 
-  const obj = {};
-  const len = str.length;
+  var obj = {};
+  var len = str.length;
   // RFC 6265 sec 4.1.1, RFC 2616 2.2 defines a cookie name consists of one char minimum, plus '='.
   if (len < 2) return obj;
 
-  const dec = (opt && opt.decode) || decode;
-  let index = 0;
-  let eqIdx = 0;
-  let endIdx = 0;
+  var dec = (opt && opt.decode) || decode;
+  var index = 0;
+  var eqIdx = 0;
+  var endIdx = 0;
 
   do {
     eqIdx = str.indexOf('=', index);
@@ -14988,21 +14988,21 @@ function parse(str, opt) {
       continue;
     }
 
-    const keyStartIdx = startIndex(str, index, eqIdx);
-    const keyEndIdx = endIndex(str, eqIdx, keyStartIdx);
-    const key = str.slice(keyStartIdx, keyEndIdx);
+    var keyStartIdx = startIndex(str, index, eqIdx);
+    var keyEndIdx = endIndex(str, eqIdx, keyStartIdx);
+    var key = str.slice(keyStartIdx, keyEndIdx);
 
     // only assign once
     if (!__hasOwnProperty.call(obj, key)) {
-      let valStartIdx = startIndex(str, eqIdx + 1, endIdx);
-      let valEndIdx = endIndex(str, endIdx, valStartIdx);
+      var valStartIdx = startIndex(str, eqIdx + 1, endIdx);
+      var valEndIdx = endIndex(str, endIdx, valStartIdx);
 
       if (str.charCodeAt(valStartIdx) === 0x22 /* " */ && str.charCodeAt(valEndIdx - 1) === 0x22 /* " */) {
         valStartIdx++;
         valEndIdx--;
       }
 
-      const val = str.slice(valStartIdx, valEndIdx);
+      var val = str.slice(valStartIdx, valEndIdx);
       obj[key] = tryDecode(val, dec);
     }
 
@@ -15014,7 +15014,7 @@ function parse(str, opt) {
 
 function startIndex(str, index, max) {
   do {
-    const code = str.charCodeAt(index);
+    var code = str.charCodeAt(index);
     if (code !== 0x20 /*   */ && code !== 0x09 /* \t */) return index;
   } while (++index < max);
   return max;
@@ -15022,7 +15022,7 @@ function startIndex(str, index, max) {
 
 function endIndex(str, index, min) {
   while (index > min) {
-    const code = str.charCodeAt(--index);
+    var code = str.charCodeAt(--index);
     if (code !== 0x20 /*   */ && code !== 0x09 /* \t */) return index + 1;
   }
   return min;
@@ -15045,7 +15045,7 @@ function endIndex(str, index, min) {
  */
 
 function serialize(name, val, opt) {
-  const enc = (opt && opt.encode) || encodeURIComponent;
+  var enc = (opt && opt.encode) || encodeURIComponent;
 
   if (typeof enc !== 'function') {
     throw new TypeError('option encode is invalid');
@@ -15055,17 +15055,17 @@ function serialize(name, val, opt) {
     throw new TypeError('argument name is invalid');
   }
 
-  const value = enc(val);
+  var value = enc(val);
 
   if (!cookieValueRegExp.test(value)) {
     throw new TypeError('argument val is invalid');
   }
 
-  let str = name + '=' + value;
+  var str = name + '=' + value;
   if (!opt) return str;
 
-  if (opt.maxAge != null) {
-    const maxAge = Math.floor(opt.maxAge);
+  if (null != opt.maxAge) {
+    var maxAge = Math.floor(opt.maxAge);
 
     if (!isFinite(maxAge)) {
       throw new TypeError('option maxAge is invalid')
@@ -15091,7 +15091,7 @@ function serialize(name, val, opt) {
   }
 
   if (opt.expires) {
-    const expires = opt.expires
+    var expires = opt.expires
 
     if (!isDate(expires) || isNaN(expires.valueOf())) {
       throw new TypeError('option expires is invalid');
@@ -15113,7 +15113,7 @@ function serialize(name, val, opt) {
   }
 
   if (opt.priority) {
-    const priority = typeof opt.priority === 'string'
+    var priority = typeof opt.priority === 'string'
       ? opt.priority.toLowerCase() : opt.priority;
 
     switch (priority) {
@@ -15132,7 +15132,7 @@ function serialize(name, val, opt) {
   }
 
   if (opt.sameSite) {
-    const sameSite = typeof opt.sameSite === 'string'
+    var sameSite = typeof opt.sameSite === 'string'
       ? opt.sameSite.toLowerCase() : opt.sameSite;
 
     switch (sameSite) {
@@ -15210,9 +15210,9 @@ object-assign
 
 
 /* eslint-disable no-unused-vars */
-const getOwnPropertySymbols = Object.getOwnPropertySymbols;
-const hasOwnProperty = Object.prototype.hasOwnProperty;
-const propIsEnumerable = Object.prototype.propertyIsEnumerable;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
 function toObject(val) {
 	if (val === null || val === undefined) {
@@ -15231,18 +15231,18 @@ function shouldUseNative() {
 		// Detect buggy property enumeration order in older V8 versions.
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		const test1 = new String('abc');   
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
 		test1[5] = 'de';
 		if (Object.getOwnPropertyNames(test1)[0] === '5') {
 			return false;
 		}
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		const test2 = {};
-		for (let i = 0; i < 10; i++) {
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
 			test2['_' + String.fromCharCode(i)] = i;
 		}
-		const order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
 			return test2[n];
 		});
 		if (order2.join('') !== '0123456789') {
@@ -15250,7 +15250,7 @@ function shouldUseNative() {
 		}
 
 		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		const test3 = {};
+		var test3 = {};
 		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 			test3[letter] = letter;
 		});
@@ -15267,14 +15267,14 @@ function shouldUseNative() {
 }
 
 module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	let from;
-	const to = toObject(target);
-	let symbols;
+	var from;
+	var to = toObject(target);
+	var symbols;
 
-	for (let s = 1; s < arguments.length; s++) {
+	for (var s = 1; s < arguments.length; s++) {
 		from = Object(arguments[s]);
 
-		for (const key in from) {
+		for (var key in from) {
 			if (hasOwnProperty.call(from, key)) {
 				to[key] = from[key];
 			}
@@ -15282,7 +15282,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 		if (getOwnPropertySymbols) {
 			symbols = getOwnPropertySymbols(from);
-			for (let i = 0; i < symbols.length; i++) {
+			for (var i = 0; i < symbols.length; i++) {
 				if (propIsEnumerable.call(from, symbols[i])) {
 					to[symbols[i]] = from[symbols[i]];
 				}
@@ -15313,12 +15313,12 @@ function encode (keyword, content) {
     throw new Error('Keyword "' + keyword + '" is longer than the 79-character limit imposed by the PNG specification')
   }
 
-  const totalSize = keyword.length + content.length + 1
-  const output = new Uint8Array(totalSize)
-  let idx = 0
-  let code
+  var totalSize = keyword.length + content.length + 1
+  var output = new Uint8Array(totalSize)
+  var idx = 0
+  var code
 
-  for (let i = 0; i < keyword.length; i++) {
+  for (var i = 0; i < keyword.length; i++) {
     if (!(code = keyword.charCodeAt(i))) {
       throw new Error('0x00 character is not permitted in tEXt keywords')
     }
@@ -15328,7 +15328,7 @@ function encode (keyword, content) {
 
   output[idx++] = 0
 
-  for (let j = 0; j < content.length; j++) {
+  for (var j = 0; j < content.length; j++) {
     if (!(code = content.charCodeAt(j))) {
       throw new Error('0x00 character is not permitted in tEXt content')
     }
@@ -15348,23 +15348,23 @@ function encode (keyword, content) {
 /***/ 4321
 (module, __unused_webpack_exports, __webpack_require__) {
 
-const fs = __webpack_require__(9896)
-const path = __webpack_require__(6928)
-const os = __webpack_require__(857)
+var fs = __webpack_require__(9896)
+var path = __webpack_require__(6928)
+var os = __webpack_require__(857)
 
 // Workaround to fix webpack's build warnings: 'the request of a dependency is an expression'
 var runtimeRequire =  true ? __WEBPACK_EXTERNAL_createRequire_require : 0 // eslint-disable-line
 
-const vars = (process.config && process.config.variables) || {}
-const prebuildsOnly = !!process.env.PREBUILDS_ONLY
-const abi = process.versions.modules // TODO: support old node where this is undef
-const runtime = isElectron() ? 'electron' : (isNwjs() ? 'node-webkit' : 'node')
+var vars = (process.config && process.config.variables) || {}
+var prebuildsOnly = !!process.env.PREBUILDS_ONLY
+var abi = process.versions.modules // TODO: support old node where this is undef
+var runtime = isElectron() ? 'electron' : (isNwjs() ? 'node-webkit' : 'node')
 
-const arch = process.env.npm_config_arch || os.arch()
-const platform = process.env.npm_config_platform || os.platform()
-const libc = process.env.LIBC || (isAlpine(platform) ? 'musl' : 'glibc')
-const armv = process.env.ARM_VERSION || (arch === 'arm64' ? '8' : vars.arm_version) || ''
-const uv = (process.versions.uv || '').split('.')[0]
+var arch = process.env.npm_config_arch || os.arch()
+var platform = process.env.npm_config_platform || os.platform()
+var libc = process.env.LIBC || (isAlpine(platform) ? 'musl' : 'glibc')
+var armv = process.env.ARM_VERSION || (arch === 'arm64' ? '8' : vars.arm_version) || ''
+var uv = (process.versions.uv || '').split('.')[0]
 
 module.exports = load
 
@@ -15376,25 +15376,25 @@ load.resolve = load.path = function (dir) {
   dir = path.resolve(dir || '.')
 
   try {
-    const name = runtimeRequire(path.join(dir, 'package.json')).name.toUpperCase().replace(/-/g, '_')
+    var name = runtimeRequire(path.join(dir, 'package.json')).name.toUpperCase().replace(/-/g, '_')
     if (process.env[name + '_PREBUILD']) dir = process.env[name + '_PREBUILD']
   } catch (err) {}
 
   if (!prebuildsOnly) {
-    const release = getFirst(path.join(dir, 'build/Release'), matchBuild)
+    var release = getFirst(path.join(dir, 'build/Release'), matchBuild)
     if (release) return release
 
-    const debug = getFirst(path.join(dir, 'build/Debug'), matchBuild)
+    var debug = getFirst(path.join(dir, 'build/Debug'), matchBuild)
     if (debug) return debug
   }
 
-  const prebuild = resolve(dir)
+  var prebuild = resolve(dir)
   if (prebuild) return prebuild
 
-  const nearby = resolve(path.dirname(process.execPath))
+  var nearby = resolve(path.dirname(process.execPath))
   if (nearby) return nearby
 
-  const target = [
+  var target = [
     'platform=' + platform,
     'arch=' + arch,
     'runtime=' + runtime,
@@ -15411,15 +15411,15 @@ load.resolve = load.path = function (dir) {
 
   function resolve (dir) {
     // Find matching "prebuilds/<platform>-<arch>" directory
-    const tuples = readdirSync(path.join(dir, 'prebuilds')).map(parseTuple)
-    const tuple = tuples.filter(matchTuple(platform, arch)).sort(compareTuples)[0]
+    var tuples = readdirSync(path.join(dir, 'prebuilds')).map(parseTuple)
+    var tuple = tuples.filter(matchTuple(platform, arch)).sort(compareTuples)[0]
     if (!tuple) return
 
     // Find most specific flavor first
-    const prebuilds = path.join(dir, 'prebuilds', tuple.name)
-    const parsed = readdirSync(prebuilds).map(parseTags)
-    const candidates = parsed.filter(matchTags(runtime, abi))
-    const winner = candidates.sort(compareTags(runtime))[0]
+    var prebuilds = path.join(dir, 'prebuilds', tuple.name)
+    var parsed = readdirSync(prebuilds).map(parseTags)
+    var candidates = parsed.filter(matchTags(runtime, abi))
+    var winner = candidates.sort(compareTags(runtime))[0]
     if (winner) return path.join(prebuilds, winner.file)
   }
 }
@@ -15433,7 +15433,7 @@ function readdirSync (dir) {
 }
 
 function getFirst (dir, filter) {
-  const files = readdirSync(dir).filter(filter)
+  var files = readdirSync(dir).filter(filter)
   return files[0] && path.join(dir, files[0])
 }
 
@@ -15443,11 +15443,11 @@ function matchBuild (name) {
 
 function parseTuple (name) {
   // Example: darwin-x64+arm64
-  const arr = name.split('-')
+  var arr = name.split('-')
   if (arr.length !== 2) return
 
-  const platform = arr[0]
-  const architectures = arr[1].split('+')
+  var platform = arr[0]
+  var architectures = arr[1].split('+')
 
   if (!platform) return
   if (!architectures.length) return
@@ -15470,14 +15470,14 @@ function compareTuples (a, b) {
 }
 
 function parseTags (file) {
-  const arr = file.split('.')
-  const extension = arr.pop()
-  const tags = { file: file, specificity: 0 }
+  var arr = file.split('.')
+  var extension = arr.pop()
+  var tags = { file: file, specificity: 0 }
 
   if (extension !== 'node') return
 
-  for (let i = 0; i < arr.length; i++) {
-    const tag = arr[i]
+  for (var i = 0; i < arr.length; i++) {
+    var tag = arr[i]
 
     if (tag === 'node' || tag === 'electron' || tag === 'node-webkit') {
       tags.runtime = tag
@@ -15578,12 +15578,12 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("events");
 
 
 
-const stringifyCollection = __webpack_require__(3040);
-const addPairToJSMap = __webpack_require__(812);
-const Collection = __webpack_require__(5025);
-const identity = __webpack_require__(3619);
-const Pair = __webpack_require__(5009);
-const Scalar = __webpack_require__(7201);
+var stringifyCollection = __webpack_require__(3040);
+var addPairToJSMap = __webpack_require__(812);
+var Collection = __webpack_require__(5025);
+var identity = __webpack_require__(3619);
+var Pair = __webpack_require__(5009);
+var Scalar = __webpack_require__(7201);
 
 function findPair(items, key) {
     const k = identity.isScalar(key) ? key.value : key;
@@ -15743,7 +15743,7 @@ exports.findPair = findPair;
  * @public
  */
 const mask = (source, mask, output, offset, length) => {
-  for (let i = 0; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     output[offset + i] = source[i] ^ mask[i & 3];
   }
 };
@@ -15758,7 +15758,7 @@ const mask = (source, mask, output, offset, length) => {
 const unmask = (buffer, mask) => {
   // Required until https://github.com/nodejs/node/issues/9006 is resolved.
   const length = buffer.length;
-  for (let i = 0; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     buffer[i] ^= mask[i & 3];
   }
 };
@@ -15772,7 +15772,7 @@ module.exports = { mask, unmask };
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-const __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -15899,7 +15899,7 @@ module.exports.append = append
  *               ; any VCHAR, except delimiters
  */
 
-const FIELD_NAME_REGEXP = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/
+var FIELD_NAME_REGEXP = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/
 
 /**
  * Append a field to a vary header.
@@ -15920,12 +15920,12 @@ function append (header, field) {
   }
 
   // get fields array
-  const fields = !Array.isArray(field)
+  var fields = !Array.isArray(field)
     ? parse(String(field))
     : field
 
   // assert on invalid field names
-  for (let j = 0; j < fields.length; j++) {
+  for (var j = 0; j < fields.length; j++) {
     if (!FIELD_NAME_REGEXP.test(fields[j])) {
       throw new TypeError('field argument contains an invalid header name')
     }
@@ -15937,16 +15937,16 @@ function append (header, field) {
   }
 
   // enumerate current values
-  let val = header
-  const vals = parse(header.toLowerCase())
+  var val = header
+  var vals = parse(header.toLowerCase())
 
   // unspecified vary
   if (fields.indexOf('*') !== -1 || vals.indexOf('*') !== -1) {
     return '*'
   }
 
-  for (let i = 0; i < fields.length; i++) {
-    const fld = fields[i].toLowerCase()
+  for (var i = 0; i < fields.length; i++) {
+    var fld = fields[i].toLowerCase()
 
     // append value (case-preserving)
     if (vals.indexOf(fld) === -1) {
@@ -15969,12 +15969,12 @@ function append (header, field) {
  */
 
 function parse (header) {
-  let end = 0
-  const list = []
-  let start = 0
+  var end = 0
+  var list = []
+  var start = 0
 
   // gather tokens
-  for (let i = 0, len = header.length; i < len; i++) {
+  for (var i = 0, len = header.length; i < len; i++) {
     switch (header.charCodeAt(i)) {
       case 0x20: /*   */
         if (start === end) {
@@ -16012,8 +16012,8 @@ function vary (res, field) {
   }
 
   // get existing header
-  let val = res.getHeader('Vary') || ''
-  const header = Array.isArray(val)
+  var val = res.getHeader('Vary') || ''
+  var header = Array.isArray(val)
     ? val.join(', ')
     : String(val)
 
@@ -16031,9 +16031,9 @@ function vary (res, field) {
 
 
 
-const node_process = __webpack_require__(932);
-const cst = __webpack_require__(2081);
-const lexer = __webpack_require__(5989);
+var node_process = __webpack_require__(932);
+var cst = __webpack_require__(2081);
+var lexer = __webpack_require__(5989);
 
 function includesToken(list, type) {
     for (let i = 0; i < list.length; ++i)
@@ -16662,7 +16662,8 @@ class Parser {
                             it.sep.push(this.sourceToken);
                         }
                     }
-                    else if (!it.sep) {
+                    else {
+                        if (!it.sep) {
                             Object.assign(it, { key: null, sep: [this.sourceToken] });
                         }
                         else if (it.value || atNextItem) {
@@ -16679,6 +16680,7 @@ class Parser {
                         else {
                             it.sep.push(this.sourceToken);
                         }
+                    }
                     this.onKeyLine = true;
                     return;
                 case 'alias':
@@ -17010,10 +17012,10 @@ exports.Parser = Parser;
 
   'use strict';
 
-  const assign = __webpack_require__(4059);
-  const vary = __webpack_require__(4795);
+  var assign = __webpack_require__(4059);
+  var vary = __webpack_require__(4795);
 
-  const defaults = {
+  var defaults = {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
@@ -17026,7 +17028,7 @@ exports.Parser = Parser;
 
   function isOriginAllowed(origin, allowedOrigin) {
     if (Array.isArray(allowedOrigin)) {
-      for (let i = 0; i < allowedOrigin.length; ++i) {
+      for (var i = 0; i < allowedOrigin.length; ++i) {
         if (isOriginAllowed(origin, allowedOrigin[i])) {
           return true;
         }
@@ -17042,7 +17044,7 @@ exports.Parser = Parser;
   }
 
   function configureOrigin(options, req) {
-    let requestOrigin = req.headers.origin,
+    var requestOrigin = req.headers.origin,
       headers = [],
       isAllowed;
 
@@ -17079,7 +17081,7 @@ exports.Parser = Parser;
   }
 
   function configureMethods(options) {
-    let methods = options.methods;
+    var methods = options.methods;
     if (methods.join) {
       methods = options.methods.join(','); // .methods is an array, so turn it into a string
     }
@@ -17100,8 +17102,8 @@ exports.Parser = Parser;
   }
 
   function configureAllowedHeaders(options, req) {
-    let allowedHeaders = options.allowedHeaders || options.headers;
-    const headers = [];
+    var allowedHeaders = options.allowedHeaders || options.headers;
+    var headers = [];
 
     if (!allowedHeaders) {
       allowedHeaders = req.headers['access-control-request-headers']; // .headers wasn't specified, so reflect the request headers
@@ -17123,7 +17125,7 @@ exports.Parser = Parser;
   }
 
   function configureExposedHeaders(options) {
-    let headers = options.exposedHeaders;
+    var headers = options.exposedHeaders;
     if (!headers) {
       return null;
     } else if (headers.join) {
@@ -17139,7 +17141,7 @@ exports.Parser = Parser;
   }
 
   function configureMaxAge(options) {
-    const maxAge = (typeof options.maxAge === 'number' || options.maxAge) && options.maxAge.toString()
+    var maxAge = (typeof options.maxAge === 'number' || options.maxAge) && options.maxAge.toString()
     if (maxAge && maxAge.length) {
       return {
         key: 'Access-Control-Max-Age',
@@ -17150,8 +17152,8 @@ exports.Parser = Parser;
   }
 
   function applyHeaders(headers, res) {
-    for (let i = 0, n = headers.length; i < n; i++) {
-      const header = headers[i];
+    for (var i = 0, n = headers.length; i < n; i++) {
+      var header = headers[i];
       if (header) {
         if (Array.isArray(header)) {
           applyHeaders(header, res);
@@ -17165,7 +17167,7 @@ exports.Parser = Parser;
   }
 
   function cors(options, req, res, next) {
-    const headers = [],
+    var headers = [],
       method = req.method && req.method.toUpperCase && req.method.toUpperCase();
 
     if (method === 'OPTIONS') {
@@ -17199,7 +17201,7 @@ exports.Parser = Parser;
 
   function middlewareWrapper(o) {
     // if options are static (either via defaults or custom options passed in), wrap in a function
-    let optionsCallback = null;
+    var optionsCallback = null;
     if (typeof o === 'function') {
       optionsCallback = o;
     } else {
@@ -17213,8 +17215,8 @@ exports.Parser = Parser;
         if (err) {
           next(err);
         } else {
-          const corsOptions = assign({}, defaults, options);
-          let originCallback = null;
+          var corsOptions = assign({}, defaults, options);
+          var originCallback = null;
           if (corsOptions.origin && typeof corsOptions.origin === 'function') {
             originCallback = corsOptions.origin;
           } else if (corsOptions.origin) {
@@ -17253,10 +17255,10 @@ exports.Parser = Parser;
 
 
 
-const createNode = __webpack_require__(2464);
-const stringifyPair = __webpack_require__(1440);
-const addPairToJSMap = __webpack_require__(812);
-const identity = __webpack_require__(3619);
+var createNode = __webpack_require__(2464);
+var stringifyPair = __webpack_require__(1440);
+var addPairToJSMap = __webpack_require__(812);
+var identity = __webpack_require__(3619);
 
 function createPair(key, value, ctx) {
     const k = createNode.createNode(key, undefined, ctx);
@@ -17299,9 +17301,9 @@ exports.createPair = createPair;
 
 
 
-const createNode = __webpack_require__(2464);
-const identity = __webpack_require__(3619);
-const Node = __webpack_require__(2853);
+var createNode = __webpack_require__(2464);
+var identity = __webpack_require__(3619);
+var Node = __webpack_require__(2853);
 
 function collectionFromPath(schema, path, value) {
     let v = value;
@@ -17457,9 +17459,9 @@ exports.isEmptyPath = isEmptyPath;
 
 
 
-const Scalar = __webpack_require__(7201);
-const map = __webpack_require__(1615);
-const seq = __webpack_require__(7470);
+var Scalar = __webpack_require__(7201);
+var map = __webpack_require__(1615);
+var seq = __webpack_require__(7470);
 
 function intIdentify(value) {
     return typeof value === 'bigint' || Number.isInteger(value);
@@ -17533,12 +17535,12 @@ function decode (data) {
     data = data.data
   }
 
-  let naming = true
-  let text = ''
-  let name = ''
+  var naming = true
+  var text = ''
+  var name = ''
 
-  for (let i = 0; i < data.length; i++) {
-    const code = data[i]
+  for (var i = 0; i < data.length; i++) {
+    var code = data[i]
 
     if (naming) {
       if (code) {
@@ -17546,11 +17548,13 @@ function decode (data) {
       } else {
         naming = false
       }
-    } else if (code) {
+    } else {
+      if (code) {
         text += String.fromCharCode(code)
       } else {
         throw new Error('Invalid NULL character found. 0x00 character is not permitted in tEXt content')
       }
+    }
   }
 
   return {
@@ -17567,8 +17571,8 @@ function decode (data) {
 
 
 
-const Scalar = __webpack_require__(7201);
-const resolveEnd = __webpack_require__(720);
+var Scalar = __webpack_require__(7201);
+var resolveEnd = __webpack_require__(720);
 
 function resolveFlowScalar(scalar, strict, onError) {
     const { offset, type, source, end } = scalar;
@@ -17812,8 +17816,8 @@ if (typeof runtimeRequire.addon === 'function') { // if the platform supports na
 
 
 
-const Scalar = __webpack_require__(7201);
-const stringifyNumber = __webpack_require__(1277);
+var Scalar = __webpack_require__(7201);
+var stringifyNumber = __webpack_require__(1277);
 
 const floatNaN = {
     identify: value => typeof value === 'number',
@@ -17865,7 +17869,7 @@ exports.floatNaN = floatNaN;
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-const __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -18073,7 +18077,7 @@ class Namespace extends typed_events_1.StrictEventEmitter {
      * @private
      */
     async _add(client, auth, fn) {
-        let _a;
+        var _a;
         debug("adding socket to nsp %s", this.name);
         const socket = await this._createSocket(client, auth);
         this._preConnectSockets.set(socket.id, socket);
@@ -18086,7 +18090,7 @@ class Namespace extends typed_events_1.StrictEventEmitter {
         }
         this.run(socket, (err) => {
             process.nextTick(() => {
-                if (client.conn.readyState !== "open") {
+                if ("open" !== client.conn.readyState) {
                     debug("next called after client was closed - ignoring socket");
                     socket._cleanup();
                     return;
@@ -18540,7 +18544,7 @@ class Socket extends events_1.EventEmitter {
      * @private
      */
     onPacket(packet) {
-        if (this.readyState !== "open") {
+        if ("open" !== this.readyState) {
             return debug("packet received with closed socket");
         }
         // export packet event
@@ -18669,20 +18673,20 @@ class Socket extends events_1.EventEmitter {
         const upgradeTimeoutTimer = (0, timers_1.setTimeout)(() => {
             debug("client did not complete upgrade - closing transport");
             cleanup();
-            if (transport.readyState === "open") {
+            if ("open" === transport.readyState) {
                 transport.close();
             }
         }, this.server.opts.upgradeTimeout);
         let checkIntervalTimer;
         const onPacket = (packet) => {
-            if (packet.type === "ping" && packet.data === "probe") {
+            if ("ping" === packet.type && "probe" === packet.data) {
                 debug("got probe ping packet, sending pong");
                 transport.send([{ type: "pong", data: "probe" }]);
                 this.emit("upgrading", transport);
                 clearInterval(checkIntervalTimer);
                 checkIntervalTimer = setInterval(check, 100);
             }
-            else if (packet.type === "upgrade" && this.readyState !== "closed") {
+            else if ("upgrade" === packet.type && this.readyState !== "closed") {
                 debug("got upgrade packet - upgrading");
                 cleanup();
                 this.transport.discard();
@@ -18704,7 +18708,7 @@ class Socket extends events_1.EventEmitter {
         };
         // we force a polling cycle to ensure a fast upgrade
         const check = () => {
-            if (this.transport.name === "polling" && this.transport.writable) {
+            if ("polling" === this.transport.name && this.transport.writable) {
                 debug("writing a noop packet to polling for fast upgrade");
                 this.transport.send([{ type: "noop" }]);
             }
@@ -18761,7 +18765,7 @@ class Socket extends events_1.EventEmitter {
      * `transport error`, `server close`, `transport close`
      */
     onClose(reason, description) {
-        if (this.readyState !== "closed") {
+        if ("closed" !== this.readyState) {
             this.readyState = "closed";
             // clear timers
             (0, timers_1.clearTimeout)(this.pingIntervalTimer);
@@ -18811,11 +18815,11 @@ class Socket extends events_1.EventEmitter {
      * @private
      */
     sendPacket(type, data, options = {}, callback) {
-        if (typeof options === "function") {
+        if ("function" === typeof options) {
             callback = options;
             options = {};
         }
-        if (this.readyState !== "closing" && this.readyState !== "closed") {
+        if ("closing" !== this.readyState && "closed" !== this.readyState) {
             debug('sending packet "%s" (%s)', type, data);
             // compression is enabled by default
             options.compress = options.compress !== false;
@@ -18829,7 +18833,7 @@ class Socket extends events_1.EventEmitter {
             this.emit("packetCreate", packet);
             this.writeBuffer.push(packet);
             // add send callback to object, if defined
-            if (typeof callback === "function")
+            if ("function" === typeof callback)
                 this.packetsFn.push(callback);
             this.flush();
         }
@@ -18840,7 +18844,7 @@ class Socket extends events_1.EventEmitter {
      * @private
      */
     flush() {
-        if (this.readyState !== "closed" &&
+        if ("closed" !== this.readyState &&
             this.transport.writable &&
             this.writeBuffer.length) {
             debug("flushing buffer to transport");
@@ -18887,7 +18891,7 @@ class Socket extends events_1.EventEmitter {
             (this.readyState === "open" || this.readyState === "closing")) {
             return this.closeTransport(discard);
         }
-        if (this.readyState !== "open")
+        if ("open" !== this.readyState)
             return;
         this.readyState = "closing";
         if (this.writeBuffer.length) {
@@ -18937,7 +18941,7 @@ try {
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-let _a;
+var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.SessionAwareAdapter = exports.Adapter = void 0;
 const events_1 = __webpack_require__(4434);
@@ -19305,7 +19309,7 @@ class SessionAwareAdapter extends Adapter {
         return Promise.resolve(Object.assign(Object.assign({}, session), { missedPackets }));
     }
     broadcast(packet, opts) {
-        let _a;
+        var _a;
         const isEventPacket = packet.type === 2;
         // packets with acknowledgement are not stored because the acknowledgement function cannot be serialized and
         // restored on another server upon reconnection
@@ -19937,7 +19941,7 @@ module.exports.preferredMediaTypes = preferredMediaTypes;
  * @private
  */
 
-const simpleMediaTypeRegExp = /^\s*([^\s\/;]+)\/([^;\s]+)\s*(?:;(.*))?$/;
+var simpleMediaTypeRegExp = /^\s*([^\s\/;]+)\/([^;\s]+)\s*(?:;(.*))?$/;
 
 /**
  * Parse the Accept header.
@@ -19945,10 +19949,10 @@ const simpleMediaTypeRegExp = /^\s*([^\s\/;]+)\/([^;\s]+)\s*(?:;(.*))?$/;
  */
 
 function parseAccept(accept) {
-  const accepts = splitMediaTypes(accept);
+  var accepts = splitMediaTypes(accept);
 
   for (var i = 0, j = 0; i < accepts.length; i++) {
-    const mediaType = parseMediaType(accepts[i].trim(), i);
+    var mediaType = parseMediaType(accepts[i].trim(), i);
 
     if (mediaType) {
       accepts[j++] = mediaType;
@@ -19967,24 +19971,24 @@ function parseAccept(accept) {
  */
 
 function parseMediaType(str, i) {
-  const match = simpleMediaTypeRegExp.exec(str);
+  var match = simpleMediaTypeRegExp.exec(str);
   if (!match) return null;
 
-  const params = Object.create(null);
-  let q = 1;
-  const subtype = match[2];
-  const type = match[1];
+  var params = Object.create(null);
+  var q = 1;
+  var subtype = match[2];
+  var type = match[1];
 
   if (match[3]) {
-    const kvps = splitParameters(match[3]).map(splitKeyValuePair);
+    var kvps = splitParameters(match[3]).map(splitKeyValuePair);
 
-    for (let j = 0; j < kvps.length; j++) {
-      const pair = kvps[j];
-      const key = pair[0].toLowerCase();
-      const val = pair[1];
+    for (var j = 0; j < kvps.length; j++) {
+      var pair = kvps[j];
+      var key = pair[0].toLowerCase();
+      var val = pair[1];
 
       // get the value, unwrapping quotes
-      const value = val && val[0] === '"' && val[val.length - 1] === '"'
+      var value = val && val[0] === '"' && val[val.length - 1] === '"'
         ? val.substr(1, val.length - 2)
         : val;
 
@@ -20013,10 +20017,10 @@ function parseMediaType(str, i) {
  */
 
 function getMediaTypePriority(type, accepted, index) {
-  let priority = {o: -1, q: 0, s: 0};
+  var priority = {o: -1, q: 0, s: 0};
 
-  for (let i = 0; i < accepted.length; i++) {
-    const spec = specify(type, accepted[i], index);
+  for (var i = 0; i < accepted.length; i++) {
+    var spec = specify(type, accepted[i], index);
 
     if (spec && (priority.s - spec.s || priority.q - spec.q || priority.o - spec.o) < 0) {
       priority = spec;
@@ -20032,8 +20036,8 @@ function getMediaTypePriority(type, accepted, index) {
  */
 
 function specify(type, spec, index) {
-  const p = parseMediaType(type);
-  let s = 0;
+  var p = parseMediaType(type);
+  var s = 0;
 
   if (!p) {
     return null;
@@ -20051,7 +20055,7 @@ function specify(type, spec, index) {
     return null;
   }
 
-  const keys = Object.keys(spec.params);
+  var keys = Object.keys(spec.params);
   if (keys.length > 0) {
     if (keys.every(function (k) {
       return spec.params[k] == '*' || (spec.params[k] || '').toLowerCase() == (p.params[k] || '').toLowerCase();
@@ -20077,7 +20081,7 @@ function specify(type, spec, index) {
 
 function preferredMediaTypes(accept, provided) {
   // RFC 2616 sec 14.2: no header = */*
-  const accepts = parseAccept(accept === undefined ? '*/*' : accept || '');
+  var accepts = parseAccept(accept === undefined ? '*/*' : accept || '');
 
   if (!provided) {
     // sorted list of all types
@@ -20087,7 +20091,7 @@ function preferredMediaTypes(accept, provided) {
       .map(getFullType);
   }
 
-  const priorities = provided.map(function getPriority(type, index) {
+  var priorities = provided.map(function getPriority(type, index) {
     return getMediaTypePriority(type, accepts, index);
   });
 
@@ -20130,8 +20134,8 @@ function isQuality(spec) {
  */
 
 function quoteCount(string) {
-  let count = 0;
-  let index = 0;
+  var count = 0;
+  var index = 0;
 
   while ((index = string.indexOf('"', index)) !== -1) {
     count++;
@@ -20147,9 +20151,9 @@ function quoteCount(string) {
  */
 
 function splitKeyValuePair(str) {
-  const index = str.indexOf('=');
-  let key;
-  let val;
+  var index = str.indexOf('=');
+  var key;
+  var val;
 
   if (index === -1) {
     key = str;
@@ -20167,7 +20171,7 @@ function splitKeyValuePair(str) {
  */
 
 function splitMediaTypes(accept) {
-  const accepts = accept.split(',');
+  var accepts = accept.split(',');
 
   for (var i = 1, j = 0; i < accepts.length; i++) {
     if (quoteCount(accepts[j]) % 2 == 0) {
@@ -20189,7 +20193,7 @@ function splitMediaTypes(accept) {
  */
 
 function splitParameters(str) {
-  const parameters = str.split(';');
+  var parameters = str.split(';');
 
   for (var i = 1, j = 0; i < parameters.length; i++) {
     if (quoteCount(parameters[j]) % 2 == 0) {
@@ -20230,7 +20234,7 @@ exports["default"] = {
  * Polling polymorphic constructor.
  */
 function polling(req) {
-    if (typeof req._query.j === "string") {
+    if ("string" === typeof req._query.j) {
         return new polling_jsonp_1.JSONP(req);
     }
     else {
@@ -20247,19 +20251,19 @@ polling.upgradesTo = ["websocket", "webtransport"];
 
 
 
-const map = __webpack_require__(1615);
-const _null = __webpack_require__(6756);
-const seq = __webpack_require__(7470);
-const string = __webpack_require__(9292);
-const binary = __webpack_require__(9367);
-const bool = __webpack_require__(1314);
-const float = __webpack_require__(1642);
-const int = __webpack_require__(2605);
-const merge = __webpack_require__(968);
-const omap = __webpack_require__(5659);
-const pairs = __webpack_require__(533);
-const set = __webpack_require__(3436);
-const timestamp = __webpack_require__(3676);
+var map = __webpack_require__(1615);
+var _null = __webpack_require__(6756);
+var seq = __webpack_require__(7470);
+var string = __webpack_require__(9292);
+var binary = __webpack_require__(9367);
+var bool = __webpack_require__(1314);
+var float = __webpack_require__(1642);
+var int = __webpack_require__(2605);
+var merge = __webpack_require__(968);
+var omap = __webpack_require__(5659);
+var pairs = __webpack_require__(533);
+var set = __webpack_require__(3436);
+var timestamp = __webpack_require__(3676);
 
 const schema = [
     map.map,
@@ -20361,7 +20365,7 @@ const mapBinary = (data, binaryType) => {
 
 
 
-const identity = __webpack_require__(3619);
+var identity = __webpack_require__(3619);
 
 function mapIncludes(ctx, items, search) {
     const { uniqueKeys } = ctx.options;
@@ -20383,11 +20387,11 @@ exports.mapIncludes = mapIncludes;
 
 
 
-const identity = __webpack_require__(3619);
-const toJS = __webpack_require__(9455);
-const YAMLMap = __webpack_require__(4538);
-const YAMLSeq = __webpack_require__(3939);
-const pairs = __webpack_require__(533);
+var identity = __webpack_require__(3619);
+var toJS = __webpack_require__(9455);
+var YAMLMap = __webpack_require__(4538);
+var YAMLSeq = __webpack_require__(3939);
+var pairs = __webpack_require__(533);
 
 class YAMLOMap extends YAMLSeq.YAMLSeq {
     constructor() {
@@ -20474,10 +20478,10 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("https");
 
 
 
-const identity = __webpack_require__(3619);
-const Scalar = __webpack_require__(7201);
-const resolveBlockScalar = __webpack_require__(6965);
-const resolveFlowScalar = __webpack_require__(5158);
+var identity = __webpack_require__(3619);
+var Scalar = __webpack_require__(7201);
+var resolveBlockScalar = __webpack_require__(6965);
+var resolveFlowScalar = __webpack_require__(5158);
 
 function composeScalar(ctx, token, tagToken, onError) {
     const { value, type, comment, range } = token.type === 'block-scalar'
@@ -20569,8 +20573,8 @@ exports.composeScalar = composeScalar;
 
 
 
-const Scalar = __webpack_require__(7201);
-const foldFlowLines = __webpack_require__(9631);
+var Scalar = __webpack_require__(7201);
+var foldFlowLines = __webpack_require__(9631);
 
 const getFoldOptions = (ctx, isBlock) => ({
     indentAtStart: isBlock ? ctx.indent.length : ctx.indentAtStart,
@@ -20914,7 +20918,7 @@ exports.stringifyString = stringifyString;
 
 
 
-const cst = __webpack_require__(2081);
+var cst = __webpack_require__(2081);
 
 /*
 START -> stream
@@ -21640,9 +21644,9 @@ exports.Lexer = Lexer;
 
 
 
-const identity = __webpack_require__(3619);
-const stringify = __webpack_require__(6848);
-const stringifyComment = __webpack_require__(1995);
+var identity = __webpack_require__(3619);
+var stringify = __webpack_require__(6848);
+var stringifyComment = __webpack_require__(1995);
 
 function stringifyDocument(doc, options) {
     const lines = [];
@@ -21734,9 +21738,9 @@ exports.stringifyDocument = stringifyDocument;
 
 
 
-const YAMLSeq = __webpack_require__(3939);
-const resolveProps = __webpack_require__(6571);
-const utilFlowIndentCheck = __webpack_require__(2967);
+var YAMLSeq = __webpack_require__(3939);
+var resolveProps = __webpack_require__(6571);
+var utilFlowIndentCheck = __webpack_require__(2967);
 
 function resolveBlockSeq({ composeNode, composeEmptyNode }, ctx, bs, onError, tag) {
     const NodeClass = tag?.nodeClass ?? YAMLSeq.YAMLSeq;
@@ -21792,17 +21796,17 @@ exports.resolveBlockSeq = resolveBlockSeq;
 
 
 
-const Alias = __webpack_require__(6149);
-const Collection = __webpack_require__(5025);
-const identity = __webpack_require__(3619);
-const Pair = __webpack_require__(5009);
-const toJS = __webpack_require__(9455);
-const Schema = __webpack_require__(1948);
-const stringifyDocument = __webpack_require__(6001);
-const anchors = __webpack_require__(3352);
-const applyReviver = __webpack_require__(873);
-const createNode = __webpack_require__(2464);
-const directives = __webpack_require__(7034);
+var Alias = __webpack_require__(6149);
+var Collection = __webpack_require__(5025);
+var identity = __webpack_require__(3619);
+var Pair = __webpack_require__(5009);
+var toJS = __webpack_require__(9455);
+var Schema = __webpack_require__(1948);
+var stringifyDocument = __webpack_require__(6001);
+var anchors = __webpack_require__(3352);
+var applyReviver = __webpack_require__(873);
+var createNode = __webpack_require__(2464);
+var directives = __webpack_require__(7034);
 
 class Document {
     constructor(value, replacer, options) {
@@ -21895,7 +21899,7 @@ class Document {
         if (!node.anchor) {
             const prev = anchors.anchorNames(this);
             node.anchor =
-                 
+                // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
                 !name || prev.has(name) ? anchors.findNewAnchor(name || 'a', prev) : name;
         }
         return new Alias.Alias(node.anchor);
@@ -21919,7 +21923,7 @@ class Document {
         }
         const { aliasDuplicateObjects, anchorPrefix, flow, keepUndefined, onTagObj, tag } = options ?? {};
         const { onAnchor, setAnchors, sourceObjects } = anchors.createNodeAnchors(this, 
-         
+        // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
         anchorPrefix || 'a');
         const ctx = {
             aliasDuplicateObjects: aliasDuplicateObjects ?? true,
@@ -22304,11 +22308,11 @@ module.exports = createWebSocketStream;
 
 
 
-const anchors = __webpack_require__(3352);
-const visit = __webpack_require__(1984);
-const identity = __webpack_require__(3619);
-const Node = __webpack_require__(2853);
-const toJS = __webpack_require__(9455);
+var anchors = __webpack_require__(3352);
+var visit = __webpack_require__(1984);
+var identity = __webpack_require__(3619);
+var Node = __webpack_require__(2853);
+var toJS = __webpack_require__(9455);
 
 class Alias extends Node.NodeBase {
     constructor(source) {
@@ -22633,7 +22637,7 @@ function setup(env) {
 					searchIndex++;
 					templateIndex++;
 				}
-			} else if (starIndex !== -1) {  
+			} else if (starIndex !== -1) { // eslint-disable-line no-negated-condition
 				// Backtrack to the last '*' and try to match more characters
 				templateIndex = starIndex + 1;
 				matchIndex++;
@@ -22924,7 +22928,7 @@ class Polling extends transport_1.Transport {
             res.writeStatus("413 Payload Too Large").end();
             return;
         }
-        const isBinary = req.headers["content-type"] === "application/octet-stream";
+        const isBinary = "application/octet-stream" === req.headers["content-type"];
         if (isBinary && this.protocol === 4) {
             return this.onError("invalid content");
         }
@@ -22938,7 +22942,7 @@ class Polling extends transport_1.Transport {
             "Content-Type": "text/html",
         };
         this.headers(req, headers);
-        for (const key in headers) {
+        for (let key in headers) {
             res.writeHeader(key, String(headers[key]));
         }
         const onEnd = (buffer) => {
@@ -22997,7 +23001,7 @@ class Polling extends transport_1.Transport {
     onData(data) {
         debug('received "%s"', data);
         const callback = (packet) => {
-            if (packet.type === "close") {
+            if ("close" === packet.type) {
                 debug("got xhr close packet");
                 this.onClose();
                 return false;
@@ -23445,7 +23449,7 @@ const RESERVED_EVENTS = [
  * @public
  */
 exports.protocol = 5;
-let PacketType;
+var PacketType;
 (function (PacketType) {
     PacketType[PacketType["CONNECT"] = 0] = "CONNECT";
     PacketType[PacketType["DISCONNECT"] = 1] = "DISCONNECT";
@@ -23502,15 +23506,15 @@ class Encoder {
         }
         // if we have a namespace other than `/`
         // we append it followed by a comma `,`
-        if (obj.nsp && obj.nsp !== "/") {
+        if (obj.nsp && "/" !== obj.nsp) {
             str += obj.nsp + ",";
         }
         // immediately followed by the id
-        if (obj.id != null) {
+        if (null != obj.id) {
             str += obj.id;
         }
         // json data
-        if (obj.data != null) {
+        if (null != obj.data) {
             str += JSON.stringify(obj.data, this.replacer);
         }
         debug("encoded %j as %s", obj, str);
@@ -23617,11 +23621,11 @@ class Decoder extends component_emitter_1.Emitter {
             p.attachments = Number(buf);
         }
         // look up namespace (if any)
-        if (str.charAt(i + 1) === "/") {
+        if ("/" === str.charAt(i + 1)) {
             const start = i + 1;
             while (++i) {
                 const c = str.charAt(i);
-                if (c === ",")
+                if ("," === c)
                     break;
                 if (i === str.length)
                     break;
@@ -23633,11 +23637,11 @@ class Decoder extends component_emitter_1.Emitter {
         }
         // look up id
         const next = str.charAt(i + 1);
-        if (next !== "" && Number(next) == next) {
+        if ("" !== next && Number(next) == next) {
             const start = i + 1;
             while (++i) {
                 const c = str.charAt(i);
-                if (c == null || Number(c) != c) {
+                if (null == c || Number(c) != c) {
                     --i;
                     break;
                 }
@@ -23852,7 +23856,7 @@ exports.InvalidArgumentError = InvalidArgumentError;
 
 
 
-const Scalar = __webpack_require__(7201);
+var Scalar = __webpack_require__(7201);
 
 const nullTag = {
     identify: value => value == null,
@@ -23889,13 +23893,13 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("node:path");
  * Module dependencies
  */
 
-const crypto = __webpack_require__(6982);
+var crypto = __webpack_require__(6982);
 
 /**
  * Constructor
  */
 
-const Base64Id = function() { };
+var Base64Id = function() { };
 
 /**
  * Get random bytes
@@ -23905,8 +23909,8 @@ const Base64Id = function() { };
 
 Base64Id.prototype.getRandomBytes = function(bytes) {
 
-  const BUFFER_SIZE = 4096
-  const self = this;  
+  var BUFFER_SIZE = 4096
+  var self = this;  
   
   bytes = bytes || 12;
 
@@ -23914,8 +23918,8 @@ Base64Id.prototype.getRandomBytes = function(bytes) {
     return crypto.randomBytes(bytes);
   }
   
-  const bytesInBuffer = parseInt(BUFFER_SIZE/bytes);
-  const threshold = parseInt(bytesInBuffer*0.85);
+  var bytesInBuffer = parseInt(BUFFER_SIZE/bytes);
+  var threshold = parseInt(bytesInBuffer*0.85);
 
   if (!threshold) {
     return crypto.randomBytes(bytes);
@@ -23948,7 +23952,7 @@ Base64Id.prototype.getRandomBytes = function(bytes) {
     }
   }
   
-  const result = this.bytesBuffer.slice(bytes*this.bytesBufferIndex, bytes*(this.bytesBufferIndex+1)); 
+  var result = this.bytesBuffer.slice(bytes*this.bytesBufferIndex, bytes*(this.bytesBufferIndex+1)); 
   this.bytesBufferIndex++; 
   
   return result;
@@ -23961,7 +23965,7 @@ Base64Id.prototype.getRandomBytes = function(bytes) {
  */
 
 Base64Id.prototype.generateId = function () {
-  const rand = Buffer.alloc(15); // multiple of 3 for base64
+  var rand = Buffer.alloc(15); // multiple of 3 for base64
   if (!rand.writeInt32BE) {
     return Math.abs(Math.random() * Math.random() * Date.now() | 0).toString()
       + Math.abs(Math.random() * Math.random() * Date.now() | 0).toString();
@@ -23993,10 +23997,10 @@ exports = module.exports = new Base64Id();
 
 
 
-const anchors = __webpack_require__(3352);
-const identity = __webpack_require__(3619);
-const stringifyComment = __webpack_require__(1995);
-const stringifyString = __webpack_require__(5921);
+var anchors = __webpack_require__(3352);
+var identity = __webpack_require__(3619);
+var stringifyComment = __webpack_require__(1995);
+var stringifyString = __webpack_require__(5921);
 
 function createStringifyContext(doc, options) {
     const opt = Object.assign({
@@ -24141,11 +24145,11 @@ const index_1 = __webpack_require__(5495);
 exports.transports = index_1.default;
 const parser = __webpack_require__(2680);
 exports.parser = parser;
-const userver_1 = __webpack_require__(7088);
+var userver_1 = __webpack_require__(7088);
 Object.defineProperty(exports, "uServer", ({ enumerable: true, get: function () { return userver_1.uServer; } }));
-const socket_1 = __webpack_require__(5299);
+var socket_1 = __webpack_require__(5299);
 Object.defineProperty(exports, "Socket", ({ enumerable: true, get: function () { return socket_1.Socket; } }));
-const transport_1 = __webpack_require__(7413);
+var transport_1 = __webpack_require__(7413);
 Object.defineProperty(exports, "Transport", ({ enumerable: true, get: function () { return transport_1.Transport; } }));
 exports.protocol = parser.protocol;
 /**
@@ -24157,7 +24161,7 @@ exports.protocol = parser.protocol;
  * @return engine.io server
  */
 function listen(port, options, listenCallback) {
-    if (typeof options === "function") {
+    if ("function" === typeof options) {
         listenCallback = options;
         options = {};
     }
@@ -24198,7 +24202,7 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("path");
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-const __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -24338,7 +24342,7 @@ class Client {
      * @private
      */
     close() {
-        if (this.conn.readyState === "open") {
+        if ("open" === this.conn.readyState) {
             debug("forcing transport close");
             this.conn.close();
             this.onclose("forced server close");
@@ -24480,7 +24484,7 @@ exports.Client = Client;
 
 
 
-const Scalar = __webpack_require__(7201);
+var Scalar = __webpack_require__(7201);
 
 function resolveBlockScalar(ctx, scalar, onError) {
     const start = scalar.offset;
@@ -24694,7 +24698,7 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("crypto");
 
 
 
-const Scalar = __webpack_require__(7201);
+var Scalar = __webpack_require__(7201);
 
 const boolTag = {
     identify: value => typeof value === 'boolean',
@@ -24729,8 +24733,8 @@ module.exports = __WEBPACK_EXTERNAL_createRequire_require("url");
 
 
 
-const identity = __webpack_require__(3619);
-const visit = __webpack_require__(1984);
+var identity = __webpack_require__(3619);
+var visit = __webpack_require__(1984);
 
 const escapeChars = {
     '!': '%21',
@@ -25245,9 +25249,9 @@ if (typeof process === 'undefined' || process.type === 'renderer' || process.bro
 
 
 
-const identity = __webpack_require__(3619);
-const Node = __webpack_require__(2853);
-const toJS = __webpack_require__(9455);
+var identity = __webpack_require__(3619);
+var Node = __webpack_require__(2853);
+var toJS = __webpack_require__(9455);
 
 const isScalarValue = (value) => !value || (typeof value !== 'function' && typeof value !== 'object');
 class Scalar extends Node.NodeBase {
@@ -25679,7 +25683,7 @@ function Emitter(obj) {
  */
 
 function mixin(obj) {
-  for (const key in Emitter.prototype) {
+  for (var key in Emitter.prototype) {
     obj[key] = Emitter.prototype[key];
   }
   return obj;
@@ -25740,24 +25744,24 @@ Emitter.prototype.removeEventListener = function(event, fn){
   this._callbacks = this._callbacks || {};
 
   // all
-  if (arguments.length == 0) {
+  if (0 == arguments.length) {
     this._callbacks = {};
     return this;
   }
 
   // specific event
-  const callbacks = this._callbacks['$' + event];
+  var callbacks = this._callbacks['$' + event];
   if (!callbacks) return this;
 
   // remove all handlers
-  if (arguments.length == 1) {
+  if (1 == arguments.length) {
     delete this._callbacks['$' + event];
     return this;
   }
 
   // remove specific handler
-  let cb;
-  for (let i = 0; i < callbacks.length; i++) {
+  var cb;
+  for (var i = 0; i < callbacks.length; i++) {
     cb = callbacks[i];
     if (cb === fn || cb.fn === fn) {
       callbacks.splice(i, 1);
@@ -25785,7 +25789,7 @@ Emitter.prototype.removeEventListener = function(event, fn){
 Emitter.prototype.emit = function(event){
   this._callbacks = this._callbacks || {};
 
-  let args = new Array(arguments.length - 1)
+  var args = new Array(arguments.length - 1)
     , callbacks = this._callbacks['$' + event];
 
   for (var i = 1; i < arguments.length; i++) {
@@ -25839,10 +25843,10 @@ Emitter.prototype.hasListeners = function(event){
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.MessageType = exports.ClusterAdapterWithHeartbeat = exports.ClusterAdapter = exports.SessionAwareAdapter = exports.Adapter = void 0;
-const in_memory_adapter_1 = __webpack_require__(5352);
+var in_memory_adapter_1 = __webpack_require__(5352);
 Object.defineProperty(exports, "Adapter", ({ enumerable: true, get: function () { return in_memory_adapter_1.Adapter; } }));
 Object.defineProperty(exports, "SessionAwareAdapter", ({ enumerable: true, get: function () { return in_memory_adapter_1.SessionAwareAdapter; } }));
-const cluster_adapter_1 = __webpack_require__(2875);
+var cluster_adapter_1 = __webpack_require__(2875);
 Object.defineProperty(exports, "ClusterAdapter", ({ enumerable: true, get: function () { return cluster_adapter_1.ClusterAdapter; } }));
 Object.defineProperty(exports, "ClusterAdapterWithHeartbeat", ({ enumerable: true, get: function () { return cluster_adapter_1.ClusterAdapterWithHeartbeat; } }));
 Object.defineProperty(exports, "MessageType", ({ enumerable: true, get: function () { return cluster_adapter_1.MessageType; } }));
@@ -25916,7 +25920,7 @@ class Transport extends events_1.EventEmitter {
      * @package
      */
     close(fn) {
-        if (this.readyState === "closed" || this.readyState === "closing")
+        if ("closed" === this.readyState || "closing" === this.readyState)
             return;
         this.readyState = "closing";
         this.doClose(fn || noop);
@@ -26202,7 +26206,7 @@ for (; i < length; i++)
 (__unused_webpack_module, exports, __webpack_require__) {
 
 
-const __importDefault = (this && this.__importDefault) || function (mod) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
@@ -26346,8 +26350,8 @@ function serveFile(res /* : HttpResponse */, filepath) {
 
 
 
-const identity = __webpack_require__(3619);
-const YAMLSeq = __webpack_require__(3939);
+var identity = __webpack_require__(3619);
+var YAMLSeq = __webpack_require__(3939);
 
 const seq = {
     collection: 'seq',
@@ -26570,7 +26574,7 @@ class BaseServer extends events_1.EventEmitter {
         }
         else {
             // handshake is GET only
-            if (req.method !== "GET") {
+            if ("GET" !== req.method) {
                 return fn(Server.errors.BAD_HANDSHAKE_METHOD, {
                     method: req.method,
                 });
@@ -26641,7 +26645,7 @@ class BaseServer extends events_1.EventEmitter {
      */
     close() {
         debug("closing all open clients");
-        for (const i in this.clients) {
+        for (let i in this.clients) {
             if (this.clients.hasOwnProperty(i)) {
                 this.clients[i].close(true);
             }
@@ -26703,11 +26707,11 @@ class BaseServer extends events_1.EventEmitter {
         debug('handshaking client "%s"', id);
         try {
             var transport = this.createTransport(transportName, req);
-            if (transportName === "polling") {
+            if ("polling" === transportName) {
                 transport.maxHttpBufferSize = this.opts.maxHttpBufferSize;
                 transport.httpCompression = this.opts.httpCompression;
             }
-            else if (transportName === "websocket") {
+            else if ("websocket" === transportName) {
                 transport.perMessageDeflate = this.opts.perMessageDeflate;
             }
         }
@@ -27088,7 +27092,7 @@ class Server extends BaseServer {
                 if (check(req)) {
                     this.handleUpgrade(req, socket, head);
                 }
-                else if (options.destroyUpgrade !== false) {
+                else if (false !== options.destroyUpgrade) {
                     // default node behavior is to disconnect when no handlers
                     // but by adding a handler, we prevent that
                     // and if no eio thing handles the upgrade
@@ -47235,11 +47239,11 @@ var identity = __webpack_require__(3619);
  *   stringification.
  */
 function toJS(value, arg, ctx) {
-     
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     if (Array.isArray(value))
         return value.map((v, i) => toJS(v, String(i), ctx));
     if (value && typeof value.toJSON === 'function') {
-         
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call
         if (!ctx || !identity.hasAnchor(value))
             return value.toJSON(arg, ctx);
         const data = { aliasCount: 0, count: 1, res: undefined };
@@ -48338,7 +48342,7 @@ class Help {
  */
 
 function stripColor(str) {
-   
+  // eslint-disable-next-line no-control-regex
   const sgrPattern = /\x1b\[\d*(;\d*)*m/g;
   return str.replace(sgrPattern, '');
 }
@@ -62841,8 +62845,8 @@ const crc1 = (current, previous = 0) => {
 // EXTERNAL MODULE: external "buffer"
 var external_buffer_ = __webpack_require__(181);
 ;// ./node_modules/.pnpm/crc@4.3.2/node_modules/crc/mjs/create_buffer.js
- 
- 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-prototype-builtins */
 
 const createBuffer = (value, encoding) => external_buffer_.Buffer.from(value, encoding);
 /* harmony default export */ const create_buffer = (createBuffer);
@@ -63258,7 +63262,7 @@ if (typeof Int32Array !== 'undefined') {
     crc32_TABLE = new Int32Array(crc32_TABLE);
 }
 const crc32 = (current, previous) => {
-     
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     let crc = previous === 0 ? 0 : ~~previous ^ -1;
     for (let index = 0; index < current.length; index++) {
         crc = crc32_TABLE[(crc ^ current[index]) & 0xff] ^ (crc >>> 8);
@@ -65124,7 +65128,7 @@ class FSWatcher extends external_events_.EventEmitter {
             actionPath.count++;
             return false;
         }
-         
+        // eslint-disable-next-line prefer-const
         let timeoutObject;
         const clear = () => {
             const item = action.get(path);
@@ -65973,7 +65977,7 @@ function createDedent(options) {
       if (i < values.length) {
         const value = alignValues ? alignValue(values[i], result) : values[i];
 
-         
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
         result += value;
       }
     }
@@ -65997,7 +66001,7 @@ function createDedent(options) {
       const m = mindent; // appease TypeScript
       result = lines
       // https://github.com/typescript-eslint/typescript-eslint/issues/7140
-       
+      // eslint-disable-next-line @typescript-eslint/prefer-string-starts-ends-with
       .map(l => l[0] === " " || l[0] === "\t" ? l.slice(m) : l).join("\n");
     }
 
