@@ -19,13 +19,20 @@ importers:
         version: 13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807))
       '@vueuse/integrations':
         specifier: ^13.9.0
+<<<<<<< HEAD
         version: 13.9.0(axios@1.14.1)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))
+=======
+        version: 13.9.0(axios@1.14.0)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
       '@vueuse/shared':
         specifier: ^13.9.0
         version: 13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807))
       async-wait-until:
         specifier: ^2.0.31
         version: 2.0.31
+      axios:
+        specifier: 1.14.0
+        version: 1.14.0
       compare-versions:
         specifier: ^6.1.1
         version: 6.1.1
@@ -73,7 +80,11 @@ importers:
         version: 3.5.31(typescript@6.0.0-dev.20250807)
       vue-final-modal:
         specifier: ^4.5.5
+<<<<<<< HEAD
         version: 4.5.5(@vueuse/core@13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807)))(@vueuse/integrations@13.9.0(axios@1.14.1)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807)))(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))
+=======
+        version: 4.5.5(@vueuse/core@13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807)))(@vueuse/integrations@13.9.0(axios@1.14.0)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807)))(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
       vue-router:
         specifier: ^4.6.4
         version: 4.6.4(vue@3.5.31(typescript@6.0.0-dev.20250807))
@@ -808,6 +819,13 @@ packages:
     resolution: {integrity: sha512-O9CjxypDT89fbHxRfETNoAnHj/i6IpRK0CvbVN3qibxlLdo5p5hcLmUuCCrHMpxiWSwKyI8mCP7qRNYuOJ0Uww==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+<<<<<<< HEAD
+=======
+  '@typescript-eslint/types@8.58.0':
+    resolution: {integrity: sha512-O9CjxypDT89fbHxRfETNoAnHj/i6IpRK0CvbVN3qibxlLdo5p5hcLmUuCCrHMpxiWSwKyI8mCP7qRNYuOJ0Uww==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
   '@typescript-eslint/typescript-estree@8.58.0':
     resolution: {integrity: sha512-7vv5UWbHqew/dvs+D3e1RvLv1v2eeZ9txRHPnEEBUgSNLx5ghdzjHa0sgLWYVKssH+lYmV0JaWdoubo0ncGYLA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -1283,8 +1301,13 @@ packages:
     resolution: {integrity: sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==}
     deprecated: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
 
+<<<<<<< HEAD
   axios@1.14.1:
     resolution: {integrity: sha512-vF/aB4vrIzLyOb2TB9gpuE8gusNHpZqk2ZZcAqSnRjW5IcY7tFSBEurD2tbakohj0Rw5xMHYwjSqOGSfr0iewA==}
+=======
+  axios@1.14.0:
+    resolution: {integrity: sha512-3Y8yrqLSwjuzpXuZ0oIYZ/XGgLwUIBU3uLvbcpb0pidD9ctpShJd43KSlEEkVQg6DS0G9NKyzOvBfUtDKEyHvQ==}
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
 
   bail@2.0.2:
     resolution: {integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==}
@@ -4630,6 +4653,11 @@ snapshots:
 
   '@typescript-eslint/types@8.58.0': {}
 
+<<<<<<< HEAD
+=======
+  '@typescript-eslint/types@8.58.0': {}
+
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
   '@typescript-eslint/typescript-estree@8.58.0(typescript@6.0.0-dev.20250807)':
     dependencies:
       '@typescript-eslint/project-service': 8.58.0(typescript@6.0.0-dev.20250807)
@@ -4826,13 +4854,21 @@ snapshots:
       '@vueuse/shared': 14.2.1(vue@3.5.31(typescript@6.0.0-dev.20250807))
       vue: 3.5.31(typescript@6.0.0-dev.20250807)
 
+<<<<<<< HEAD
   '@vueuse/integrations@13.9.0(axios@1.14.1)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))':
+=======
+  '@vueuse/integrations@13.9.0(axios@1.14.0)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))':
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
     dependencies:
       '@vueuse/core': 13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807))
       '@vueuse/shared': 13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807))
       vue: 3.5.31(typescript@6.0.0-dev.20250807)
     optionalDependencies:
+<<<<<<< HEAD
       axios: 1.14.1
+=======
+      axios: 1.14.0
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
       focus-trap: 7.6.5
 
   '@vueuse/metadata@10.11.1': {}
@@ -5102,11 +5138,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+<<<<<<< HEAD
   axios@1.14.1:
     dependencies:
       follow-redirects: 1.15.11
       form-data: 4.0.5
       plain-crypto-js: 4.2.1
+=======
+  axios@1.14.0:
+    dependencies:
+      follow-redirects: 1.15.11
+      form-data: 4.0.5
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
@@ -7402,7 +7445,11 @@ snapshots:
 
   remote-content@4.0.1:
     dependencies:
+<<<<<<< HEAD
       axios: 1.14.1
+=======
+      axios: 1.14.0
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -8080,10 +8127,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+<<<<<<< HEAD
   vue-final-modal@4.5.5(@vueuse/core@13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807)))(@vueuse/integrations@13.9.0(axios@1.14.1)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807)))(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807)):
     dependencies:
       '@vueuse/core': 13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807))
       '@vueuse/integrations': 13.9.0(axios@1.14.1)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))
+=======
+  vue-final-modal@4.5.5(@vueuse/core@13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807)))(@vueuse/integrations@13.9.0(axios@1.14.0)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807)))(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807)):
+    dependencies:
+      '@vueuse/core': 13.9.0(vue@3.5.31(typescript@6.0.0-dev.20250807))
+      '@vueuse/integrations': 13.9.0(axios@1.14.0)(focus-trap@7.6.5)(vue@3.5.31(typescript@6.0.0-dev.20250807))
+>>>>>>> 9dbfce4f3a8e36fe5fb6a7eb6d355d67cbde74aa
       focus-trap: 7.6.5
       vue: 3.5.31(typescript@6.0.0-dev.20250807)
 
