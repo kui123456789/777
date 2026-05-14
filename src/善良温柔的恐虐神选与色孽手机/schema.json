@@ -26,6 +26,7 @@
       "properties": {
         "色孽点": {
           "description": "通过色情行为获得的货币",
+          "default": 0,
           "$ref": "#/$defs/__schema0"
         },
         "手机功能": {
@@ -33,15 +34,19 @@
           "type": "object",
           "properties": {
             "透视开启": {
+              "default": false,
               "type": "boolean"
             },
             "身体柔韧化开启": {
+              "default": false,
               "type": "boolean"
             },
             "远程操控开启": {
+              "default": false,
               "type": "boolean"
             },
             "催眠目标": {
+              "default": null,
               "anyOf": [
                 {
                   "type": "string"
@@ -109,6 +114,7 @@
                 ]
               },
               "stackable": {
+                "default": false,
                 "type": "boolean"
               },
               "quantity": {
@@ -154,9 +160,11 @@
           "type": "object",
           "properties": {
             "乳穴": {
+              "default": 0,
               "type": "number"
             },
             "阴道": {
+              "default": 0,
               "type": "number"
             },
             "子宫": {
@@ -165,9 +173,11 @@
               "$ref": "#/$defs/__schema1"
             },
             "直肠": {
+              "default": 0,
               "type": "number"
             },
             "喉咙": {
+              "default": 0,
               "type": "number"
             }
           }
@@ -332,6 +342,7 @@
         },
         "星怒值": {
           "description": "受虐与服从的程度",
+          "default": 0,
           "$ref": "#/$defs/__schema35"
         },
         "当前状态": {
@@ -417,6 +428,7 @@
           "type": "number"
         },
         "好感度": {
+          "default": 0,
           "type": "number"
         },
         "当前状态": {
@@ -442,18 +454,23 @@
           "type": "object",
           "properties": {
             "乳穴": {
+              "default": 0,
               "type": "number"
             },
             "阴道": {
+              "default": 0,
               "type": "number"
             },
             "人造子宫": {
+              "default": 0,
               "type": "number"
             },
             "直肠": {
+              "default": 0,
               "type": "number"
             },
             "喉咙": {
+              "default": 0,
               "type": "number"
             }
           }
@@ -469,9 +486,11 @@
           "type": "object",
           "properties": {
             "人造子宫精液量": {
+              "default": 0,
               "type": "number"
             },
             "腹部隆起": {
+              "default": false,
               "type": "boolean"
             },
             "异物": {
@@ -584,6 +603,7 @@
           "properties": {
             "指令覆盖深度": {
               "description": "0-100 核心指令被覆盖程度",
+              "default": 0,
               "$ref": "#/$defs/__schema47"
             },
             "服从协议强度": {
@@ -593,6 +613,7 @@
             },
             "自主判断抑制": {
               "description": "0-100 自主判断能力被抑制程度",
+              "default": 0,
               "$ref": "#/$defs/__schema49"
             },
             "植入指令": {
@@ -607,6 +628,7 @@
             },
             "系统警告等级": {
               "description": "0-3 内部警告等级",
+              "default": 0,
               "$ref": "#/$defs/__schema50"
             }
           }
@@ -627,15 +649,19 @@
       "properties": {
         "阴道开发度": {
           "description": "0-100 不可调节，记录使用程度",
+          "default": 0,
           "$ref": "#/$defs/__schema3"
         },
         "肛门开发度": {
+          "default": 0,
           "type": "number"
         },
         "乳孔开发度": {
+          "default": 0,
           "type": "number"
         },
         "喉穴开发度": {
+          "default": 0,
           "type": "number"
         }
       }
@@ -649,13 +675,16 @@
       "properties": {
         "高潮幅度": {
           "description": ">100超量高潮, >1000生命危险, 9999=DEAD",
+          "default": 0,
           "$ref": "#/$defs/__schema5"
         },
         "怀孕概率": {
           "description": "0-100% 可调节",
+          "default": 0,
           "$ref": "#/$defs/__schema6"
         },
         "是否死亡": {
+          "default": false,
           "type": "boolean"
         }
       }
@@ -671,13 +700,16 @@
       "type": "object",
       "properties": {
         "启用": {
+          "default": false,
           "type": "boolean"
         },
         "关节柔韧度": {
           "description": "0-100",
+          "default": 0,
           "$ref": "#/$defs/__schema8"
         },
         "软组织强韧度": {
+          "default": 0,
           "type": "number"
         },
         "回弹速度": {
@@ -687,6 +719,7 @@
         },
         "痛感转化率": {
           "description": "0-100 痛苦转化为快感的程度",
+          "default": 0,
           "$ref": "#/$defs/__schema10"
         }
       }
@@ -721,17 +754,21 @@
             ]
           },
           "位置": {
+            "default": "",
             "type": "string"
           },
           "震动强度": {
             "description": "0-100",
+            "default": 0,
             "$ref": "#/$defs/__schema12"
           },
           "形态变化": {
             "description": "0-100 尺寸/形状变化程度",
+            "default": 0,
             "$ref": "#/$defs/__schema13"
           },
           "已激活": {
+            "default": false,
             "type": "boolean"
           }
         }
@@ -748,9 +785,11 @@
       "type": "object",
       "properties": {
         "单次最高幅度": {
+          "default": 0,
           "type": "number"
         },
         "累计次数": {
+          "default": 0,
           "type": "number"
         }
       }
@@ -761,15 +800,19 @@
       "properties": {
         "子宫精液量": {
           "description": "单位ml",
+          "default": 0,
           "$ref": "#/$defs/__schema16"
         },
         "肠道精液量": {
+          "default": 0,
           "type": "number"
         },
         "乳腺精液量": {
+          "default": 0,
           "type": "number"
         },
         "腹部隆起": {
+          "default": false,
           "type": "boolean"
         },
         "异物": {
@@ -881,6 +924,7 @@
       "properties": {
         "催眠深度": {
           "description": "0-100 当前催眠深度",
+          "default": 0,
           "$ref": "#/$defs/__schema28"
         },
         "暗示接受度": {
@@ -895,6 +939,7 @@
         },
         "意识模糊度": {
           "description": "0-100 意识清醒程度的反向",
+          "default": 0,
           "$ref": "#/$defs/__schema31"
         },
         "植入暗示": {
@@ -908,9 +953,11 @@
           }
         },
         "累计催眠次数": {
+          "default": 0,
           "type": "number"
         },
         "上次催眠时间": {
+          "default": null,
           "anyOf": [
             {
               "type": "string"
@@ -942,12 +989,14 @@
         },
         "强度": {
           "description": "0-100 暗示的根植深度",
+          "default": 0,
           "$ref": "#/$defs/__schema33"
         },
         "触发词": {
           "type": "string"
         },
         "激活状态": {
+          "default": false,
           "type": "boolean"
         }
       },
@@ -963,18 +1012,23 @@
       "type": "object",
       "properties": {
         "乳穴": {
+          "default": 0,
           "type": "number"
         },
         "阴道": {
+          "default": 0,
           "type": "number"
         },
         "子宫": {
+          "default": 0,
           "type": "number"
         },
         "直肠": {
+          "default": 0,
           "type": "number"
         },
         "喉咙": {
+          "default": 0,
           "type": "number"
         }
       }
