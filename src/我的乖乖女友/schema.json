@@ -59,7 +59,6 @@
       "type": "object",
       "properties": {
         "好感度": {
-          "default": 0,
           "type": "number"
         },
         "关系状态": {
@@ -102,11 +101,9 @@
               "type": "number"
             },
             "欠债": {
-              "default": 0,
               "type": "number"
             },
             "打工收入": {
-              "default": 0,
               "type": "number"
             }
           }
@@ -185,7 +182,6 @@
       "type": "object",
       "properties": {
         "屈从度": {
-          "default": 0,
           "type": "number"
         },
         "好感度": {
@@ -215,7 +211,6 @@
           "type": "boolean"
         },
         "是否怀孕": {
-          "default": false,
           "type": "boolean"
         },
         "存款": {
@@ -249,7 +244,6 @@
               "type": "string"
             },
             "敏感度": {
-              "default": 0,
               "type": "number"
             }
           }
@@ -271,11 +265,9 @@
               "type": "string"
             },
             "敏感度": {
-              "default": 0,
               "type": "number"
             },
             "内射量": {
-              "default": 0,
               "type": "number"
             }
           }
@@ -297,7 +289,6 @@
               "type": "string"
             },
             "敏感度": {
-              "default": 0,
               "type": "number"
             }
           }
@@ -315,7 +306,6 @@
               "type": "string"
             },
             "敏感度": {
-              "default": 0,
               "type": "number"
             }
           }
