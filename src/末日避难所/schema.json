@@ -225,6 +225,7 @@
               "type": "string"
             },
             "秘密实验进度": {
+              "default": 0,
               "type": "number"
             }
           }
@@ -253,6 +254,7 @@
             "type": "string"
           },
           "好感度": {
+            "default": 0,
             "type": "number"
           },
           "观感": {
@@ -302,6 +304,7 @@
                 "type": "string"
               },
               "说明": {
+                "default": "",
                 "type": "string"
               },
               "状态": {
@@ -346,9 +349,11 @@
                 ]
               },
               "效果": {
+                "default": "",
                 "type": "string"
               },
               "说明": {
+                "default": "",
                 "type": "string"
               },
               "数量": {
@@ -516,6 +521,7 @@
             "type": "number"
           },
           "防护等级": {
+            "default": 0,
             "type": "number"
           },
           "状态": {
@@ -569,6 +575,7 @@
             }
           },
           "描述": {
+            "default": "",
             "type": "string"
           }
         }
@@ -589,6 +596,7 @@
       }
     },
     "$气运加成": {
+      "default": 0,
       "type": "number"
     }
   },
@@ -610,6 +618,7 @@
       "type": "object",
       "properties": {
         "效果": {
+          "default": "",
           "type": "string"
         }
       }
