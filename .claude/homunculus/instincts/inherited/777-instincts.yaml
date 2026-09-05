@@ -1,0 +1,369 @@
+# Instincts generated from https://github.com/kui123456789/777
+# Generated: 2026-07-03T06:34:24.564Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: 777-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Commit Length
+
+## Action
+
+Keep commit messages concise (~17 characters)
+
+## Evidence
+
+- Average commit message length: 17 chars
+- Based on 19 commits
+
+---
+id: 777-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: 777-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: 777-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: 777-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: 777-workflow-automated-dependency-bump
+trigger: "when doing automated dependency bump"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Workflow Automated Dependency Bump
+
+## Action
+
+Follow the automated-dependency-bump workflow:
+1. Update package.json with new dependency versions
+2. Update pnpm-lock.yaml to reflect new dependency tree
+3. Optionally update pnpm-workspace.yaml or related config
+4. Optionally update type definition files under @types/function if type packages are bumped
+5. Commit changes with a standardized message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: package.json, pnpm-lock.yaml, pnpm-workspace.yaml
+
+---
+id: 777-workflow-automated-bundle-output
+trigger: "when doing automated bundle output"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/kui123456789/777
+---
+
+# 777 Workflow Automated Bundle Output
+
+## Action
+
+Follow the automated-bundle-output workflow:
+1. Build project to generate distribution files
+2. Update files in dist/ directory (e.g., HTML, JS map files)
+3. Commit changes with a standardized message
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: dist/角色卡示例/界面/状态栏/index.html, dist/角色卡示例/界面/状态栏/index.js.map
+
+---
+id: 777-instinct-file-naming-camelcase
+trigger: "When creating a new file in the codebase"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct File Naming Camelcase
+
+## Action
+
+Name the file using camelCase convention
+
+## Evidence
+
+- Pattern in namingConventions.files: camelCase
+
+---
+id: 777-instinct-function-naming-camelcase
+trigger: "When defining a new function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Function Naming Camelcase
+
+## Action
+
+Name the function using camelCase convention
+
+## Evidence
+
+- Pattern in namingConventions.functions: camelCase
+
+---
+id: 777-instinct-class-naming-pascalcase
+trigger: "When defining a new class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Class Naming Pascalcase
+
+## Action
+
+Name the class using PascalCase convention
+
+## Evidence
+
+- Pattern in namingConventions.classes: PascalCase
+
+---
+id: 777-instinct-constant-naming-screaming-snake-case
+trigger: "When defining a constant"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Constant Naming Screaming Snake Case
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE convention
+
+## Evidence
+
+- Pattern in namingConventions.constants: SCREAMING_SNAKE_CASE
+
+---
+id: 777-instinct-import-relative
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Import Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle: relative
+
+---
+id: 777-instinct-export-named
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Export Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle: named
+
+---
+id: 777-instinct-test-location-separate
+trigger: "When adding new tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Test Location Separate
+
+## Action
+
+Place test files in a separate directory from source files
+
+## Evidence
+
+- Pattern in architecture.testLocation: separate
+
+---
+id: 777-instinct-git-commit-prefix-bot-chore
+trigger: "When committing automated or maintenance changes"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Git Commit Prefix Bot Chore
+
+## Action
+
+Prefix commit messages with '[bot]' or 'chore:'
+
+## Evidence
+
+- Seen in commits: 'chore: Bump to typescript 7', '[bot] Bump deps'
+
+---
+id: 777-instinct-git-commit-short-message
+trigger: "When writing commit messages"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Git Commit Short Message
+
+## Action
+
+Keep commit messages concise (average ~17 characters)
+
+## Evidence
+
+- Pattern in commits.averageLength: 17
+
+---
+id: 777-instinct-automated-dependency-bump
+trigger: "When dependencies need to be updated (e.g., via bot or automation)"
+confidence: 0.98
+domain: workflow
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Automated Dependency Bump
+
+## Action
+
+Update package.json, pnpm-lock.yaml, optionally pnpm-workspace.yaml and @types/function/*.d.ts, then commit with a standardized message
+
+## Evidence
+
+- Workflow: automated-dependency-bump
+- Seen in commits: 'chore: Bump deps', '[bot] Bump deps'
+- Files: package.json, pnpm-lock.yaml, pnpm-workspace.yaml, @types/function/*.d.ts
+
+---
+id: 777-instinct-automated-bundle-output
+trigger: "When new code is built and distribution files need updating (e.g., via bot or CI)"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: kui123456789/777
+---
+
+# 777 Instinct Automated Bundle Output
+
+## Action
+
+Build project, update files in dist/ directory, and commit with a standardized message
+
+## Evidence
+
+- Workflow: automated-bundle-output
+- Seen in commits: '[bot] bundle'
+- Files: dist/角色卡示例/界面/状态栏/index.html, dist/角色卡示例/界面/状态栏/index.js.map
+
